@@ -2,6 +2,7 @@
   "name": "recipe-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://chingu-voyages.github.io/v46-tier2-team-17",
   "type": "module",
   "scripts": {
     "dev": "vite",
