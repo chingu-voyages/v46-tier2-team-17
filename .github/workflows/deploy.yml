@@ -42,14 +42,12 @@ jobs:
         run: npm run build
         working-directory: ./recipe-app
       - name: Setup Pages
-        working-directory: ./recipe-app
         uses: actions/configure-pages@v3
       - name: Upload artifact
-        working-directory: ./recipe-app
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload dist repository
-          path: "./dist"
+          path: "./recipe-app/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
