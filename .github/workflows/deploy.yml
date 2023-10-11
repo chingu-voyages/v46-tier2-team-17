@@ -25,7 +25,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://chingu-voyages.github.io/v46-tier2-team-17
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
