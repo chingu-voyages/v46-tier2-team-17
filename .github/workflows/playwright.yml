@@ -13,8 +13,10 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
+        working-directory: ./recipe-app
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+        working-directory: ./recipe-app
       - name: Run Playwright tests
         run: npx playwright test
         working-directory: ./recipe-app
