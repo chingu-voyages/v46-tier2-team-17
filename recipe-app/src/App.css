@@ -1,0 +1,58 @@
+#root {
+  width: 100vw;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.page__nav {
+  background-color: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.page__aside {
+  display: none;
+  width: 20rem;
+  flex-shrink: 0;
+  background-color: #171717;
+  min-height: 100vh;
+}
+
+.page__gallery {
+  flex-grow: 1;
+  background-color: #ededed;
+  min-height: 100vh;
+  padding: 7rem 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.page__gallery .card {
+  background-color: #444444;
+  min-height: 330px;
+  border-radius: 5.7px;
+  border-top: 3px solid #da0037;
+}
+
+/***********/
+/* Desktop */
+/***********/
+
+@media (min-width: 996px) {
+  .page {
+    display: flex;
+  }
+
+  .page__nav {
+    display: none;
+  }
+
+  .page__aside {
+    display: block;
+  }
+}
