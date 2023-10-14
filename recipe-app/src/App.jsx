@@ -5,8 +5,10 @@ function App() {
     <>
       <div className="page">
         <nav className="page__nav">
-          <a href="/">App Name</a>
-          <button>Menu</button>
+          <a className="page__nav-logo" href="/">
+            App Name
+          </a>
+          <button className="page__nav-menu">Menu</button>
         </nav>
         <aside className="page__aside"></aside>
         <main className="page__gallery">
