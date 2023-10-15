@@ -28,7 +28,7 @@ export default function SideBar() {
           <p>dairy</p>
           <p>vegan</p>
           <p>pescatarian</p>
-          <p>low carb diet</p>
+          <p>low carb</p>
         </div>
       </div>
     </main>
