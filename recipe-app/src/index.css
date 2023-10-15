@@ -1,34 +1,31 @@
 * {
   box-sizing: border-box;
 }
- body {
+body {
   margin: 0;
   padding: 0;
- }
+}
 
- .main-container {
+.main-container {
   padding: 2em 2em;
- }
+}
 
- .container-input {
+.container-input {
   display: flex;
- }
+}
 
- .container-checkbox {
+.container-checkbox {
   display: flex;
   justify-content: space-between;
   width: 30%;
   margin-top: 0.5em;
- }
+}
 
- .search-box {
+.search-box {
   padding: 1em;
   width: 30%;
-  
- }
+}
 
- .search-btn {
+.search-btn {
   padding: 1.5em;
- 
- }
-
+}
