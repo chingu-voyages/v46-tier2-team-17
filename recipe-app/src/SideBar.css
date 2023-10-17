@@ -1,0 +1,42 @@
+
+.main-container {
+  padding: 2em 2em;
+}
+
+.container-input {
+  display: flex;
+  align-items: center;
+}
+
+.container-checkbox {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin-top: 0.5em;
+}
+
+.search-box {
+  padding: 1em;
+  width: 30%;
+  border: 1px solid black;
+  border-right: none;
+  outline: none;
+  height: 60px;
+}
+
+.search-btn {
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  padding: 1.5em;
+   /* width: 40px; */
+    height: 60px; /*   */
+    border: 1px solid black;
+    background: none;
+    text-align: center;
+    
+}
+
+.checkbox {
+  display: block;
+}

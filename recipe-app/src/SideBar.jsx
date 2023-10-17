@@ -1,4 +1,7 @@
 import data from "./data/recipes";
+import "./SideBar.css"
+ import { FaArrowRight } from "react-icons/fa";
+
 export default function SideBar() {
   const recipes = data.results.map((result) => {
     return result.tags.map((tag) => tag.type);
@@ -13,13 +16,26 @@ export default function SideBar() {
           placeholder="Enter Ingredient"
           className="search-box"
         />
-        <button className="search-btn"></button>
+        <button className="search-btn">
+          <FaArrowRight />
+        </button>
       </div>
 
       <div className="container-checkbox">
-        <input type="checkbox" />
-        <input type="checkbox" />
-        <input type="checkbox" />
+        <div>
+          <input type="checkbox" className="checkbox" />
+          <label>minute</label>
+        </div>
+
+        <div>
+          <input type="checkbox" className="checkbox" />
+          <label>minute</label>
+        </div>
+
+        <div>
+          <input type="checkbox" className="checkbox" />
+          <label>minute</label>
+        </div>
       </div>
 
       <div>

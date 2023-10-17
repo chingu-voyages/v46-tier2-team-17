@@ -6,26 +6,3 @@ body {
   padding: 0;
 }
 
-.main-container {
-  padding: 2em 2em;
-}
-
-.container-input {
-  display: flex;
-}
-
-.container-checkbox {
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
-  margin-top: 0.5em;
-}
-
-.search-box {
-  padding: 1em;
-  width: 30%;
-}
-
-.search-btn {
-  padding: 1.5em;
-}
