@@ -24,13 +24,11 @@
   width: 20rem;
   flex-shrink: 0;
   background-color: #171717;
-  min-height: 100vh;
 }
 
 .page__gallery {
   flex-grow: 1;
   background-color: #ededed;
-  min-height: 100vh;
   padding: 7rem 2rem;
   display: grid;
   gap: 1rem;
@@ -39,9 +37,7 @@
 
 .page__gallery .card {
   background-color: #444444;
-  min-height: 330px;
   border-radius: 5.7px;
-  border-top: 3px solid #da0037;
 }
 
 /***********/
@@ -60,35 +56,4 @@
   .page__aside {
     display: block;
   }
-}
-
-.recipes-card {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  border-radius: 8px;
-  position: relative;
-}
-
-.image-container img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-}
-
-.content {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
-  color: #fff;
-  position: absolute;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.content button {
-  margin-bottom: 12px;
 }
