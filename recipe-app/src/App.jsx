@@ -1,3 +1,6 @@
+import "./CSS/App.css";
+import Modal from "./components/Modal";
+import data from "./data/recipes";
 import Card from "./components/Card";
 
 function App() {
@@ -44,6 +47,15 @@ function App() {
           </div>
         </main>
       </div>
+      {data.results.map((result) => {
+        return (
+          <Modal
+            key={result.id}
+            recipe={result}
+            difficulty={result.total_time_tier?.display_tier}
+          />
+        );
+      })}
     </>
   );
 }
