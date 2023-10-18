@@ -4,6 +4,11 @@
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   border-radius: 8px;
   position: relative;
+  transition: transform 0.2s;
+}
+
+.recipes-card:hover {
+  transform: scale(1.05);
 }
 
 .image-container img {
