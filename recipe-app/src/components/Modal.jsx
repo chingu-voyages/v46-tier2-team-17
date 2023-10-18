@@ -11,6 +11,7 @@ const Modal = ({ recipe, difficulty }) => {
   } = recipe;
 
   Modal.propTypes = {
+    difficulty: PropTypes.string.isRequired,
     recipe: PropTypes.shape({
       thumbnail_url: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
