@@ -7,7 +7,6 @@ const Modal = ({ recipe, difficulty }) => {
     description,
     original_video_url,
     sections,
-    //total_time_tier: {},
     instructions,
   } = recipe;
 

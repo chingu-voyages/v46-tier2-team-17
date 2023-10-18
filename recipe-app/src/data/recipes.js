@@ -9,7 +9,7 @@ const data = {
       seo_title: "",
       original_video_url:
         "https://s3.amazonaws.com/video-api-prod/assets/a0e1b07dc71c4ac6b378f24493ae2d85/FixedFBFinal.mp4",
-      instructions: [
+     instructions: [
         {
           appliance: null,
           end_time: 26500,
