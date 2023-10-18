@@ -21,29 +21,31 @@ export default function SideBar() {
         </button>
       </div>
 
-      <div className="container-checkbox">
-        <div>
+      <div className="main-container-checkbox">
+        <div className="container-checkbox">
           <input type="checkbox" className="checkbox" />
-          <label>minute</label>
+          <label>Under 30 minutes</label>
         </div>
 
-        <div>
+        <div className="container-checkbox">
           <input type="checkbox" className="checkbox" />
-          <label>minute</label>
+          <label>Five ingredients or less</label>
         </div>
 
-        <div>
+        <div className="container-checkbox">
           <input type="checkbox" className="checkbox" />
-          <label>minute</label>
+          <label>Easy</label>
         </div>
       </div>
 
-      <div>
-        <h2>Categories</h2>
-        <div>
+      <div className="main-container-category">
+        <h2 className="category-heading">Categories</h2>
+        <div className="container-category">
           <p>dairy</p>
           <p>vegan</p>
           <p>pescatarian</p>
+          <p>low carb</p>
+          <p>low carb</p>
           <p>low carb</p>
         </div>
       </div>
