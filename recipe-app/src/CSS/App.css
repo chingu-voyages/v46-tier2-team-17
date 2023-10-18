@@ -24,13 +24,11 @@
   width: 20rem;
   flex-shrink: 0;
   background-color: #171717;
-  min-height: 100vh;
 }
 
 .page__gallery {
   flex-grow: 1;
   background-color: #ededed;
-  /* min-height: 100vh; */
   padding: 7rem 2rem;
   display: grid;
   gap: 1rem;
@@ -39,7 +37,6 @@
 
 .page__gallery .card {
   background-color: #444444;
-  min-height: 330px;
   border-radius: 5.7px;
   border-top: 3px solid #da0037;
 }

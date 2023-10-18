@@ -1,4 +1,3 @@
-import "./App.css";
 import Card from "./components/Card";
 
 function App() {
@@ -13,17 +12,36 @@ function App() {
         </nav>
         <aside className="page__aside"></aside>
         <main className="page__gallery">
-          <Card />
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
-          <div className="card"></div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
+          <div className="card">
+            <Card />
+          </div>
         </main>
       </div>
     </>
