@@ -1,0 +1,59 @@
+#root {
+  width: 100vw;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.page__nav {
+  background-color: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.page__nav-logo {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.page__aside {
+  display: none;
+  width: 20rem;
+  flex-shrink: 0;
+  background-color: #171717;
+}
+
+.page__gallery {
+  flex-grow: 1;
+  background-color: #ededed;
+  padding: 7rem 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.page__gallery .card {
+  background-color: #444444;
+  border-radius: 5.7px;
+}
+
+/***********/
+/* Desktop */
+/***********/
+
+@media (min-width: 996px) {
+  .page {
+    display: flex;
+  }
+
+  .page__nav {
+    display: none;
+  }
+
+  .page__aside {
+    display: block;
+  }
+}
