@@ -1,8 +1,7 @@
-
-import SideBar from "./SideBar";
-import "./App.css";
+import "./CSS/App.css";
+import Modal from "./components/Modal";
+import data from "./data/recipes";
 import Card from "./components/Card";
-
 
 function App() {
   return (
@@ -14,9 +13,7 @@ function App() {
           </a>
           <button className="page__nav-menu">Menu</button>
         </nav>
-        <aside className="page__aside">
-          <SideBar />
-        </aside>
+        <aside className="page__aside"></aside>
         <main className="page__gallery">
           <div className="card">
             <Card />
@@ -50,6 +47,15 @@ function App() {
           </div>
         </main>
       </div>
+      {data.results.map((result) => {
+        return (
+          <Modal
+            key={result.id}
+            recipe={result}
+            difficulty={result.total_time_tier?.display_tier}
+          />
+        );
+      })}
     </>
   );
 }
