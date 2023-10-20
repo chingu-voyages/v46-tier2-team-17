@@ -1,4 +1,3 @@
-import "./CSS/App.css";
 // import Modal from "./components/Modal";
 // import data from "./data/recipes";
 import Card from "./components/Card";
