@@ -17,36 +17,25 @@ function App() {
         <aside className="page__aside"></aside>
         <main className="page__gallery">
           <Welcome />
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </main>
       </div>
       {/* {data.results.map((result) => {
