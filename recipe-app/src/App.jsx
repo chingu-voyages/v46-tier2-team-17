@@ -1,7 +1,8 @@
 import "./CSS/App.css";
-import Modal from "./components/Modal";
-import data from "./data/recipes";
+// import Modal from "./components/Modal";
+// import data from "./data/recipes";
 import Card from "./components/Card";
+import Welcome from "./components/Welcome";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </nav>
         <aside className="page__aside"></aside>
         <main className="page__gallery">
+          <Welcome />
           <div className="card">
             <Card />
           </div>
@@ -47,7 +49,7 @@ function App() {
           </div>
         </main>
       </div>
-      {data.results.map((result) => {
+      {/* {data.results.map((result) => {
         return (
           <Modal
             key={result.id}
@@ -55,7 +57,7 @@ function App() {
             difficulty={result.total_time_tier?.display_tier}
           />
         );
-      })}
+      })} */}
     </>
   );
 }
