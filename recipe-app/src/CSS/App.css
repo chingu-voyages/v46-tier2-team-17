@@ -20,10 +20,10 @@
 }
 
 .page__aside {
-  display: none;
-  width: 20rem;
+  display: flex;
+  width: 30%;
   flex-shrink: 0;
-  background-color: #171717;
+  /* background-color: #171717; */
 }
 
 .page__gallery {

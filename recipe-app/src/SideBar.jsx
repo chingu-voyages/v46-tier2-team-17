@@ -1,12 +1,13 @@
-import data from "./data/recipes";
+// import data from "./data/recipes";
+import { useState } from "react";
 import "./SideBar.css"
  import { FaArrowRight } from "react-icons/fa";
 
 export default function SideBar() {
-  const recipes = data.results.map((result) => {
-    return result.tags.map((tag) => tag.type);
-  });
-  console.log(recipes);
+  // const recipes = data.results.map((result) => {
+  //   return result.tags.map((tag) => tag.type);
+  // });
+  // console.log(recipes);
   return (
     <main className="main-container">
       <h1>Tasty Recipe App</h1>
@@ -16,7 +17,7 @@ export default function SideBar() {
           placeholder="Enter Ingredient"
           className="search-box"
         />
-        <button className="search-btn">
+        <button className="search-btn" onClick={() => console.log("click")}>
           <FaArrowRight />
         </button>
       </div>
