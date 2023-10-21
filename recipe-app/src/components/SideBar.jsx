@@ -1,6 +1,5 @@
 import data from "../data/recipes";
-import "./CSS/SideBar.css"
- import { FaArrowRight } from "react-icons/fa";
+//import { FaArrowRight } from "react-icons/fa";
 
 export default function SideBar() {
   const recipes = data.results.map((result) => {
@@ -16,9 +15,7 @@ export default function SideBar() {
           placeholder="Enter Ingredient"
           className="search-box"
         />
-        <button className="search-btn">
-          <FaArrowRight />
-        </button>
+        <button className="search-btn">{/*<FaArrowRight />*/}</button>
       </div>
 
       <div className="main-container-checkbox">

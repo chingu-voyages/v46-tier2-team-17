@@ -60,25 +60,30 @@ const Modal = ({ recipe, difficulty }) => {
   };
 
   return (
-    <>
-      <div>
-        <div>
-          <img src={thumbnail_url} alt="recipe thumbnail" />
+    <div className="recipe-container">
+      <div className="recipe-modal">
+        <div className="recipe-modal__close">
+          <button>X</button>
+        </div>
+        <div className="recipe-modal__thumbnail">
+          {/*<img src={thumbnail_url} alt="recipe thumbnail" />*/}
         </div>
 
-        <div>
+        <div className="recipe-modal__name">
           <h1>{name}</h1>
         </div>
-        <div>
+        <div className="recipe-modal__description">
           <p>{description}</p>
           <a href={original_video_url}> Video</a>
         </div>
-        <div>Difficulty: {difficulty}</div>
-        <div>{ingredientList()}</div>
-        <div>{instructionList()}</div>
-        {/**/}
+        <div className="recipe-modal__difficulty">Difficulty: {difficulty}</div>
+        <div className="recipe-modal__ingredients">
+          <h3>Ingredients:</h3>
+          {ingredientList()}
+        </div>
+        <div className="recipe-modal__instructions">{instructionList()}</div>
       </div>
-    </>
+    </div>
   );
 };
 
