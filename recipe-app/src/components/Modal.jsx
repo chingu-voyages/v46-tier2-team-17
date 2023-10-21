@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Modal = ({ recipe, difficulty }) => {
   const {
-    thumbnail_url,
+    //thumbnail_url,
     name,
     description,
     original_video_url,

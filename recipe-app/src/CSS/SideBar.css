@@ -1,6 +1,6 @@
-
-.main-container {
+.nav-container {
   padding: 2em 2em;
+  max-width: 500px;
 }
 
 .container-input {
@@ -8,19 +8,18 @@
   align-items: center;
 }
 
-.main-container-checkbox {
+.nav-container-checkbox {
   display: flex;
   /* justify-content: space-between; */
   width: 70%;
   margin-top: 0.5em;
-  gap:10px;
+  gap: 10px;
   text-align: center;
 }
 
 .container-checkbox {
   display: flex;
   flex-direction: column;
- 
 }
 
 .search-box {
@@ -32,7 +31,7 @@
   height: 60px;
    */
 
-   border: 1px solid black;
+  border: 1px solid black;
   border-right: none;
   /* border-radius: 20px 0px 0px 20px; */
   outline: none;
@@ -51,7 +50,7 @@
     background: none;
      */
 
-     /* display: flex;
+  /* display: flex;
   align-items:center;
   justify-content: center; */
   padding: 1.5em;
@@ -62,12 +61,11 @@
   text-align: center;
   outline: none;
   border-radius: 0px 0px q0px 0px;
-    
 }
 
 .container-category {
   display: flex;
-  gap:10px;
+  gap: 10px;
   margin-top: -1.8em;
   flex-wrap: wrap;
   width: 300px;
