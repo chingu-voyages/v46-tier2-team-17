@@ -12,8 +12,8 @@
   width: 100vw;
   height: 100vh;
   animation-name: fade-out-welcome-component;
-  animation-delay: 3s;
-  animation-duration: 5s;
+  animation-delay: 4s;
+  animation-duration: 7.5s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
@@ -41,7 +41,7 @@
   }
   to {
     opacity: 0;
-    display: none;
+    transform: translateX(9999px);
   }
 }
 
