@@ -12,6 +12,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
+  position: relative;
+  z-index: 1000;
 }
 
 .page__nav-logo {
@@ -21,25 +23,25 @@
 
 .page__aside {
   display: none;
-  width: 20rem;
+  width: var(--page-desktop-aside-width);
   flex-shrink: 0;
   background-color: #171717;
 }
 
 .page__gallery {
   flex-grow: 1;
-  background-color: #ededed;
-  padding: 7rem 2rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  padding: var(--page-gallery-block-padding) var(--page-gallery-inline-padding);
+  background-color: #ededed;
 }
 
 /***********/
 /* Desktop */
 /***********/
 
-@media (min-width: 996px) {
+@media (min-width: 992px) {
   .page {
     display: flex;
   }
