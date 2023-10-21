@@ -1,5 +1,5 @@
 import data from "../data/recipes";
-import "./CSS/SideBar.css"
+// import "./src/CSS/SideBar.css"
  import { FaArrowRight } from "react-icons/fa";
 
 export default function SideBar() {
