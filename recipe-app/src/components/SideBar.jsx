@@ -1,6 +1,5 @@
 import data from "../data/recipes";
-import "./CSS/SideBar.css"
- import { FaArrowRight } from "react-icons/fa";
+//import { FaArrowRight } from "react-icons/fa";
 
 export default function SideBar() {
   const recipes = data.results.map((result) => {
@@ -8,7 +7,7 @@ export default function SideBar() {
   });
   console.log(recipes);
   return (
-    <main className="main-container">
+    <nav className="nav-container">
       <h1>Tasty Recipe App</h1>
       <div className="container-input">
         <input
@@ -16,12 +15,10 @@ export default function SideBar() {
           placeholder="Enter Ingredient"
           className="search-box"
         />
-        <button className="search-btn">
-          <FaArrowRight />
-        </button>
+        <button className="search-btn">{/*<FaArrowRight />*/}</button>
       </div>
 
-      <div className="main-container-checkbox">
+      <div className="nav-container-checkbox">
         <div className="container-checkbox">
           <input type="checkbox" className="checkbox" />
           <label>Under 30 minutes</label>
@@ -49,6 +46,6 @@ export default function SideBar() {
           <p>low carb</p>
         </div>
       </div>
-    </main>
+    </nav>
   );
 }
