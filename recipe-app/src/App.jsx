@@ -1,8 +1,8 @@
 import Modal from "./components/Modal";
-import data from "./data/recipes";
 import Card from "./components/Card";
 import SideBar from "./components/SideBar";
 import Welcome from "./components/Welcome";
+import data from "./data/recipes";
 
 function App() {
   return (
@@ -38,13 +38,13 @@ function App() {
           <Card />
           <Card />
           <Card />
-          <Modal
-            key={data.results[0].id}
-            recipe={data.results[0]}
-            difficulty={data.results[0].total_time_tier?.display_tier}
-          />
         </main>
       </div>
+      <Modal
+        key={data.results[0].id}
+        recipe={data.results[0]}
+        difficulty={data.results[0].total_time_tier?.display_tier}
+      />
     </>
   );
 }
