@@ -26,13 +26,13 @@
   background-color: rgba(0, 0, 0, 0.33);
   width: inherit;
   height: inherit;
-  padding-inline: 1.1rem;
 }
 
 .welcome-component__heading {
   font-family: "Outfit", sans-serif;
   font-size: 2.8rem;
   text-align: center;
+  width: calc(var(--page-desktop-gallery-width) * 0.9);
 }
 
 @keyframes fade-out-welcome-component {
@@ -50,10 +50,6 @@
 /*********************/
 
 @media (min-width: 600px) {
-  .welcome-component__overlay {
-    padding-inline: 3rem;
-  }
-
   .welcome-component__heading {
     font-size: 3rem;
   }
@@ -66,5 +62,9 @@
 @media (min-width: 992px) {
   .welcome-component {
     width: var(--page-desktop-gallery-width);
+  }
+
+  .welcome-component__heading {
+    width: calc(var(--page-desktop-gallery-width) * 0.7);
   }
 }

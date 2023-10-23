@@ -14,9 +14,7 @@ function App() {
           </a>
           <button className="page__nav-menu">Menu</button>
         </nav>
-        <aside className="page__aside">
-          <SideBar />
-        </aside>
+        <SideBar />
         <main className="page__gallery">
           <Welcome />
           <Card />

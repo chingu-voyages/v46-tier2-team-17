@@ -1,6 +1,9 @@
 .nav-container {
   padding: 2em 2em;
-  max-width: 500px;
+  display: none;
+  width: var(--page-desktop-aside-width);
+  flex-shrink: 0;
+  background-color: #171717;
 }
 
 .container-input {
@@ -99,3 +102,13 @@
 
 
 } */
+
+/***********/
+/* Desktop */
+/***********/
+
+@media (min-width: 992px) {
+  .nav-container {
+    display: block;
+  }
+}

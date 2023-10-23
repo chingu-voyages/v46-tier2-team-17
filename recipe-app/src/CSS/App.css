@@ -21,13 +21,6 @@
   color: #fff;
 }
 
-.page__aside {
-  display: none;
-  width: var(--page-desktop-aside-width);
-  flex-shrink: 0;
-  background-color: #171717;
-}
-
 .page__gallery {
   flex-grow: 1;
   display: grid;
@@ -48,9 +41,5 @@
 
   .page__nav {
     display: none;
-  }
-
-  .page__aside {
-    display: block;
   }
 }

@@ -7,7 +7,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  --page-desktop-aside-width: 25vw;
+  --page-desktop-aside-width: 21vw;
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
   --page-gallery-block-padding: 7rem;
   --page-gallery-inline-padding: 2rem;
