@@ -1,7 +1,6 @@
 import Modal from "./components/Modal";
-import Card from "./components/Card";
 import SideBar from "./components/SideBar";
-import Welcome from "./components/Welcome";
+import Gallery from "./components/Gallery";
 import data from "./data/recipes";
 
 function App() {
@@ -9,28 +8,7 @@ function App() {
     <>
       <div className="page">
         <SideBar />
-        <main className="page__gallery">
-          <Welcome />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </main>
+        <Gallery />
       </div>
       <Modal
         key={data.results[0].id}
