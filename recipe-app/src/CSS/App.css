@@ -41,17 +41,15 @@
 /***********/
 
 @media (min-width: 992px) {
-  /* .page {
+  .page {
     display: flex;
-  } */
+  }
 
- 
-
-  /* .page__nav {
+  .page__nav {
     display: none;
   }
 
   .page__aside {
     display: block;
-  } */
+  }
 }
