@@ -1,3 +1,18 @@
+.mobile__nav {
+  background-color: #171717;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.mobile__nav-logo {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
 .nav-container {
   padding: 2em 2em;
   display: none;
@@ -108,6 +123,10 @@
 /***********/
 
 @media (min-width: 992px) {
+  .mobile__nav {
+    display: none;
+  }
+
   .nav-container {
     display: block;
   }

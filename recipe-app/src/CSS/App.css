@@ -6,21 +6,6 @@
   min-height: 100vh;
 }
 
-.page__nav {
-  background-color: #171717;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem;
-  position: relative;
-  z-index: 1000;
-}
-
-.page__nav-logo {
-  font-size: 1.7rem;
-  color: #fff;
-}
-
 .page__gallery {
   flex-grow: 1;
   display: grid;
@@ -37,9 +22,5 @@
 @media (min-width: 992px) {
   .page {
     display: flex;
-  }
-
-  .page__nav {
-    display: none;
   }
 }

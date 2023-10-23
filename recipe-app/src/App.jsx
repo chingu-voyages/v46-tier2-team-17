@@ -8,12 +8,6 @@ function App() {
   return (
     <>
       <div className="page">
-        <nav className="page__nav">
-          <a className="page__nav-logo" href="/">
-            App Name
-          </a>
-          <button className="page__nav-menu">Menu</button>
-        </nav>
         <SideBar />
         <main className="page__gallery">
           <Welcome />
