@@ -76,6 +76,15 @@
   margin-top: 6em;
 }
 
+.categories {
+  display: flex;
+  align-items:center;
+  padding: 0.5em 0.8em;
+  border:1px solid black;
+  border-radius:50%;
+  font-size: 0.8rem;
+}
+
 /* .checkbox {
   display: block;
 } */

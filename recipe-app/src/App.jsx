@@ -14,31 +14,32 @@ function App() {
           </a>
           <button className="page__nav-menu">Menu</button>
         </nav>
-        <aside className="page__aside">
+        <div className="page_layout">
           <SideBar />
-        </aside>
-        <main className="page__gallery">
-          <Welcome />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </main>
+
+          <main className="page__gallery">
+            <Welcome />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </main>
+        </div>
       </div>
       <Modal
         key={data.results[0].id}

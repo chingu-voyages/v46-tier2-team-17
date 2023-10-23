@@ -38,7 +38,7 @@ export default function SideBar() {
       <div className="main-container-category">
         <h2 className="category-heading">Categories</h2>
         <div className="container-category">
-          <p>dairy</p>
+          <p className="categories">dairy</p>
           <p>vegan</p>
           <p>pescatarian</p>
           <p>low carb</p>

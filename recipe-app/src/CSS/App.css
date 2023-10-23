@@ -4,6 +4,8 @@
 
 .page {
   min-height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .page__nav {
@@ -21,11 +23,8 @@
   color: #fff;
 }
 
-.page__aside {
-  display: none;
-  width: var(--page-desktop-aside-width);
-  flex-shrink: 0;
-  background-color: #171717;
+.page_layout {
+  display: flex;
 }
 
 .page__gallery {
@@ -42,15 +41,17 @@
 /***********/
 
 @media (min-width: 992px) {
-  .page {
+  /* .page {
     display: flex;
-  }
+  } */
 
-  .page__nav {
+ 
+
+  /* .page__nav {
     display: none;
   }
 
   .page__aside {
     display: block;
-  }
+  } */
 }
