@@ -8,7 +8,7 @@
   flex-direction: column; */
 }
 
-.page__nav {
+/* .page__nav {
   background-color: #171717;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
   padding: 1.5rem;
   position: relative;
   z-index: 1000;
-}
+} */
 
 .page__nav-logo {
   font-size: 1.7rem;
