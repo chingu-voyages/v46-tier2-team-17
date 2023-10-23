@@ -1,8 +1,8 @@
-import "./CSS/App.css";
 import Modal from "./components/Modal";
-import data from "./data/recipes";
 import Card from "./components/Card";
-import SideBar from "./components/SideBar"
+import SideBar from "./components/SideBar";
+import Welcome from "./components/Welcome";
+import data from "./data/recipes";
 
 function App() {
   return (
@@ -15,50 +15,36 @@ function App() {
           <button className="page__nav-menu">Menu</button>
         </nav>
         <aside className="page__aside">
-          <SideBar/>
+          <SideBar />
         </aside>
         <main className="page__gallery">
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
-          <div className="card">
-            <Card />
-          </div>
+          <Welcome />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </main>
       </div>
-      {data.results.map((result) => {
-        return (
-          <Modal
-            key={result.id}
-            recipe={result}
-            difficulty={result.total_time_tier?.display_tier}
-          />
-        );
-      })}
+      <Modal
+        key={data.results[0].id}
+        recipe={data.results[0]}
+        difficulty={data.results[0].total_time_tier?.display_tier}
+      />
     </>
   );
 }

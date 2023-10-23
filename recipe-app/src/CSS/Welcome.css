@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap");
+
+.welcome-component {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  z-index: 500;
+  margin-left: calc(-1 * var(--page-gallery-inline-padding));
+  width: 100vw;
+  height: 100vh;
+  animation-name: fade-out-welcome-component;
+  animation-delay: 4s;
+  animation-duration: 7.5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.welcome-component__overlay {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.33);
+  width: inherit;
+  height: inherit;
+  padding-inline: 1.1rem;
+}
+
+.welcome-component__heading {
+  font-family: "Outfit", sans-serif;
+  font-size: 2.8rem;
+  text-align: center;
+}
+
+@keyframes fade-out-welcome-component {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    translate: 100%;
+  }
+}
+
+/*********************/
+/* Tablet and Desktop*/
+/*********************/
+
+@media (min-width: 600px) {
+  .welcome-component__overlay {
+    padding-inline: 3rem;
+  }
+
+  .welcome-component__heading {
+    font-size: 3rem;
+  }
+}
+
+/***********/
+/* Desktop */
+/***********/
+
+@media (min-width: 992px) {
+  .welcome-component {
+    width: var(--page-desktop-gallery-width);
+  }
+}
