@@ -5,7 +5,6 @@
   position: fixed;
   top: 0;
   z-index: 500;
-  margin-top: 1.7rem;
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
   width: 100vw;
   height: 100vh;
@@ -20,8 +19,9 @@
   justify-content: center;
   text-align: center;
   box-sizing: border-box;
-  width: 80%;
+  width: 70%;
   min-height: 50%;
+  margin-top: 2.7rem;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
   background-color: #000;
@@ -42,11 +42,11 @@
 
 @media (min-width: 992px) {
   .error-component {
-    margin-top: 0;
     width: var(--page-desktop-gallery-width);
   }
 
   .error-component__overlay {
+    margin-top: 0;
     margin-left: calc(-1 * (var(--page-gallery-inline-padding) * 2));
     padding: 1.3rem 3rem;
   }
