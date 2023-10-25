@@ -7,11 +7,11 @@ function Welcome() {
 
   return (
     <article
-      className="welcome-component"
+      className="welcome-modal"
       style={{ backgroundImage: `url(${selectedRecipeImage})` }}
     >
-      <div className="welcome-component__overlay">
-        <h2 className="welcome-component__heading">
+      <div className="welcome-modal__overlay">
+        <h2 className="welcome-modal__heading">
           Find the best recipes for your ingredients!
         </h2>
       </div>
