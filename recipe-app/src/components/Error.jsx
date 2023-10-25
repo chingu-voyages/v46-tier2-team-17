@@ -1,15 +1,15 @@
 function Error() {
   return (
-    <article className="error-component">
-      <div className="error-component__overlay">
-        <div className="error-component__icon">🍜</div>
-        <h2 className="error-component__heading">
+    <article className="error-modal">
+      <div className="error-modal__overlay">
+        <div className="error-modal__icon">🍜</div>
+        <h2 className="error-modal__heading">
           Sorry, we couldn’t find any recipe for your “xxxxx” ingredient.
         </h2>
-        <p className="error-component__text">
+        <p className="error-modal__text">
           Try these popular ingredients instead:
         </p>
-        <ul className="error-component__search-suggestion-list">
+        <ul className="error-modal__search-suggestion-list">
           <li>Chicken</li>
           <li>Salad</li>
           <li>Coconut</li>
