@@ -1,5 +1,5 @@
 // import data from "../data/recipes";
-//import { FaArrowRight } from "react-icons/fa";
+import { AiOutlineSearch } from "react-icons/ai";
 import React, {useState} from "react"
 
 
@@ -18,7 +18,10 @@ export default function SideBar() {
         <a className="mobile__nav-logo" href="/">
           App Name
         </a>
-        <button className="mobile__nav-menu" onClick={() => SetMenu("nav-mobile")}>
+        <button
+          className="mobile__nav-menu"
+          onClick={() => SetMenu("nav-mobile")}
+        >
           Menu
         </button>
       </nav>
@@ -30,35 +33,43 @@ export default function SideBar() {
             placeholder="Enter Ingredient"
             className="search-box"
           />
-          <button className="search-btn">Click</button>
+          <button className="search-btn">
+            <AiOutlineSearch />
+          </button>
         </div>
 
         <div className="nav-container-checkbox">
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" />
-            <label className="label-title">Under 30 minutes</label>
+            <input type="checkbox" className="checkbox" id="checkbox-30mins" />
+            <label className="label-title" htmlFor="checkbox-30mins">
+              Under 30 minutes
+            </label>
           </div>
 
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" />
-            <label className="label-title">Five ingredients or less</label>
+            <input type="checkbox" className="checkbox" id="checkbox-5ingredients" />
+            <label className="label-title" htmlFor="checkbox-5ingredients">
+              Five ingredients or less
+            </label>
           </div>
 
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" />
-            <label className="label-title">Easy</label>
+            <input type="checkbox" className="checkbox" id="checkbox-easy" />
+            <label className="label-title" htmlFor="checkbox-easy">
+              Easy
+            </label>
           </div>
         </div>
 
         <div className="main-container-category">
           <h2 className="category-heading">Categories</h2>
           <div className="container-category">
-            <p className="category-name">dairy</p>
-            <p className="category-name">vegan</p>
-            <p className="category-name">pescatarian</p>
-            <p className="category-name">low carb</p>
-            <p className="category-name">low carb</p>
-            <p className="category-name">low carb</p>
+            <div className="category-name">dairy</div>
+            <div className="category-name">vegan</div>
+            <div className="category-name">pescatarian</div>
+            <div className="category-name">low carb</div>
+            <div className="category-name">low carb</div>
+            <div className="category-name">low carb</div>
           </div>
         </div>
       </nav>
