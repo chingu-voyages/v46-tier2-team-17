@@ -5,4 +5,5 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   padding: var(--page-gallery-block-padding) var(--page-gallery-inline-padding);
   background-color: #ededed;
+  width: inherit;
 }

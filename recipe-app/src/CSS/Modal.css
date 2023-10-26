@@ -1,9 +1,14 @@
 .recipe-container {
   background-color: rgba(0, 0, 0, 0.75);
+  position: fixed; /* Change to absolute position */
+  top: 0;
+  left: calc(var(--page-desktop-aside-width) + 4em);
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  justify-content: center;
+  z-index: 500;
 }
 
 .recipe-modal {
@@ -14,6 +19,7 @@
     "thumbnail" "name" "description" "difficulty" "ingredients"
     "instructions";
   max-width: 700px;
+  max-height: 1000px;
   width: 80%;
   height: 80%;
   align-items: center;

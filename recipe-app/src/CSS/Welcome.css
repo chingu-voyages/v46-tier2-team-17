@@ -5,27 +5,26 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  position: fixed;
-  top: 0;
   z-index: 500;
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
-  width: 100vw;
-  height: 100vh;
   animation-name: fade-out-welcome-modal;
   animation-delay: 4s;
   animation-duration: 7.5s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
+  display: flex;
+  position: fixed;
+  left: calc(var(--page-desktop-aside-width) + 4em);
+  height: 100%;
 }
 
 .welcome-modal__overlay {
   box-sizing: border-box;
   display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.33);
-  width: inherit;
-  height: inherit;
 }
 
 .welcome-modal__heading {
