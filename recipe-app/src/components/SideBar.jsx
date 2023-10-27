@@ -1,17 +1,14 @@
 // import data from "../data/recipes";
 import { AiOutlineSearch } from "react-icons/ai";
-import React, {useState} from "react"
-
+import React, { useState } from "react";
 
 export default function SideBar() {
-  const [menu, SetMenu] = useState("nav-container")
+  const [menu, SetMenu] = useState("nav-container");
   // const recipes = data.results.map((result) => {
   //   return result.tags.map((tag) => tag.type);
   // });
   // console.log(recipes);
-  function showSearch() {
-    
-  }
+  // function showSearch() {}
   return (
     <>
       <nav className="mobile__nav">
@@ -29,7 +26,7 @@ export default function SideBar() {
         <h1 className="search-title">Tasty Recipe App</h1>
         <div className="container-input">
           <input
-            type="input"
+            type="text"
             placeholder="Enter Ingredient"
             className="search-box"
           />
@@ -47,7 +44,11 @@ export default function SideBar() {
           </div>
 
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" id="checkbox-5ingredients" />
+            <input
+              type="checkbox"
+              className="checkbox"
+              id="checkbox-5ingredients"
+            />
             <label className="label-title" htmlFor="checkbox-5ingredients">
               Five ingredients or less
             </label>
