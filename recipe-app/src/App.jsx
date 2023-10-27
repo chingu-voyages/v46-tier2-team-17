@@ -12,6 +12,18 @@ function App() {
   const [gallery, setGallery] = useState(true);
   const [error, setError] = useState(false);
   const [modal, setModal] = useState(false);
+  const [chosenRecipe, SetChosenRecipe] = useState(null);
+
+  const showModal = (recipe) => {
+    SetChosenRecipe(recipe);
+    setModal(true);
+  };
+
+  const hideModal = () => {
+    SetChosenRecipe(null);
+    setModal(false);
+  };
+
   return (
     <>
       <main className="page">
@@ -20,18 +32,16 @@ function App() {
         {gallery === true && (
           <div className="gallery">
             {data.results.map((result) => (
-              <Card key={result.id} result={result} />
+              <Card
+                key={result.id}
+                result={result}
+                onClick={() => showModal(result)}
+              />
             ))}
           </div>
         )}
         {error === true && <Error />}
-        {modal === true && (
-          <Modal
-            key={data.results[0].id}
-            recipe={data.results[0]}
-            difficulty={data.results[0].total_time_tier?.display_tier}
-          />
-        )}
+        {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
 
         {/*
           

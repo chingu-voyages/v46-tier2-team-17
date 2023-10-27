@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Card = ({ result }) => {
+const Card = ({ result, onClick }) => {
   const { name, thumbnail_url } = result;
   Card.propTypes = {
     result: PropTypes.shape({
@@ -12,6 +12,7 @@ const Card = ({ result }) => {
     <div
       className="recipes-card"
       style={{ backgroundImage: `url(${thumbnail_url})` }}
+      onClick={onClick}
     >
       <div className="content">
         <h2>{name}</h2>
