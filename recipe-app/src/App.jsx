@@ -9,13 +9,13 @@ import { useState } from "react";
 
 function App() {
   const [gallery, setGallery] = useState(true);
-  const [error, setError] = useState(false);
   const [modal, setModal] = useState(false);
   return (
     <>
       <main className="page">
         <SideBar />
         <Welcome />
+        <Error />
         {gallery === true && (
           <div className="gallery">
             {data.results.map((result) => (
@@ -23,7 +23,6 @@ function App() {
             ))}
           </div>
         )}
-        {error === true && <Error />}
         {modal === true && (
           <Modal
             key={data.results[0].id}
