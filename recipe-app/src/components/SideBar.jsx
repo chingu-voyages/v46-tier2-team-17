@@ -26,7 +26,7 @@ export default function SideBar() {
         <h1 className="search-title">Tasty Recipe App</h1>
         <div className="container-input">
           <input
-            type="text"
+            type="search"
             placeholder="Enter Ingredient"
             className="search-box"
           />
