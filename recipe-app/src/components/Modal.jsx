@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Modal = ({ recipe, difficulty }) => {
+const Modal = ({ recipe, difficulty, onClose }) => {
   const {
     //thumbnail_url,
     name,
@@ -63,7 +63,7 @@ const Modal = ({ recipe, difficulty }) => {
     <div className="recipe-container">
       <div className="recipe-modal">
         <div className="recipe-modal__close">
-          <button>X</button>
+          <button onClick={onClose}>X</button>
         </div>
         <div className="recipe-modal__thumbnail">
           {/*<img src={thumbnail_url} alt="recipe thumbnail" />*/}
