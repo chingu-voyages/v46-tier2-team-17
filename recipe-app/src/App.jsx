@@ -14,15 +14,18 @@ function App() {
   const [modal, setModal] = useState(false);
   const [chosenRecipe, SetChosenRecipe] = useState(null);
 
+  // *****
+  // Function to show Modal(recipe page) when card is clicked:
   const showModal = (recipe) => {
     SetChosenRecipe(recipe);
     setModal(true);
   };
-
+  //  Function to close Modal when X button is clicked:
   const hideModal = () => {
     SetChosenRecipe(null);
     setModal(false);
   };
+  // *******
 
   return (
     <>
