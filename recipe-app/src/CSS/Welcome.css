@@ -9,8 +9,8 @@
   z-index: 500;
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
   animation-name: fade-out-welcome-modal;
-  animation-delay: 4s;
-  animation-duration: 7.5s;
+  animation-delay: 3s;
+  animation-duration: 4.5s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
   display: flex;
