@@ -1,17 +1,29 @@
 // import data from "../data/recipes";
+import React, { useState } from "react";
+import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import React, {useState} from "react"
-
 
 export default function SideBar() {
-  const [menu, SetMenu] = useState("nav-container")
+  const [menu, SetMenu] = useState("nav-container");
+  const [searchedText, setSearchedText] = useState("");
   // const recipes = data.results.map((result) => {
   //   return result.tags.map((tag) => tag.type);
   // });
   // console.log(recipes);
-  function showSearch() {
-    
+
+  function handleUserQuery(searchedText) {
+    validateIngredientsQuery(searchedText);
+    setSearchedText("");
   }
+
+  function handleKeyDown(e, searchedText) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserQuery(searchedText);
+    }
+  }
+
+  // function showSearch() {}
   return (
     <>
       <nav className="mobile__nav">
@@ -29,11 +41,17 @@ export default function SideBar() {
         <h1 className="search-title">Tasty Recipe App</h1>
         <div className="container-input">
           <input
-            type="input"
+            type="search"
             placeholder="Enter Ingredient"
             className="search-box"
+            value={searchedText}
+            onKeyDown={(e) => handleKeyDown(e, searchedText)}
+            onChange={(e) => setSearchedText(e.target.value)}
           />
-          <button className="search-btn">
+          <button
+            className="search-btn"
+            onClick={() => handleUserQuery(searchedText)}
+          >
             <AiOutlineSearch />
           </button>
         </div>
@@ -47,7 +65,11 @@ export default function SideBar() {
           </div>
 
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" id="checkbox-5ingredients" />
+            <input
+              type="checkbox"
+              className="checkbox"
+              id="checkbox-5ingredients"
+            />
             <label className="label-title" htmlFor="checkbox-5ingredients">
               Five ingredients or less
             </label>

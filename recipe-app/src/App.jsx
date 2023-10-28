@@ -8,9 +8,7 @@ import Error from "./components/Error";
 import { useState } from "react";
 
 function App() {
-  const [welcome, setWelcome] = useState(false);
   const [gallery, setGallery] = useState(true);
-  const [error, setError] = useState(false);
   const [modal, setModal] = useState(false);
   const [chosenRecipe, SetChosenRecipe] = useState(null);
 
@@ -28,7 +26,8 @@ function App() {
     <>
       <main className="page">
         <SideBar />
-        {welcome === true && <Welcome />}
+        <Welcome />
+        <Error />
         {gallery === true && (
           <div className="gallery">
             {data.results.map((result) => (
@@ -40,7 +39,6 @@ function App() {
             ))}
           </div>
         )}
-        {error === true && <Error />}
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
 
         {/*
