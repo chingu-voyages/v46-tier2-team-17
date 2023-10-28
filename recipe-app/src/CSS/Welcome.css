@@ -14,7 +14,7 @@
   animation-fill-mode: forwards;
   display: flex;
   /* Activate display: none to temporarily disable the welcome modal, e.g., while testing the app */
-  display: none;
+  /* display: none; */
   position: fixed;
   left: calc(var(--page-desktop-aside-width) + 4em);
   height: 100%;
