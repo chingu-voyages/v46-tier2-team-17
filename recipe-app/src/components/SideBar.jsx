@@ -11,9 +11,16 @@ export default function SideBar() {
   // });
   // console.log(recipes);
 
-  function handleSearchBtnClick(searchedText) {
+  function handleUserQuery(searchedText) {
     validateIngredientsQuery(searchedText);
     setSearchedText("");
+  }
+
+  function handleKeyDown(e, searchedText) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserQuery(searchedText);
+    }
   }
 
   // function showSearch() {}
@@ -38,11 +45,12 @@ export default function SideBar() {
             placeholder="Enter Ingredient"
             className="search-box"
             value={searchedText}
+            onKeyDown={(e) => handleKeyDown(e, searchedText)}
             onChange={(e) => setSearchedText(e.target.value)}
           />
           <button
             className="search-btn"
-            onClick={() => handleSearchBtnClick(searchedText)}
+            onClick={() => handleUserQuery(searchedText)}
           >
             <AiOutlineSearch />
           </button>
