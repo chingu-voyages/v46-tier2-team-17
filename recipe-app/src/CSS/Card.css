@@ -20,7 +20,7 @@
 
 .content {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
-  color: #fff;
+  color: var(--card-font-color-light);
   border-radius: 8px;
   display: flex;
   flex-direction: column;

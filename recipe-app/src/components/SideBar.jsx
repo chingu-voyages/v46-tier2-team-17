@@ -38,7 +38,7 @@ export default function SideBar() {
         </button>
       </nav>
       <nav className={`${menu}`}>
-        <h1 className="search-title">Tasty Recipe App</h1>
+        <h1 className="search-title">Pantry Picker</h1>
         <div className="container-input">
           <input
             type="search"

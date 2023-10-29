@@ -1,6 +1,5 @@
 import Modal from "./components/Modal";
 import SideBar from "./components/SideBar";
-//import Gallery from "./components/Gallery";
 import data from "./data/recipes";
 import Welcome from "./components/Welcome";
 import Card from "./components/Card";
