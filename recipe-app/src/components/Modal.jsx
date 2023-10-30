@@ -1,43 +1,16 @@
-import PropTypes from "prop-types";
-
-const Modal = ({ recipe, difficulty, onClose }) => {
+import { FaWindowClose } from "react-icons/fa";
+const Modal = ({ recipe, onClose }) => {
   const {
     //thumbnail_url,
     name,
     description,
+    total_time_tier,
+    yields,
     original_video_url,
     sections,
     instructions,
+    nutrition,
   } = recipe;
-
-  Modal.propTypes = {
-    difficulty: PropTypes.string.isRequired,
-    recipe: PropTypes.shape({
-      thumbnail_url: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      original_video_url: PropTypes.string.isRequired,
-      sections: PropTypes.arrayOf(
-        PropTypes.shape({
-          components: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.number.isRequired,
-              raw_text: PropTypes.string.isRequired,
-            }),
-          ).isRequired,
-        }),
-      ).isRequired,
-      total_time_tier: PropTypes.shape({
-        tier: PropTypes.string.isRequired,
-      }).isRequired,
-      instructions: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          display_text: PropTypes.string.isRequired,
-        }),
-      ).isRequired,
-    }).isRequired,
-  };
 
   const ingredientList = () => {
     return (
@@ -59,27 +32,57 @@ const Modal = ({ recipe, difficulty, onClose }) => {
     );
   };
 
+  const filterKeys = (key) => {
+    return key !== "updated_at";
+  };
+
+  const nutritionList = () => {
+    return (
+      <ul>
+        {Object.keys(nutrition)
+          .filter(filterKeys)
+          .map((key) => {
+            return (
+              <li key={key}>
+                {key}: {nutrition[key]}
+              </li>
+            );
+          })}
+      </ul>
+    );
+  };
+
   return (
     <div className="recipe-container">
       <div className="recipe-modal">
         <div className="recipe-modal__close">
-          <button onClick={onClose}>X</button>
+          <div onClick={onClose}>
+            <FaWindowClose />
+          </div>
         </div>
-        <div className="recipe-modal__thumbnail">
-          {/*<img src={thumbnail_url} alt="recipe thumbnail" />*/}
+        <div className="recipe-modal__video">
+          {original_video_url && (
+            <video src={original_video_url} controls></video>
+          )}
         </div>
-
         <div className="recipe-modal__name">
-          <h1>{name}</h1>
+          <h2>{name}</h2>
         </div>
         <div className="recipe-modal__description">
           <p>{description}</p>
-          <a href={original_video_url}> Video</a>
         </div>
-        <div className="recipe-modal__difficulty">Difficulty: {difficulty}</div>
+        <div className="recipe-modal__difficulty">
+          <p>Difficulty: {total_time_tier?.display_tier}</p>{" "}
+          {/* The "?." operator is there to check if the property exists.*/}
+          <p>{yields}</p>
+        </div>
         <div className="recipe-modal__ingredients">
           <h3>Ingredients:</h3>
           {ingredientList()}
+        </div>
+        <div className="recipe-modal__nutrition">
+          <h3>Nutrition</h3>
+          {nutritionList()}
         </div>
         <div className="recipe-modal__instructions">{instructionList()}</div>
       </div>

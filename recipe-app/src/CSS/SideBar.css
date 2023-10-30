@@ -1,5 +1,5 @@
 .mobile__nav {
-  background-color: #171717;
+  background-color: var(--sidebar-background-color-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +18,7 @@
   display: none;
   width: var(--page-desktop-aside-width);
   flex-shrink: 0;
-  background-color: #3f3e3e;
+  background-color: var(--sidebar-background-color-light);
   color: white;
 }
 
@@ -133,7 +133,7 @@ input.checkbox {
 
 .nav-mobile {
   padding: 1em 1.5em 2em;
-  background-color: #3f3e3e;
+  background-color: var(--sidebar-background-color-light);
   color: white;
 }
 
