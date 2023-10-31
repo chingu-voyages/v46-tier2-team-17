@@ -1,6 +1,8 @@
 function validateIngredientsQuery(searchedText) {
   const errorModal = document.getElementById("error-modal");
   const ingredient404Element = document.getElementById("ingredient-404");
+
+  // Check if input begins with valid character
   if (/^[^_|\W]/.test(searchedText)) {
     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
     const options = {
@@ -11,6 +13,8 @@ function validateIngredientsQuery(searchedText) {
       },
     };
     errorModal.style.display = "none";
+
+    // Check if searched ingredient exist
     async function checkIfRecipeExistsForIngredients() {
       try {
         let searchedWord = null;
@@ -19,22 +23,27 @@ function validateIngredientsQuery(searchedText) {
         const recipesArray = JSON.parse(result).results;
         const hasSearchedIngredients = findIngredients();
 
+        // Find ingredient in the api
         function findIngredients() {
           const searchedWordsArray = searchedText
             .toLowerCase()
             .trim()
             .split(/[\W|_]/g)
-            .filter((i) => i);
-          return searchedWordsArray.some((w) => {
-            searchedWord = w;
-            return recipesArray.some((r) => {
-              return r.sections[0].components.some((c) => {
-                const regExpVersionOfSearchedWord = new RegExp(w);
-                return regExpVersionOfSearchedWord.test(c.ingredient.name);
+            .filter((item) => item);
+          return searchedWordsArray.some((word) => {
+            searchedWord = word;
+            return recipesArray.some((recipe) => {
+              return recipe.sections[0].components.some((component) => {
+                const regExpVersionOfSearchedWord = new RegExp(word);
+                return regExpVersionOfSearchedWord.test(
+                  component.ingredient.name,
+                );
               });
             });
           });
         }
+
+        // Show error for 404 searches
         if (!hasSearchedIngredients) {
           ingredient404Element.innerText = searchedWord;
           errorModal.style.display = "flex";
@@ -45,9 +54,12 @@ function validateIngredientsQuery(searchedText) {
     }
     checkIfRecipeExistsForIngredients();
   }
+
+  // Show error if inputs begins with valid character
   if (/^[_|\W]/.test(searchedText)) {
     ingredient404Element.innerText = searchedText.trim();
     errorModal.style.display = "flex";
   }
 }
+
 export default validateIngredientsQuery;
