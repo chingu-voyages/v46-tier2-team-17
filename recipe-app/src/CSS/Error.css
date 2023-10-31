@@ -1,15 +1,14 @@
 .error-modal {
   flex-grow: 1;
-  display: none;
+  z-index: 2;
+  background-color: var(--overlay-color);
+  position: fixed;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 500;
-  margin-left: calc(-1 * var(--page-gallery-inline-padding));
-  background-color: rgba(255, 255, 255, 0.77);
-  backdrop-filter: blur(1.3px);
-  position: fixed;
-  left: calc(var(--page-desktop-aside-width) + 4em);
-  height: 100%;
 }
 
 .error-modal__overlay {
@@ -18,19 +17,20 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-sizing: border-box;
-  width: 70%;
+  max-width: 900px;
+  max-height: 1000px;
+  width: 80%;
   min-height: 50%;
-  margin-top: 2.7rem;
-  padding: 1.1rem 1.5rem;
-  border-radius: 10px;
-  color: #fff;
-  background-color: #000;
+  margin: 30px auto;
+  padding: 30px 50px;
+  border-radius: var(--border-radius);
+  color: var(--font-color-light);
+  background-color: var(--display-background-color-light);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .error-modal__icon {
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .error-modal__search-suggestion-list {
@@ -41,7 +41,7 @@
 /***********/
 /* Desktop */
 /***********/
-
+/*
 @media (min-width: 992px) {
   .error-modal {
     width: var(--page-desktop-gallery-width);
@@ -57,3 +57,4 @@
     font-size: 5rem;
   }
 }
+*/

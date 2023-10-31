@@ -71,11 +71,18 @@ const Modal = ({ recipe, onClose }) => {
         <div className="recipe-modal__description">
           <p>{description}</p>
         </div>
-        <div className="recipe-modal__difficulty">
-          <p>Difficulty: {total_time_tier?.display_tier}</p>{" "}
-          {/* The "?." operator is there to check if the property exists.*/}
-          <p>{yields}</p>
-        </div>
+        {total_time_tier?.display_tier && (
+          <div className="recipe-modal__difficulty">
+            <p>Difficulty: {total_time_tier?.display_tier}</p>
+            {/* ternary function to check if data exists*/}
+            {/* The "?." operator is there to check if the property exists.*/}
+          </div>
+        )}
+        {yields && (
+          <div className=".recipe-modal__yield">
+            <p>{yields}</p>
+          </div>
+        )}
         <div className="recipe-modal__ingredients">
           <h3>Ingredients:</h3>
           {ingredientList()}

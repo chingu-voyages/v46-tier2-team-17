@@ -10,11 +10,9 @@ function Welcome() {
       className="welcome-modal"
       style={{ backgroundImage: `url(${selectedRecipeImage})` }}
     >
-      <div className="welcome-modal__overlay">
-        <h2 className="welcome-modal__heading">
-          Find the best recipes for your ingredients!
-        </h2>
-      </div>
+      <h2 className="welcome-modal__heading">
+        Find the best recipes for your ingredients!
+      </h2>
     </article>
   );
 }

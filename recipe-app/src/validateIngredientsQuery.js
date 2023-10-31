@@ -1,4 +1,4 @@
-function validateIngredientsQuery(searchedText) {
+function validateIngredientsQuery(searchedText, showError, hideError) {
   if (/^[^_|\W]/.test(searchedText)) {
     const errorModal = document.getElementById("error-modal");
     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
@@ -9,7 +9,7 @@ function validateIngredientsQuery(searchedText) {
         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
       },
     };
-    errorModal.style.display = "none";
+    hideError();
     async function checkIfRecipeExistsForIngredients() {
       try {
         let searchedWord = null;
@@ -35,10 +35,10 @@ function validateIngredientsQuery(searchedText) {
           });
         }
         if (!hasSearchedIngredients) {
+          showError();
           const ingredient404Element =
-            document.getElementById("ingredient-404");
+            document.querySelector("#ingredient-404");
           ingredient404Element.innerText = searchedWord;
-          errorModal.style.display = "flex";
         }
       } catch (error) {
         console.error(error);

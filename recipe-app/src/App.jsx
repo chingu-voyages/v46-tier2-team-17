@@ -10,8 +10,22 @@ function App() {
   const [gallery, setGallery] = useState(true);
   const [modal, setModal] = useState(false);
   const [chosenRecipe, SetChosenRecipe] = useState(null);
+  const [error, setError] = useState(false);
 
-  // *****
+  // *******
+  // Function to show error
+  const showError = () => {
+    setError(true);
+  };
+  // Function to hide error
+  const hideError = () => {
+    setError(false);
+  };
+
+  const errorHandling = { showError, hideError };
+  // *******
+
+  // *******
   // Function to show Modal(recipe page) when card is clicked:
   const showModal = (recipe) => {
     SetChosenRecipe(recipe);
@@ -26,10 +40,12 @@ function App() {
 
   return (
     <>
+      <div className="aside">
+        <SideBar {...errorHandling} />
+      </div>
       <main className="page">
-        <SideBar />
         <Welcome />
-        <Error />
+        {error === true && <Error />}
         {gallery === true && (
           <div className="gallery">
             {data.results.map((result) => (
@@ -42,10 +58,6 @@ function App() {
           </div>
         )}
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
-
-        {/*
-          
-      */}
       </main>
     </>
   );

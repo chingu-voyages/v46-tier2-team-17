@@ -5,11 +5,15 @@
 
   color-scheme: light dark;
   --font-color-light: #3f3e3e;
-  --card-font-color-light: #ECECEC;
-  --sidebar-background-color-light: #40a969;
+  --card-font-color-light: #ececec;
+  --sidebar-background-color-light: #303030;
+  --sidebar-search-button: #1b9cff;
   --display-background-color-light: #d6d2c3;
+  --overlay-color: rgba(0, 0, 0, 0.33);
 
-  --page-desktop-aside-width: 23vw;
+  --border-radius: 5px;
+
+  --page-desktop-aside-width: 600px;
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
   --page-gallery-block-padding: 7rem;
   --page-gallery-inline-padding: 2rem;

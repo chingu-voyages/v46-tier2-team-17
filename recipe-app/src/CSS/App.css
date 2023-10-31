@@ -1,20 +1,41 @@
-#root {
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.page {
-  min-height: 100vh;
-  flex-grow: 1;
-}
-
 /***********/
 /* Desktop */
 /***********/
 
-@media (min-width: 992px) {
+#root {
+  display: grid;
+  grid-template-areas: "aside display";
+  grid-template-columns: 20% 80%;
+  width: 100%;
+}
+
+.aside {
+  grid-area: aside;
+  min-height: 100vh;
+  max-width: var(--page-desktop-aside-width);
+  background-color: var(--sidebar-background-color-light);
+  padding: 2em 2em;
+}
+
+.page {
+  grid-area: display;
+  min-height: 100vh;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 1400px) {
+  #root {
+    grid-template-areas: "aside display";
+    grid-template-rows: 10% 90%;
+  }
+
+  .aside {
+    height: 10%;
+  }
+
   .page {
-    display: flex;
+    height: 90%;
   }
 }

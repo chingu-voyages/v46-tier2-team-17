@@ -1,6 +1,5 @@
 .mobile__nav {
-  background-color: var(--sidebar-background-color-light);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
@@ -14,11 +13,10 @@
 }
 
 .nav-container {
-  padding: 2em 2em;
-  display: none;
-  width: var(--page-desktop-aside-width);
+  display: block;
+  width: inherit;
+  height: 100%;
   flex-shrink: 0;
-  background-color: var(--sidebar-background-color-light);
   color: white;
 }
 
@@ -52,8 +50,8 @@
   color: black;
   text-align: center;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
   padding: 0.5em 0;
   background: white;
 }
@@ -66,10 +64,10 @@
   width: 60px;
   height: 35px;
   border: none;
-  background: turquoise;
+  background: var(--sidebar-search-button);
   text-align: center;
   outline: none;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-size: 0.8rem;
 }
@@ -82,7 +80,7 @@
   font-size: 0.8rem;
   border: none;
   padding: 0.5em 0.8em;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   background: #e9ecef;
   color: #343a40;
@@ -92,7 +90,7 @@
 .container-category {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 10px;
   margin-top: -0.8em;
 }
 
@@ -108,7 +106,7 @@
 .categories {
   padding: 0.5em 0.8em;
   border: 1px solid black;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   font-size: 0.8rem;
 }
 
@@ -148,16 +146,16 @@ input.checkbox {
 /* Desktop */
 /***********/
 
-@media (min-width: 992px) {
+@media (max-width: 1400px) {
   .mobile__nav {
-    display: none;
+    display: flex;
   }
 
   .nav-container {
-    display: block;
+    display: none;
   }
 
   .container-category {
-    gap: 10px;
+    gap: 15px;
   }
 }

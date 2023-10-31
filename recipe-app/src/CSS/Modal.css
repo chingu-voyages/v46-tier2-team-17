@@ -1,14 +1,13 @@
 .recipe-container {
-  background-color: rgba(0, 0, 0, 0.75);
-  position: fixed; /* Change to absolute position */
-  top: 0;
-  left: calc(var(--page-desktop-aside-width) + 4em);
-  right: 0;
-  bottom: 0;
+  background-color: var(--overlay-color);
+  z-index: 2;
+  position: fixed;
+  width: 80%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 500;
 }
 
 .recipe-modal {
@@ -16,7 +15,7 @@
   grid-template-columns: auto;
   grid-template-areas:
     "close"
-    "video" "name" "description" "difficulty" "ingredients"
+    "video" "name" "description" "difficulty" "yield" "ingredients" "nutrition"
     "instructions";
   max-width: 900px;
   max-height: 1000px;
@@ -26,11 +25,11 @@
   padding: 30px 50px;
   margin: 30px auto;
   background-color: var(--display-background-color-light);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   overflow-y: auto;
   font-size: 1.3rem;
   line-height: 45px;
-  gap: 20px 0;
+  gap: 5px 0;
   color: var(--font-color-light);
 }
 
@@ -39,8 +38,10 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
 .recipe-modal__close svg {
   scale: 2;
+  cursor: pointer;
 }
 
 .recipe-modal__video {
@@ -50,7 +51,7 @@
 }
 
 .recipe-modal__video video {
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   width: 100%;
   aspect-ratio: 16/9;
   background-color: #000;
@@ -68,6 +69,16 @@
   grid-area: difficulty;
 }
 
+.recipe-modal__yield {
+  grid-area: yield;
+}
+
 .recipe-modal__ingredients {
   grid-area: ingredients;
+}
+.recipe-modal__yield {
+  grid-area: nutrition;
+}
+.recipe-modal__instructions {
+  grid-area: instructions;
 }

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
 
-export default function SideBar() {
+export default function SideBar({ showError, hideError }) {
   const [menu, SetMenu] = useState("nav-container");
   const [searchedText, setSearchedText] = useState("");
   // const recipes = data.results.map((result) => {
@@ -12,7 +12,7 @@ export default function SideBar() {
   // console.log(recipes);
 
   function handleUserQuery(searchedText) {
-    validateIngredientsQuery(searchedText);
+    validateIngredientsQuery(searchedText, showError, hideError);
     setSearchedText("");
   }
 
