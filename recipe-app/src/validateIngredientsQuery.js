@@ -1,6 +1,7 @@
 function validateIngredientsQuery(searchedText) {
+  const errorModal = document.getElementById("error-modal");
+  const ingredient404Element = document.getElementById("ingredient-404");
   if (/^[^_|\W]/.test(searchedText)) {
-    const errorModal = document.getElementById("error-modal");
     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
     const options = {
       method: "GET",
@@ -35,8 +36,6 @@ function validateIngredientsQuery(searchedText) {
           });
         }
         if (!hasSearchedIngredients) {
-          const ingredient404Element =
-            document.getElementById("ingredient-404");
           ingredient404Element.innerText = searchedWord;
           errorModal.style.display = "flex";
         }
@@ -46,6 +45,9 @@ function validateIngredientsQuery(searchedText) {
     }
     checkIfRecipeExistsForIngredients();
   }
+  if (/^[_|\W]/.test(searchedText)) {
+    ingredient404Element.innerText = searchedText.trim();
+    errorModal.style.display = "flex";
+  }
 }
-
 export default validateIngredientsQuery;
