@@ -1,4 +1,4 @@
-function validateIngredientsQuery(searchedText) {
+function validateIngredientsQuery(searchedText, recipesArray) {
   if (/^[^_|\W]/.test(searchedText)) {
     const errorModal = document.getElementById("error-modal");
     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
