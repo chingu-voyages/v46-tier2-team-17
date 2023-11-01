@@ -1,5 +1,4 @@
 // import data from "../data/recipes";
-// import data from "../data/recipes";
 import React, { useState, useEffect } from "react";
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
