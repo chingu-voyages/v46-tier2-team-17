@@ -12,6 +12,10 @@ function App() {
   const [chosenRecipe, SetChosenRecipe] = useState(null);
   const [allRecipes, setAllRecipes] = useState([]);
 
+
+  // Pass setAllRecipes state to the Sidebar compponent
+  
+
   useEffect(() => {
     const fetchData = async () => {
       const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
@@ -53,13 +57,8 @@ function App() {
   return (
     <>
       <main className="page">
-       
-          
+        <SideBar setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)} />
 
-       <SideBar />
-        
-
-       
         <Welcome />
         <Error />
         {gallery === true && (
@@ -79,6 +78,10 @@ function App() {
           
       */}
       </main>
+      <footer>
+        <a href="https://github.com/chingu-voyages/v46-tier2-team-17" target="_blank">
+        v46-Tier2-Team17 GitHub Repo</a>
+      </footer>
     </>
   );
 }
