@@ -1,4 +1,4 @@
-function validateIngredientsQuery(searchedText) {
+function validateIngredientsQuery(searchedText, recipesArray) {
   const errorModal = document.getElementById("error-modal");
   const ingredient404Element = document.getElementById("ingredient-404");
 
