@@ -60,10 +60,7 @@ console.log(searchedText)
    
   }
 
-//  function search(e) {
 
-
-//  }
   return (
     <>
       <nav className="mobile__nav">
@@ -84,7 +81,7 @@ console.log(searchedText)
         <div className="container-input">
           <input
             type="search"
-            placeholder="Enter Ingredient"
+            placeholder="Enter One or more ingredients"
             className="search-box"
             value={searchedText}
             onKeyDown={(e) => handleKeyDown(e, searchedText)}
