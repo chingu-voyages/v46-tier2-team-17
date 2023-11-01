@@ -1,4 +1,4 @@
-function validateIngredientsQuery(searchedText, showError, hideError) {
+function validateIngredientsQuery(searchedText, recipesArray) {
   if (/^[^_|\W]/.test(searchedText)) {
     const errorModal = document.getElementById("error-modal");
     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
@@ -9,7 +9,7 @@ function validateIngredientsQuery(searchedText, showError, hideError) {
         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
       },
     };
-    hideError();
+    errorModal.style.display = "none";
     async function checkIfRecipeExistsForIngredients() {
       try {
         let searchedWord = null;
@@ -37,8 +37,9 @@ function validateIngredientsQuery(searchedText, showError, hideError) {
         if (!hasSearchedIngredients) {
           showError();
           const ingredient404Element =
-            document.querySelector("#ingredient-404");
+            document.getElementById("ingredient-404");
           ingredient404Element.innerText = searchedWord;
+          errorModal.style.display = "flex";
         }
       } catch (error) {
         console.error(error);

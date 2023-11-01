@@ -11,20 +11,8 @@ function App() {
   const [modal, setModal] = useState(false);
   const [chosenRecipe, SetChosenRecipe] = useState(null);
   const [allRecipes, setAllRecipes] = useState([]);
-  const [error, setError] = useState(false);
 
-  // *******
-  // Function to show error
-  const showError = () => {
-    setError(true);
-  };
-  // Function to hide error
-  const hideError = () => {
-    setError(false);
-  };
-
-  const errorHandling = { showError, hideError };
-  // *******
+  // Pass setAllRecipes state to the Sidebar compponent
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,11 +55,13 @@ function App() {
   return (
     <>
       <div className="aside">
-        <SideBar {...errorHandling} />
+        <SideBar
+          setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+        />
       </div>
       <main className="page">
         <Welcome />
-        {error === true && <Error />}
+        <Error />
         {gallery === true && (
           <div className="gallery">
             {allRecipes.map((result) => (
@@ -85,6 +75,14 @@ function App() {
         )}
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
       </main>
+      <footer>
+        <a
+          href="https://github.com/chingu-voyages/v46-tier2-team-17"
+          target="_blank"
+        >
+          v46-Tier2-Team17 GitHub Repo
+        </a>
+      </footer>
     </>
   );
 }
