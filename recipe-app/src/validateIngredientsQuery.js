@@ -4,55 +4,49 @@ function validateIngredientsQuery(searchedText, recipesArray) {
 
   // Check if input begins with valid character
   if (/^[^_|\W]/.test(searchedText)) {
-    const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-        "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-      },
-    };
     errorModal.style.display = "none";
 
-    // Check if searched ingredient exist
-    async function checkIfRecipeExistsForIngredients() {
-      try {
-        let searchedWord = null;
-        const response = await fetch(url, options);
-        const result = await response.text();
-        const recipesArray = JSON.parse(result).results;
-        const hasSearchedIngredients = findIngredients();
+    console.log(searchedText);
 
-        // Find ingredient in the api
-        function findIngredients() {
-          const searchedWordsArray = searchedText
-            .toLowerCase()
-            .trim()
-            .split(/[\W|_]/g)
-            .filter((item) => item);
-          return searchedWordsArray.some((word) => {
-            searchedWord = word;
-            return recipesArray.some((recipe) => {
-              return recipe.sections[0].components.some((component) => {
-                const regExpVersionOfSearchedWord = new RegExp(word);
-                return regExpVersionOfSearchedWord.test(
-                  component.ingredient.name,
-                );
-              });
+    // Check if searched ingredient exist
+    function checkIfRecipeExistsForIngredients(recipesArray) {
+      let searchedWord = null;
+      const hasSearchedIngredients = findIngredients();
+
+      // Find ingredient in the api
+      function findIngredients() {
+        const searchedWordsArray = searchedText
+          .toLowerCase()
+          .trim()
+          .split(/[\W|_]/g)
+          .filter((item) => item);
+        return searchedWordsArray.some((word) => {
+          searchedWord = word;
+          return recipesArray.some((recipe) => {
+            // console.log(recipe.sections[0].components);
+            return recipe.sections[0].components.some((component) => {
+              const regExpVersionOfSearchedWord = new RegExp(word);
+              console.log("The test");
+              console.log(component.ingredient.name);
+              console.log(
+                regExpVersionOfSearchedWord.test(component.ingredient.name),
+              );
+              return regExpVersionOfSearchedWord.test(
+                component.ingredient.name,
+              );
             });
           });
-        }
-
-        // Show error for 404 searches
-        if (!hasSearchedIngredients) {
-          ingredient404Element.innerText = searchedWord;
-          errorModal.style.display = "flex";
-        }
-      } catch (error) {
-        console.error(error);
+        });
       }
+
+      // Show error for 404 searches
+      if (!hasSearchedIngredients) {
+        ingredient404Element.innerText = searchedWord;
+        errorModal.style.display = "flex";
+      }
+      return hasSearchedIngredients;
     }
-    checkIfRecipeExistsForIngredients();
+    return checkIfRecipeExistsForIngredients(recipesArray);
   }
 
   // Show error if inputs begins with valid character

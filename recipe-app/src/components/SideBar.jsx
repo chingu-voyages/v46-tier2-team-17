@@ -2,25 +2,21 @@
 import React, { useState, useEffect } from "react";
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import Card from "./Card"
+import Card from "./Card";
 
-export default function SideBar({setAllRecipes}) {
+export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
-  const [toggle, setToggle] = useState(true)
+  const [toggle, setToggle] = useState(true);
 
   // const recipes = data.results.map((result) => {
   //   return result.tags.map((tag) => tag.type);
   // });
   // console.log(recipes);
 
-   function handleUserQuery() {
-     
-   };
-console.log(searchedText)
+  // function handleUserQuery() {}
+  // console.log(searchedText);
 
   function handleUserQuery(searchedText) {
-    validateIngredientsQuery(searchedText);
-  
     const fetchData = async () => {
       const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedText}`;
       const options = {
@@ -38,8 +34,15 @@ console.log(searchedText)
 
         console.log(recipesArray);
 
+        const isValidSearch = validateIngredientsQuery(
+          searchedText,
+          recipesArray,
+        );
+
         // Invoke the setAllRecipes(recipesArray)
-        setAllRecipes(recipesArray);
+        if (isValidSearch) {
+          setAllRecipes(recipesArray);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -56,10 +59,8 @@ console.log(searchedText)
   }
 
   function toggleButton() {
-    setToggle(prevToggle => !prevToggle)
-   
+    setToggle((prevToggle) => !prevToggle);
   }
-
 
   return (
     <>
@@ -67,15 +68,11 @@ console.log(searchedText)
         <a className="mobile__nav-logo" href="/">
           App Name
         </a>
-        <button
-          className="mobile__nav-menu"
-          onClick={toggleButton}
-        >
+        <button className="mobile__nav-menu" onClick={toggleButton}>
           Menu
         </button>
       </nav>
 
-     
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
         <h1 className="search-title">Pantry Picker</h1>
         <div className="container-input">
