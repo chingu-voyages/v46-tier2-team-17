@@ -17,7 +17,7 @@ function Error() {
         <div className="error-modal__icon">🍜</div>
         <h2 className="error-modal__heading">
           Sorry, we couldn't find any recipe for your "
-          <span id="ingredient-404"></span>" ingredient.
+          <span id="ingredient-404"></span>" ingredients.
         </h2>
         <p className="error-modal__text">
           Try these popular ingredients instead:
