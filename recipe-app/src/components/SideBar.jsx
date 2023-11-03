@@ -21,6 +21,7 @@ export default function SideBar({ setAllRecipes }) {
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
       errorModal.style.display = "none";
+      const checkboxes = document.querySelectorAll(".checkbox");
       const fetchData = async () => {
         const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}&tags=${tags.join()}`;
         const options = {
@@ -50,6 +51,9 @@ export default function SideBar({ setAllRecipes }) {
       };
       fetchData();
       setSearchedText("");
+      checkboxes.forEach(
+        (checkbox) => checkbox.checked && (checkbox.checked = false),
+      );
     }
 
     // Show error if inputs begins with valid character
@@ -60,7 +64,6 @@ export default function SideBar({ setAllRecipes }) {
   }
 
   function handleCheckboxChange(e) {
-    console.log(e.target.value);
     const checkedBoxValue = e.target.value;
     if (tags.includes(checkedBoxValue)) {
       const newTags = [...tags];
