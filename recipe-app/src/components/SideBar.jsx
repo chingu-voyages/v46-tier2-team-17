@@ -10,17 +10,16 @@ export default function SideBar({ setAllRecipes }) {
 
   function handleUserQuery(searchedText) {
     const errorModal = document.getElementById("error-modal");
-    const ingredient404Element = document.getElementById("ingredient-404");
     const searchedWordsArray = searchedText
       .toLowerCase()
       .trim()
       .split(/[\W|_]/g)
       .filter((item) => item);
     const searchedWords = searchedWordsArray.join();
+    errorModal.style.display = "none";
 
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
-      errorModal.style.display = "none";
       const checkboxes = document.querySelectorAll(".checkbox");
       const fetchData = async () => {
         const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}&tags=${tags.join()}`;
@@ -36,12 +35,10 @@ export default function SideBar({ setAllRecipes }) {
           const response = await fetch(url, options);
           const result = await response.text();
           const recipesArray = JSON.parse(result).results;
-
           const isValidSearch = validateIngredientsQuery(
             searchedWordsArray,
             recipesArray,
           );
-
           if (isValidSearch) {
             setAllRecipes(recipesArray);
           }
@@ -59,8 +56,10 @@ export default function SideBar({ setAllRecipes }) {
 
     // Show error if inputs begins with valid character
     if (/^[_|\W]/.test(searchedText)) {
+      const ingredient404Element = document.getElementById("ingredient-404");
       ingredient404Element.innerText = searchedText.trim();
       errorModal.style.display = "flex";
+      setSearchedText("");
     }
   }
 

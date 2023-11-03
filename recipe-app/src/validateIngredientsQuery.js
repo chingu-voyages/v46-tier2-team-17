@@ -1,11 +1,8 @@
 function validateIngredientsQuery(searchedWordsArray, recipesArray) {
-  const errorModal = document.getElementById("error-modal");
-  const ingredient404Element = document.getElementById("ingredient-404");
   const hasSearchedIngredients = findIngredients(
     searchedWordsArray,
     recipesArray,
   );
-  errorModal.style.display = "none";
 
   // Compare user's query to the recipes' ingredients
   function findIngredients(searchedWordsArray, recipesArray) {
@@ -23,6 +20,8 @@ function validateIngredientsQuery(searchedWordsArray, recipesArray) {
 
   // Show error for 404 searches
   if (!hasSearchedIngredients) {
+    const errorModal = document.getElementById("error-modal");
+    const ingredient404Element = document.getElementById("ingredient-404");
     ingredient404Element.innerText = searchedWordsArray.join(", ");
     errorModal.style.display = "flex";
   }
