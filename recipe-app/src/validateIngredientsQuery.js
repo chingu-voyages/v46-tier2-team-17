@@ -1,59 +1,34 @@
-function validateIngredientsQuery(searchedText, recipesArray) {
+function validateIngredientsQuery(searchedWordsArray, recipesArray) {
   const errorModal = document.getElementById("error-modal");
   const ingredient404Element = document.getElementById("ingredient-404");
+  let searchedWord = null;
+  const hasSearchedIngredients = findIngredients(
+    searchedWordsArray,
+    recipesArray,
+  );
+  errorModal.style.display = "none";
 
-  // Check if input begins with valid character
-  if (/^[^_|\W]/.test(searchedText)) {
-    errorModal.style.display = "none";
-
-    console.log(searchedText);
-
-    // Check if searched ingredient exist
-    function checkIfRecipeExistsForIngredients(recipesArray) {
-      let searchedWord = null;
-      const hasSearchedIngredients = findIngredients();
-
-      // Find ingredient in the api
-      function findIngredients() {
-        const searchedWordsArray = searchedText
-          .toLowerCase()
-          .trim()
-          .split(/[\W|_]/g)
-          .filter((item) => item);
-        return searchedWordsArray.some((word) => {
-          searchedWord = word;
-          return recipesArray.some((recipe) => {
-            // console.log(recipe.sections[0].components);
-            return recipe.sections[0].components.some((component) => {
-              const regExpVersionOfSearchedWord = new RegExp(word);
-              console.log("The test");
-              console.log(component.ingredient.name);
-              console.log(
-                regExpVersionOfSearchedWord.test(component.ingredient.name),
-              );
-              return regExpVersionOfSearchedWord.test(
-                component.ingredient.name,
-              );
-            });
+  // Compare user's query to the recipes' ingredients
+  function findIngredients(searchedWordsArray, recipesArray) {
+    return searchedWordsArray.some((word) => {
+      searchedWord = word;
+      return recipesArray.some((recipe) => {
+        if (recipe.sections) {
+          return recipe.sections[0].components.some((component) => {
+            const regExpVersionOfSearchedWord = new RegExp(word);
+            return regExpVersionOfSearchedWord.test(component.ingredient.name);
           });
-        });
-      }
-
-      // Show error for 404 searches
-      if (!hasSearchedIngredients) {
-        ingredient404Element.innerText = searchedWord;
-        errorModal.style.display = "flex";
-      }
-      return hasSearchedIngredients;
-    }
-    return checkIfRecipeExistsForIngredients(recipesArray);
+        }
+      });
+    });
   }
 
-  // Show error if inputs begins with valid character
-  if (/^[_|\W]/.test(searchedText)) {
-    ingredient404Element.innerText = searchedText.trim();
+  // Show error for 404 searches
+  if (!hasSearchedIngredients) {
+    ingredient404Element.innerText = searchedWord;
     errorModal.style.display = "flex";
   }
+  return hasSearchedIngredients;
 }
 
 export default validateIngredientsQuery;

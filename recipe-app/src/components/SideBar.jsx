@@ -2,53 +2,60 @@
 import React, { useState, useEffect } from "react";
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import Card from "./Card";
 
 export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
   const [toggle, setToggle] = useState(true);
 
-  // const recipes = data.results.map((result) => {
-  //   return result.tags.map((tag) => tag.type);
-  // });
-  // console.log(recipes);
-
-  // function handleUserQuery() {}
-  // console.log(searchedText);
-
   function handleUserQuery(searchedText) {
-    const fetchData = async () => {
-      const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedText}`;
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-          "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-        },
-      };
+    const errorModal = document.getElementById("error-modal");
+    const ingredient404Element = document.getElementById("ingredient-404");
+    const searchedWordsArray = searchedText
+      .toLowerCase()
+      .trim()
+      .split(/[\W|_]/g)
+      .filter((item) => item);
+    const searchedWords = searchedWordsArray.join();
 
-      try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        const recipesArray = JSON.parse(result).results;
+    // Check if input begins with valid character
+    if (/^[^_|\W]/.test(searchedText)) {
+      errorModal.style.display = "none";
+      const fetchData = async () => {
+        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}`;
+        const options = {
+          method: "GET",
+          headers: {
+            "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
+            "X-RapidAPI-Host": "tasty.p.rapidapi.com",
+          },
+        };
 
-        console.log(recipesArray);
+        try {
+          const response = await fetch(url, options);
+          const result = await response.text();
+          const recipesArray = JSON.parse(result).results;
 
-        const isValidSearch = validateIngredientsQuery(
-          searchedText,
-          recipesArray,
-        );
+          const isValidSearch = validateIngredientsQuery(
+            searchedWordsArray,
+            recipesArray,
+          );
 
-        // Invoke the setAllRecipes(recipesArray)
-        if (isValidSearch) {
-          setAllRecipes(recipesArray);
+          if (isValidSearch) {
+            setAllRecipes(recipesArray);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-    setSearchedText("");
+      };
+      fetchData();
+      setSearchedText("");
+    }
+
+    // Show error if inputs begins with valid character
+    if (/^[_|\W]/.test(searchedText)) {
+      ingredient404Element.innerText = searchedText.trim();
+      errorModal.style.display = "flex";
+    }
   }
 
   function handleKeyDown(e, searchedText) {

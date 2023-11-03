@@ -13,31 +13,34 @@ function App() {
   const [allRecipes, setAllRecipes] = useState([]);
 
   // Pass setAllRecipes state to the Sidebar compponent
-
   useEffect(() => {
-    const fetchData = async () => {
-      const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
-      const options = {
-        method: "GET",
-        headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-          "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-        },
-      };
-
-      try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        const recipesArray = JSON.parse(result).results;
-
-        // console.log(recipesArray);
-        setAllRecipes(recipesArray);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    setAllRecipes(data.results);
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
+  //     const options = {
+  //       method: "GET",
+  //       headers: {
+  //         "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
+  //         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
+  //       },
+  //     };
+
+  //     try {
+  //       const response = await fetch(url, options);
+  //       const result = await response.text();
+  //       const recipesArray = JSON.parse(result).results;
+
+  //       // console.log(recipesArray);
+  //       setAllRecipes(recipesArray);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   // *****
   // Function to show Modal(recipe page) when card is clicked:
