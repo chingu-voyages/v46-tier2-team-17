@@ -6,6 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
   const [toggle, setToggle] = useState(true);
+  const [tags, setTags] = useState([]);
 
   function handleUserQuery(searchedText) {
     const errorModal = document.getElementById("error-modal");
@@ -21,7 +22,7 @@ export default function SideBar({ setAllRecipes }) {
     if (/^[^_|\W]/.test(searchedText)) {
       errorModal.style.display = "none";
       const fetchData = async () => {
-        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}`;
+        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}&tags=${tags.join()}`;
         const options = {
           method: "GET",
           headers: {
@@ -55,6 +56,18 @@ export default function SideBar({ setAllRecipes }) {
     if (/^[_|\W]/.test(searchedText)) {
       ingredient404Element.innerText = searchedText.trim();
       errorModal.style.display = "flex";
+    }
+  }
+
+  function handleCheckboxChange(e) {
+    console.log(e.target.value);
+    const checkedBoxValue = e.target.value;
+    if (tags.includes(checkedBoxValue)) {
+      const newTags = [...tags];
+      newTags.splice(newTags.indexOf(checkedBoxValue, 1));
+      setTags(newTags);
+    } else {
+      setTags([...tags, checkedBoxValue]);
     }
   }
 
@@ -101,7 +114,13 @@ export default function SideBar({ setAllRecipes }) {
 
         <div className="nav-container-checkbox">
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" id="checkbox-30mins" />
+            <input
+              type="checkbox"
+              className="checkbox"
+              id="checkbox-30mins"
+              value="under_30_minutes"
+              onChange={handleCheckboxChange}
+            />
             <label className="label-title" htmlFor="checkbox-30mins">
               Under 30 minutes
             </label>
@@ -112,6 +131,8 @@ export default function SideBar({ setAllRecipes }) {
               type="checkbox"
               className="checkbox"
               id="checkbox-5ingredients"
+              value="5_ingredients_or_less"
+              onChange={handleCheckboxChange}
             />
             <label className="label-title" htmlFor="checkbox-5ingredients">
               Five ingredients or less
@@ -119,7 +140,13 @@ export default function SideBar({ setAllRecipes }) {
           </div>
 
           <div className="container-checkbox">
-            <input type="checkbox" className="checkbox" id="checkbox-easy" />
+            <input
+              type="checkbox"
+              className="checkbox"
+              id="checkbox-easy"
+              value="easy"
+              onChange={handleCheckboxChange}
+            />
             <label className="label-title" htmlFor="checkbox-easy">
               Easy
             </label>
