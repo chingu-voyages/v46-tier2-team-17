@@ -1,7 +1,6 @@
 function validateIngredientsQuery(searchedWordsArray, recipesArray) {
   const errorModal = document.getElementById("error-modal");
   const ingredient404Element = document.getElementById("ingredient-404");
-  let searchedWord = null;
   const hasSearchedIngredients = findIngredients(
     searchedWordsArray,
     recipesArray,
@@ -11,7 +10,6 @@ function validateIngredientsQuery(searchedWordsArray, recipesArray) {
   // Compare user's query to the recipes' ingredients
   function findIngredients(searchedWordsArray, recipesArray) {
     return searchedWordsArray.some((word) => {
-      searchedWord = word;
       return recipesArray.some((recipe) => {
         if (recipe.sections) {
           return recipe.sections[0].components.some((component) => {
@@ -25,7 +23,7 @@ function validateIngredientsQuery(searchedWordsArray, recipesArray) {
 
   // Show error for 404 searches
   if (!hasSearchedIngredients) {
-    ingredient404Element.innerText = searchedWord;
+    ingredient404Element.innerText = searchedWordsArray.join(", ");
     errorModal.style.display = "flex";
   }
   return hasSearchedIngredients;
