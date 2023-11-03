@@ -51,6 +51,7 @@ export default function SideBar({ setAllRecipes }) {
       };
       fetchData();
       setSearchedText("");
+      setTags([]);
       checkboxes.forEach(
         (checkbox) => checkbox.checked && (checkbox.checked = false),
       );
