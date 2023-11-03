@@ -15,14 +15,14 @@ export default function SideBar({ setAllRecipes }) {
       .trim()
       .split(/[\W|_]/g)
       .filter((item) => item);
-    const searchedWords = searchedWordsArray.join();
+    const searchedWordsString = searchedWordsArray.join();
     errorModal.style.display = "none";
 
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
       const checkboxes = document.querySelectorAll(".checkbox");
       const fetchData = async () => {
-        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWords}&tags=${tags.join()}`;
+        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWordsString}&tags=${tags.join()}`;
         const options = {
           method: "GET",
           headers: {
