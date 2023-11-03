@@ -8,20 +8,22 @@ export default function SideBar({ setAllRecipes }) {
   const [toggle, setToggle] = useState(true);
   const [tags, setTags] = useState([]);
 
+  // Handle user's search query
   function handleUserQuery(searchedText) {
     const errorModal = document.getElementById("error-modal");
-    const searchedWordsArray = searchedText
-      .toLowerCase()
-      .trim()
-      .split(/[\W|_]/g)
-      .filter((item) => item);
-    const searchedWordsString = searchedWordsArray.join();
-    errorModal.style.display = "none";
-
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
       const checkboxes = document.querySelectorAll(".checkbox");
-      const fetchData = async () => {
+      const searchedWordsArray = searchedText
+        .toLowerCase()
+        .trim()
+        .split(/[\W|_]/g)
+        .filter((item) => item);
+      const searchedWordsString = searchedWordsArray.join();
+      errorModal.style.display = "none";
+
+      // Get recipes for searched ingredient
+      async function fetchRecipes() {
         const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWordsString}&tags=${tags.join()}`;
         const options = {
           method: "GET",
@@ -30,7 +32,6 @@ export default function SideBar({ setAllRecipes }) {
             "X-RapidAPI-Host": "tasty.p.rapidapi.com",
           },
         };
-
         try {
           const response = await fetch(url, options);
           const result = await response.text();
@@ -39,14 +40,13 @@ export default function SideBar({ setAllRecipes }) {
             searchedWordsArray,
             recipesArray,
           );
-          if (isValidSearch) {
-            setAllRecipes(recipesArray);
-          }
+          isValidSearch && setAllRecipes(recipesArray);
         } catch (error) {
           console.error(error);
         }
-      };
-      fetchData();
+      }
+
+      fetchRecipes();
       setSearchedText("");
       setTags([]);
       checkboxes.forEach(
@@ -65,6 +65,7 @@ export default function SideBar({ setAllRecipes }) {
 
   function handleCheckboxChange(e) {
     const checkedBoxValue = e.target.value;
+    // Remove or add checked box's value from tags state
     if (tags.includes(checkedBoxValue)) {
       const newTags = [...tags];
       newTags.splice(newTags.indexOf(checkedBoxValue, 1));
