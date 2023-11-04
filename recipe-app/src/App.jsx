@@ -1,6 +1,6 @@
 import Modal from "./components/Modal";
 import SideBar from "./components/SideBar";
-import data from "./data/recipes";
+// import data from "./data/recipes";
 import Welcome from "./components/Welcome";
 import Card from "./components/Card";
 import Error from "./components/Error";
@@ -12,9 +12,10 @@ function App() {
   const [chosenRecipe, SetChosenRecipe] = useState(null);
   const [allRecipes, setAllRecipes] = useState([]);
 
-
   // Pass setAllRecipes state to the Sidebar compponent
-  
+  // useEffect(() => {
+  //   setAllRecipes(data.results);
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +32,8 @@ function App() {
         const response = await fetch(url, options);
         const result = await response.text();
         const recipesArray = JSON.parse(result).results;
-        
-        console.log(recipesArray);
+
+        // console.log(recipesArray);
         setAllRecipes(recipesArray);
       } catch (error) {
         console.error(error);
@@ -57,7 +58,9 @@ function App() {
   return (
     <>
       <main className="page">
-        <SideBar setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)} />
+        <SideBar
+          setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+        />
 
         <Welcome />
         <Error />
@@ -79,8 +82,12 @@ function App() {
       */}
       </main>
       <footer>
-        <a href="https://github.com/chingu-voyages/v46-tier2-team-17" target="_blank">
-        v46-Tier2-Team17 GitHub Repo</a>
+        <a
+          href="https://github.com/chingu-voyages/v46-tier2-team-17"
+          target="_blank"
+        >
+          v46-Tier2-Team17 GitHub Repo
+        </a>
       </footer>
     </>
   );
