@@ -54,7 +54,7 @@ export default function SideBar({ setAllRecipes }) {
       );
     }
 
-    // Show error if inputs begins with valid character
+    // Show error if inputs begins with invalid character
     if (/^[_|\W]/.test(searchedText)) {
       const ingredient404Element = document.getElementById("ingredient-404");
       ingredient404Element.innerText = searchedText.trim();
@@ -68,7 +68,7 @@ export default function SideBar({ setAllRecipes }) {
     // Remove or add checked box's value from tags state
     if (tags.includes(checkedBoxValue)) {
       const newTags = [...tags];
-      newTags.splice(newTags.indexOf(checkedBoxValue, 1));
+      newTags.splice(newTags.indexOf(checkedBoxValue), 1);
       setTags(newTags);
     } else {
       setTags([...tags, checkedBoxValue]);
