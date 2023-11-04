@@ -27,6 +27,31 @@
   color: var(--font-color-light);
   background-color: var(--display-background-color-light);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: relative;
+}
+
+.error-modal__close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  margin: 10px 10px 0 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.error-modal__close-btn:focus {
+  outline: inherit;
+}
+
+.error-modal__close-btn svg {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.error-modal__close-btn svg:hover {
+  color: rgba(255, 255, 255, 0.93);
 }
 
 .error-modal__icon {

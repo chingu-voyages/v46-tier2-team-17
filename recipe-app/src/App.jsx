@@ -13,6 +13,9 @@ function App() {
   const [allRecipes, setAllRecipes] = useState([]);
 
   // Pass setAllRecipes state to the Sidebar compponent
+  // useEffect(() => {
+  //   setAllRecipes(data.results);
+  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +33,7 @@ function App() {
         const result = await response.text();
         const recipesArray = JSON.parse(result).results;
 
-        console.log(recipesArray);
+        // console.log(recipesArray);
         setAllRecipes(recipesArray);
       } catch (error) {
         console.error(error);
@@ -60,6 +63,10 @@ function App() {
         />
       </div>
       <main className="page">
+
+        <SideBar
+          setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+        />
         <Welcome />
         <Error />
         {gallery === true && (
@@ -75,14 +82,15 @@ function App() {
         )}
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
       </main>
-      {/* <footer>
+
+      <footer>
         <a
           href="https://github.com/chingu-voyages/v46-tier2-team-17"
           target="_blank"
         >
           v46-Tier2-Team17 GitHub Repo
         </a>
-      </footer> */}
+      </footer>
     </>
   );
 }
