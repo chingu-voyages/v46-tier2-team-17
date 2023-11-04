@@ -73,7 +73,6 @@ export default function SideBar({ setAllRecipes }) {
   }
   return (
     <>
-      {/*
       <nav className="mobile__nav">
         <a className="mobile__nav-logo" href="/">
           App Name
