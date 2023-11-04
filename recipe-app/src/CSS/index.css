@@ -1,3 +1,5 @@
+/* :root contains all the master values for the colour scheme and sizing */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

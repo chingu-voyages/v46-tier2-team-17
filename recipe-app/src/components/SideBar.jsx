@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+// import data from "../data/recipes";
+import React, { useState, useEffect } from "react";
+>>>>>>> 176630cbf99a9a62fa3eec4677fc5d07740e536b
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
 
