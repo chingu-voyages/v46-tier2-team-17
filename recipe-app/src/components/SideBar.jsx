@@ -1,6 +1,6 @@
 // import data from "../data/recipes";
 import React, { useState, useEffect } from "react";
-import validateIngredientsQuery from "../validateIngredientsQuery";
+import fetchRecipes from "../fetchRecipes";
 import { AiOutlineSearch } from "react-icons/ai";
 
 export default function SideBar({ setAllRecipes }) {
@@ -22,31 +22,12 @@ export default function SideBar({ setAllRecipes }) {
       const searchedWordsString = searchedWordsArray.join();
       errorModal.style.display = "none";
 
-      // Get recipes for searched ingredient
-      async function fetchRecipes() {
-        const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&q=${searchedWordsString}&tags=${tags.join()}`;
-        const options = {
-          method: "GET",
-          headers: {
-            "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-            "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-          },
-        };
-        try {
-          const response = await fetch(url, options);
-          const result = await response.text();
-          const recipesArray = JSON.parse(result).results;
-          const isValidSearch = validateIngredientsQuery(
-            searchedWordsArray,
-            recipesArray,
-          );
-          isValidSearch && setAllRecipes(recipesArray);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
-      fetchRecipes();
+      fetchRecipes(
+        setAllRecipes,
+        searchedWordsArray,
+        searchedWordsString,
+        tags,
+      );
       setSearchedText("");
       setTags([]);
       checkboxes.forEach(
@@ -80,6 +61,12 @@ export default function SideBar({ setAllRecipes }) {
       e.preventDefault();
       handleUserQuery(searchedText);
     }
+  }
+
+  // Get category recipes
+  function handleCategoriesBtnClick(e) {
+    e.preventDefault();
+    fetchRecipes(setAllRecipes, null, null, [e.target.value], true);
   }
 
   function toggleButton() {
@@ -160,12 +147,70 @@ export default function SideBar({ setAllRecipes }) {
         <div className="main-container-category">
           <h2 className="category-heading">Categories</h2>
           <div className="container-category">
-            <div className="category-name">dairy</div>
-            <div className="category-name">vegan</div>
-            <div className="category-name">pescatarian</div>
-            <div className="category-name">low carb</div>
-            <div className="category-name">low carb</div>
-            <div className="category-name">low carb</div>
+            <button
+              type="button"
+              className="category-name"
+              value="dairy_free"
+              onClick={handleCategoriesBtnClick}
+            >
+              Dairy Free
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="vegan"
+              onClick={handleCategoriesBtnClick}
+            >
+              Vegan
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="pescatarian"
+              onClick={handleCategoriesBtnClick}
+            >
+              Pescatarian
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="low_carb"
+              onClick={handleCategoriesBtnClick}
+            >
+              Low Carb
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="gluten_free"
+              onClick={handleCategoriesBtnClick}
+            >
+              Gluten Free
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="vegetarian"
+              onClick={handleCategoriesBtnClick}
+            >
+              Vegetarian
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="comfort_food"
+              onClick={handleCategoriesBtnClick}
+            >
+              Comfort Food
+            </button>
+            <button
+              type="button"
+              className="category-name"
+              value="kid_friendly"
+              onClick={handleCategoriesBtnClick}
+            >
+              Kid Friendly
+            </button>
           </div>
         </div>
       </nav>
