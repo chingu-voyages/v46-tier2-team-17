@@ -26,6 +26,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+/*Below properties are commented out because they are not in active use.
+*/
 /*
 a {
   font-weight: 500;

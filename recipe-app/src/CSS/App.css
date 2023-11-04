@@ -2,6 +2,17 @@
 /* Desktop */
 /***********/
 
+/*
+This is the css to control the overall layout of the App, 1500px is chosen based on the size the sidebar starts
+becoming unusable.
+
+The #root is set to display grid with 2 template areas. Setting the template areas allows the specific css
+that keeps the static area to not affect the dynamic area. This also includes for screen sizes under screen width 1500.
+
+If a new overlay is to be created, make sure the width of the container is 85% following the width of the grid-collumn, so
+that it sits inside the 'main' element without margin errors.
+*/
+
 #root {
   display: grid;
   grid-template-areas: "aside display";

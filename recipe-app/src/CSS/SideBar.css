@@ -59,7 +59,7 @@
   width: 100%;
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
-  padding: 0.5em 0;
+  padding: 1.5em 0;
   background: white;
 }
 
@@ -151,6 +151,7 @@ input.checkbox {
     gap: 15px;
   }
 }
+
 /*
 @media (min-width: 600px) {
   .nav-container-checkbox {

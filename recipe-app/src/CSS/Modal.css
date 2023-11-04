@@ -1,3 +1,11 @@
+/*
+This css file is to control the display of the modal for a recipe.
+*/
+
+/*
+.recipe-container controls the backdrop and acts as the parent component for the modal.
+*/
+
 .recipe-container {
   background-color: var(--overlay-color);
   z-index: 2;
@@ -10,6 +18,9 @@
   justify-content: center;
 }
 
+/*
+.recipe-modal controls the display area of the data
+*/
 .recipe-modal {
   display: grid;
   grid-template-columns: auto;
@@ -33,23 +44,34 @@
   color: var(--font-color-light);
 }
 
+/*
+.recipe-modal__close, the closing button
+*/
 .recipe-modal__close {
   grid-area: close;
   display: flex;
   flex-direction: row-reverse;
 }
 
+/*
+.recipe-modal__close svg, svg for the button
+*/
 .recipe-modal__close svg {
   scale: 2;
   cursor: pointer;
 }
 
+/*
+embedded video container
+*/
 .recipe-modal__video {
   grid-area: video;
   display: flex;
   justify-content: center;
 }
-
+/*
+embedded video
+*/
 .recipe-modal__video video {
   border-radius: var(--border-radius);
   width: 100%;
@@ -57,28 +79,54 @@
   background-color: #000;
 }
 
+/*
+recipe name
+*/
 .recipe-modal__name {
   grid-area: name;
 }
 
+/*
+recipe description
+*/
 .recipe-modal__description {
   grid-area: description;
 }
+
+/*
+recipe difficulty
+*/
 
 .recipe-modal__difficulty {
   grid-area: difficulty;
 }
 
+/*
+recipe yield
+*/
+
 .recipe-modal__yield {
   grid-area: yield;
 }
 
+/*
+recipe ingredients
+*/
+
 .recipe-modal__ingredients {
   grid-area: ingredients;
 }
-.recipe-modal__yield {
+
+/*
+recipe nutrition
+*/
+.recipe-modal__nutrition {
   grid-area: nutrition;
 }
+
+/*
+recipe instructions
+*/
 .recipe-modal__instructions {
   grid-area: instructions;
 }
