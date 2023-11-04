@@ -5,13 +5,13 @@
 #root {
   display: grid;
   grid-template-areas: "aside display";
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 15% 85%;
   width: 100%;
 }
 
 .aside {
   grid-area: aside;
-  min-height: 100vh;
+  height: 100%;
   max-width: var(--page-desktop-aside-width);
   background-color: var(--sidebar-background-color-light);
   padding: 2em 2em;
@@ -25,17 +25,19 @@
   width: 100%;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
   #root {
-    grid-template-areas: "aside display";
-    grid-template-rows: 10% 90%;
+    grid-template-areas: "aside" "display";
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
   }
 
   .aside {
-    height: 10%;
+    height: auto;
+    max-width: 100%;
   }
 
   .page {
-    height: 90%;
+    height: auto;
   }
 }

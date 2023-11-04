@@ -39,7 +39,7 @@ function validateIngredientsQuery(searchedText, recipesArray) {
           const ingredient404Element =
             document.getElementById("ingredient-404");
           ingredient404Element.innerText = searchedWord;
-          errorModal.style.display = "flex";
+          errorModal.style.display = "none";
         }
       } catch (error) {
         console.error(error);

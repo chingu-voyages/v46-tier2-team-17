@@ -3,9 +3,9 @@
   z-index: 2;
   background-color: var(--overlay-color);
   position: fixed;
-  width: 80%;
+  width: 85%;
   height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;

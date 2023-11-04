@@ -1,21 +1,10 @@
-// import data from "../data/recipes";
-// import data from "../data/recipes";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import validateIngredientsQuery from "../validateIngredientsQuery";
 import { AiOutlineSearch } from "react-icons/ai";
-import Card from "./Card";
 
 export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
   const [toggle, setToggle] = useState(true);
-
-  // const recipes = data.results.map((result) => {
-  //   return result.tags.map((tag) => tag.type);
-  // });
-  // console.log(recipes);
-
-  function handleUserQuery() {}
-  console.log(searchedText);
 
   function handleUserQuery(searchedText) {
     validateIngredientsQuery(searchedText);
@@ -60,6 +49,7 @@ export default function SideBar({ setAllRecipes }) {
 
   return (
     <>
+      {/*
       <nav className="mobile__nav">
         <a className="mobile__nav-logo" href="/">
           App Name
@@ -68,7 +58,7 @@ export default function SideBar({ setAllRecipes }) {
           Menu
         </button>
       </nav>
-
+*/}
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
         <h1 className="search-title">Pantry Picker</h1>
         <div className="container-input">

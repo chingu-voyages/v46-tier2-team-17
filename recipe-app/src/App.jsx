@@ -1,6 +1,6 @@
 import Modal from "./components/Modal";
 import SideBar from "./components/SideBar";
-import data from "./data/recipes";
+// import data from "./data/recipes";
 import Welcome from "./components/Welcome";
 import Card from "./components/Card";
 import Error from "./components/Error";
@@ -75,14 +75,14 @@ function App() {
         )}
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
       </main>
-      <footer>
+      {/* <footer>
         <a
           href="https://github.com/chingu-voyages/v46-tier2-team-17"
           target="_blank"
         >
           v46-Tier2-Team17 GitHub Repo
         </a>
-      </footer>
+      </footer> */}
     </>
   );
 }
