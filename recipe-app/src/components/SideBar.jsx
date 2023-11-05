@@ -213,6 +213,14 @@ export default function SideBar({ setAllRecipes }) {
             </button>
           </div>
         </div>
+        <footer>
+          <a
+            href="https://github.com/chingu-voyages/v46-tier2-team-17"
+            target="_blank"
+          >
+            v46-Tier2-Team17 GitHub Repo
+          </a>
+        </footer>
       </nav>
     </>
   );

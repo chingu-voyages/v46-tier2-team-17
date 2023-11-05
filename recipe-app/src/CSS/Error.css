@@ -1,15 +1,15 @@
 .error-modal {
-  flex-grow: 1;
   display: none;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
   z-index: 500;
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.77);
   backdrop-filter: blur(1.3px);
-  position: fixed;
-  left: calc(var(--page-desktop-aside-width) + 4em);
-  height: 100%;
 }
 
 .error-modal__overlay {
