@@ -77,7 +77,7 @@ export default function SideBar({ setAllRecipes }) {
     <>
       <nav className="mobile__nav">
         <a className="mobile__nav-logo" href="/">
-          App Name
+          Pantry Picker
         </a>
         <button className="mobile__nav-menu" onClick={toggleButton}>
           Menu
@@ -97,6 +97,8 @@ export default function SideBar({ setAllRecipes }) {
                 onChange={(e) => setSearchedText(e.target.value)}
               />
               <button
+                type="button"
+                title="search"
                 className="search-btn"
                 onClick={() => handleUserQuery(searchedText)}
               >
@@ -147,7 +149,7 @@ export default function SideBar({ setAllRecipes }) {
             <div className="container-category">
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="dairy_free"
                 onClick={handleCategoriesBtnClick}
               >
@@ -155,7 +157,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="vegan"
                 onClick={handleCategoriesBtnClick}
               >
@@ -163,7 +165,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="pescatarian"
                 onClick={handleCategoriesBtnClick}
               >
@@ -171,7 +173,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="low_carb"
                 onClick={handleCategoriesBtnClick}
               >
@@ -179,7 +181,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="gluten_free"
                 onClick={handleCategoriesBtnClick}
               >
@@ -187,7 +189,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="vegetarian"
                 onClick={handleCategoriesBtnClick}
               >
@@ -195,7 +197,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="comfort_food"
                 onClick={handleCategoriesBtnClick}
               >
@@ -203,7 +205,7 @@ export default function SideBar({ setAllRecipes }) {
               </button>
               <button
                 type="button"
-                className="category-name"
+                className="category-btn"
                 value="kid_friendly"
                 onClick={handleCategoriesBtnClick}
               >
