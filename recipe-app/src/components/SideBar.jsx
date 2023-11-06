@@ -84,142 +84,142 @@ export default function SideBar({ setAllRecipes }) {
         </button>
       </nav>
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
-        <h1 className="search-title">Pantry Picker</h1>
-        <div className="container-input">
-          <input
-            type="search"
-            placeholder="Enter One or more ingredients"
-            className="search-box"
-            value={searchedText}
-            onKeyDown={(e) => handleKeyDown(e, searchedText)}
-            onChange={(e) => setSearchedText(e.target.value)}
-          />
-          <button
-            className="search-btn"
-            onClick={() => handleUserQuery(searchedText)}
-          >
-            <AiOutlineSearch />
-          </button>
+        <div className="nav-content-container">
+          <header>
+            <h1 className="search-title">Pantry Picker</h1>
+            <div className="container-input">
+              <input
+                type="search"
+                placeholder="Enter One or more ingredients"
+                className="search-box"
+                value={searchedText}
+                onKeyDown={(e) => handleKeyDown(e, searchedText)}
+                onChange={(e) => setSearchedText(e.target.value)}
+              />
+              <button
+                className="search-btn"
+                onClick={() => handleUserQuery(searchedText)}
+              >
+                <AiOutlineSearch />
+              </button>
+            </div>
+            <div className="nav-container-checkbox">
+              <div className="container-checkbox">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  id="checkbox-30mins"
+                  value="under_30_minutes"
+                  onChange={handleCheckboxChange}
+                />
+                <label className="label-title" htmlFor="checkbox-30mins">
+                  Under 30 minutes
+                </label>
+              </div>
+              <div className="container-checkbox">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  id="checkbox-5ingredients"
+                  value="5_ingredients_or_less"
+                  onChange={handleCheckboxChange}
+                />
+                <label className="label-title" htmlFor="checkbox-5ingredients">
+                  Five ingredients or less
+                </label>
+              </div>
+              <div className="container-checkbox">
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  id="checkbox-easy"
+                  value="easy"
+                  onChange={handleCheckboxChange}
+                />
+                <label className="label-title" htmlFor="checkbox-easy">
+                  Easy
+                </label>
+              </div>
+            </div>
+          </header>
+          <section className="main-container-category">
+            <h2 className="category-heading">Categories</h2>
+            <div className="container-category">
+              <button
+                type="button"
+                className="category-name"
+                value="dairy_free"
+                onClick={handleCategoriesBtnClick}
+              >
+                Dairy Free
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="vegan"
+                onClick={handleCategoriesBtnClick}
+              >
+                Vegan
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="pescatarian"
+                onClick={handleCategoriesBtnClick}
+              >
+                Pescatarian
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="low_carb"
+                onClick={handleCategoriesBtnClick}
+              >
+                Low Carb
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="gluten_free"
+                onClick={handleCategoriesBtnClick}
+              >
+                Gluten Free
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="vegetarian"
+                onClick={handleCategoriesBtnClick}
+              >
+                Vegetarian
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="comfort_food"
+                onClick={handleCategoriesBtnClick}
+              >
+                Comfort Food
+              </button>
+              <button
+                type="button"
+                className="category-name"
+                value="kid_friendly"
+                onClick={handleCategoriesBtnClick}
+              >
+                Kid Friendly
+              </button>
+            </div>
+          </section>
+          <footer>
+            <a
+              href="https://github.com/chingu-voyages/v46-tier2-team-17"
+              target="_blank"
+            >
+              v46-Tier2-Team17 GitHub Repo
+            </a>
+          </footer>
         </div>
-
-        <div className="nav-container-checkbox">
-          <div className="container-checkbox">
-            <input
-              type="checkbox"
-              className="checkbox"
-              id="checkbox-30mins"
-              value="under_30_minutes"
-              onChange={handleCheckboxChange}
-            />
-            <label className="label-title" htmlFor="checkbox-30mins">
-              Under 30 minutes
-            </label>
-          </div>
-
-          <div className="container-checkbox">
-            <input
-              type="checkbox"
-              className="checkbox"
-              id="checkbox-5ingredients"
-              value="5_ingredients_or_less"
-              onChange={handleCheckboxChange}
-            />
-            <label className="label-title" htmlFor="checkbox-5ingredients">
-              Five ingredients or less
-            </label>
-          </div>
-
-          <div className="container-checkbox">
-            <input
-              type="checkbox"
-              className="checkbox"
-              id="checkbox-easy"
-              value="easy"
-              onChange={handleCheckboxChange}
-            />
-            <label className="label-title" htmlFor="checkbox-easy">
-              Easy
-            </label>
-          </div>
-        </div>
-
-        <div className="main-container-category">
-          <h2 className="category-heading">Categories</h2>
-          <div className="container-category">
-            <button
-              type="button"
-              className="category-name"
-              value="dairy_free"
-              onClick={handleCategoriesBtnClick}
-            >
-              Dairy Free
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="vegan"
-              onClick={handleCategoriesBtnClick}
-            >
-              Vegan
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="pescatarian"
-              onClick={handleCategoriesBtnClick}
-            >
-              Pescatarian
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="low_carb"
-              onClick={handleCategoriesBtnClick}
-            >
-              Low Carb
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="gluten_free"
-              onClick={handleCategoriesBtnClick}
-            >
-              Gluten Free
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="vegetarian"
-              onClick={handleCategoriesBtnClick}
-            >
-              Vegetarian
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="comfort_food"
-              onClick={handleCategoriesBtnClick}
-            >
-              Comfort Food
-            </button>
-            <button
-              type="button"
-              className="category-name"
-              value="kid_friendly"
-              onClick={handleCategoriesBtnClick}
-            >
-              Kid Friendly
-            </button>
-          </div>
-        </div>
-        <footer>
-          <a
-            href="https://github.com/chingu-voyages/v46-tier2-team-17"
-            target="_blank"
-          >
-            v46-Tier2-Team17 GitHub Repo
-          </a>
-        </footer>
       </nav>
     </>
   );

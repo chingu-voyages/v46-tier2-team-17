@@ -24,7 +24,7 @@
   margin-top: 2.7rem;
   padding: 1.1rem 1.5rem;
   border-radius: 10px;
-  color: #fff;
+  color: var(--primary-white);
   background-color: var(--primary-black);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: relative;
@@ -47,7 +47,7 @@
 
 .error-modal__close-btn svg {
   font-size: 2rem;
-  color: #fff;
+  color: var(--primary-white);
 }
 
 .error-modal__close-btn svg:hover {

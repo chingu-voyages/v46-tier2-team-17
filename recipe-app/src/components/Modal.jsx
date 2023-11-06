@@ -16,7 +16,7 @@ function Modal({ recipe, closeRecipeModal }) {
 
   function createIngredientsList() {
     return (
-      <ul>
+      <ul className="text">
         {sections[0].components.map((item) => {
           return <li key={item.id}>{item.raw_text}</li>;
         })}
@@ -27,7 +27,7 @@ function Modal({ recipe, closeRecipeModal }) {
   // Create a list all the nutrition property's data. But skip the "updated_at" item
   function createNutritionList() {
     return (
-      <ul>
+      <ul className="text">
         {nutritionKeysArray
           .filter((key) => key !== "updated_at")
           .map((key) => {
@@ -43,7 +43,7 @@ function Modal({ recipe, closeRecipeModal }) {
 
   function createInstructionList() {
     return (
-      <ol>
+      <ol className="text">
         {instructions.map((step) => {
           return <li key={step.id}>{step.display_text}</li>;
         })}
@@ -63,7 +63,7 @@ function Modal({ recipe, closeRecipeModal }) {
           <AiFillCloseCircle />
         </button>
         <section className="about-recipe">
-          <h1 className="about-recipe__title">{name}</h1>
+          <h1 className="about-recipe__title heading">{name}</h1>
           {original_video_url && (
             <video
               className="about-recipe__video"
@@ -80,15 +80,15 @@ function Modal({ recipe, closeRecipeModal }) {
             ) : null}
             <span>{yields.toLowerCase()}</span>
           </div>
-          <p className="about-recipe__description">{description}</p>
+          <p className="about-recipe__description text">{description}</p>
         </section>
         <section className="recipe-page__ingredients">
-          <h2>Ingredients</h2>
+          <h2 className="heading">Ingredients</h2>
           {createIngredientsList()}
         </section>
         {nutritionKeysArray.length ? (
           <section className="recipe-page__nutrition">
-            <h2>Nutrition</h2>
+            <h2 className="heading">Nutrition</h2>
             {createNutritionList()}
           </section>
         ) : null}

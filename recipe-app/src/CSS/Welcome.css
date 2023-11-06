@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap");
 
 .welcome-modal {
-  color: #fff;
+  color: var(--primary-white);
   background-color: var(--primary-black);
   background-repeat: no-repeat;
   background-position: center;
