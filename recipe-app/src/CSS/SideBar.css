@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
 
-.mobile__nav {
+.mobile-nav {
   position: fixed;
   top: 0;
   z-index: 1000;
@@ -20,6 +20,22 @@
 }
 
 .app-logo--mobile a {
+  color: var(--primary-white);
+}
+
+.mobile-nav__menu-btn {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-nav__menu-btn:focus {
+  outline: inherit;
+}
+
+.mobile-nav__menu-btn svg {
+  font-size: 2rem;
   color: var(--primary-white);
 }
 
@@ -150,7 +166,7 @@ footer a:hover {
 /***********/
 
 @media (min-width: 992px) {
-  .mobile__nav {
+  .mobile-nav {
     display: none;
   }
 

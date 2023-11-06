@@ -1,7 +1,6 @@
-// import data from "../data/recipes";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
-import { AiOutlineSearch } from "react-icons/ai";
 
 export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
@@ -75,12 +74,12 @@ export default function SideBar({ setAllRecipes }) {
 
   return (
     <>
-      <nav className="mobile__nav">
+      <nav className="mobile-nav">
         <div className="app-logo--mobile">
           <a href="/">Pantry Picker</a>
         </div>
-        <button className="mobile__nav-menu" onClick={toggleButton}>
-          Menu
+        <button className="mobile-nav__menu-btn" onClick={toggleButton}>
+          <AiOutlineMenu />
         </button>
       </nav>
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
