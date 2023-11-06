@@ -1,5 +1,5 @@
 .mobile__nav {
-  background-color: #171717;
+  background-color: var(--primary-gray);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,7 +18,7 @@
   display: none;
   width: var(--page-desktop-aside-width);
   flex-shrink: 0;
-  background-color: #171717;
+  background-color: var(--primary-gray);
   color: #fff;
 }
 
@@ -59,7 +59,7 @@
   width: 60px;
   height: 35px;
   border: none;
-  background: turquoise;
+  background: var(--accent);
   text-align: center;
   outline: none;
   border-radius: 0 10px 10px 0;
@@ -78,7 +78,7 @@
   border-radius: 30px;
   cursor: pointer;
   background: #e9ecef;
-  color: #343a40;
+  color: var(--primary-gray);
   text-align: center;
 }
 
@@ -126,7 +126,7 @@ input.checkbox {
 
 .nav-mobile {
   padding: 1em 1.5em 2em;
-  background-color: #171717;
+  background-color: var(--primary-gray);
   color: #fff;
 }
 

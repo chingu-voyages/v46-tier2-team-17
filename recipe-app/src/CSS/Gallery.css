@@ -4,5 +4,5 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   padding: var(--page-gallery-block-padding) var(--page-gallery-inline-padding);
-  background-color: var(--display-background-color-light);
+  background-color: var(--primary-yellow);
 }

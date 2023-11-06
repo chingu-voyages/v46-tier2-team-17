@@ -3,7 +3,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 function Error() {
   return (
     <article id="error-modal" className="error-modal">
-      <div className="error-modal__overlay">
+      <div className="error-modal__page">
         <button
           title="Close"
           type="button"

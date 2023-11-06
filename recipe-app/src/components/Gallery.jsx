@@ -6,7 +6,7 @@ import Welcome from "./Welcome";
 import data from "../data/recipes";
 
 function Gallery({ setAllRecipes, allRecipes }) {
-  const [modal, setModal] = useState(false);
+  const [recipeModal, setRecipeModal] = useState(false);
   const [chosenRecipe, setChosenRecipe] = useState(null);
 
   // Pass setAllRecipes state to the Sidebar compponent
@@ -39,17 +39,17 @@ function Gallery({ setAllRecipes, allRecipes }) {
   //   fetchData();
   // }, []);
 
-  // Function to show Modal(recipe page) when card is clicked:
-  const showModal = (recipe) => {
+  // Show recipe modal/page onclick of recipe card
+  function showRecipeModal(recipe) {
     setChosenRecipe(recipe);
-    setModal(true);
-  };
+    setRecipeModal(true);
+  }
 
-  // Function to close Modal when X button is clicked:
-  const hideModal = () => {
+  // Close recipe modal/page onclick of the close button
+  function closeRecipeModal() {
     setChosenRecipe(null);
-    setModal(false);
-  };
+    setRecipeModal(false);
+  }
 
   return (
     <>
@@ -60,10 +60,12 @@ function Gallery({ setAllRecipes, allRecipes }) {
           <Card
             key={result.id}
             result={result}
-            onClick={() => showModal(result)}
+            onClick={() => showRecipeModal(result)}
           />
         ))}
-        {modal && <Modal recipe={chosenRecipe} onClose={hideModal} />}
+        {recipeModal && (
+          <Modal recipe={chosenRecipe} closeRecipeModal={closeRecipeModal} />
+        )}
       </main>
     </>
   );

@@ -1,7 +1,7 @@
-import { FaWindowClose } from "react-icons/fa";
-const Modal = ({ recipe, onClose }) => {
+import { AiFillCloseCircle } from "react-icons/ai";
+
+function Modal({ recipe, closeRecipeModal }) {
   const {
-    //thumbnail_url,
     name,
     description,
     total_time_tier,
@@ -12,7 +12,9 @@ const Modal = ({ recipe, onClose }) => {
     nutrition,
   } = recipe;
 
-  const ingredientList = () => {
+  const nutritionKeysArray = Object.keys(nutrition);
+
+  function createIngredientsList() {
     return (
       <ul>
         {sections[0].components.map((item) => {
@@ -20,27 +22,14 @@ const Modal = ({ recipe, onClose }) => {
         })}
       </ul>
     );
-  };
+  }
 
-  const instructionList = () => {
-    return (
-      <ol>
-        {instructions.map((step) => {
-          return <li key={step.id}>{step.display_text}</li>;
-        })}
-      </ol>
-    );
-  };
-
-  const filterKeys = (key) => {
-    return key !== "updated_at";
-  };
-
-  const nutritionList = () => {
+  // Create a list all the nutrition property's data. But skip the "updated_at" item
+  function createNutritionList() {
     return (
       <ul>
-        {Object.keys(nutrition)
-          .filter(filterKeys)
+        {nutritionKeysArray
+          .filter((key) => key !== "updated_at")
           .map((key) => {
             return (
               <li key={key}>
@@ -50,44 +39,63 @@ const Modal = ({ recipe, onClose }) => {
           })}
       </ul>
     );
-  };
+  }
+
+  function createInstructionList() {
+    return (
+      <ol>
+        {instructions.map((step) => {
+          return <li key={step.id}>{step.display_text}</li>;
+        })}
+      </ol>
+    );
+  }
 
   return (
-    <div className="recipe-container">
-      <div className="recipe-modal">
-        <div className="recipe-modal__close">
-          <div onClick={onClose}>
-            <FaWindowClose />
-          </div>
-        </div>
-        <div className="recipe-modal__video">
+    <article className="recipe-modal">
+      <div className="recipe-page">
+        <button
+          title="Close"
+          type="button"
+          className="recipe-page__close-btn"
+          onClick={closeRecipeModal}
+        >
+          <AiFillCloseCircle />
+        </button>
+        <section className="recipe-page__video">
           {original_video_url && (
             <video src={original_video_url} controls></video>
           )}
-        </div>
-        <div className="recipe-modal__name">
-          <h2>{name}</h2>
-        </div>
-        <div className="recipe-modal__description">
-          <p>{description}</p>
-        </div>
-        <div className="recipe-modal__difficulty">
-          <p>Difficulty: {total_time_tier?.display_tier}</p>{" "}
-          {/* The "?." operator is there to check if the property exists.*/}
-          <p>{yields}</p>
-        </div>
-        <div className="recipe-modal__ingredients">
-          <h3>Ingredients:</h3>
-          {ingredientList()}
-        </div>
-        <div className="recipe-modal__nutrition">
-          <h3>Nutrition</h3>
-          {nutritionList()}
-        </div>
-        <div className="recipe-modal__instructions">{instructionList()}</div>
+        </section>
+        <section className="recipe-page__about">
+          <h1 className="recipe-page__title">{name}</h1>
+          <div className="recipe-page__tags">
+            {/* The "?." operator checks if the property exists*/}
+            {total_time_tier?.display_tier ? (
+              <span>
+                difficulty: {total_time_tier.display_tier.toLowerCase()}
+              </span>
+            ) : null}
+            <span>{yields.toLowerCase()}</span>
+          </div>
+          <p className="recipe-page__description">{description}</p>
+        </section>
+        <section className="recipe-page__ingredients">
+          <h2>Ingredients</h2>
+          {createIngredientsList()}
+        </section>
+        {nutritionKeysArray.length ? (
+          <section className="recipe-page__nutrition">
+            <h2>Nutrition</h2>
+            {createNutritionList()}
+          </section>
+        ) : null}
+        <section className="recipe-page__instructions">
+          {createInstructionList()}
+        </section>
       </div>
-    </div>
+    </article>
   );
-};
+}
 
 export default Modal;

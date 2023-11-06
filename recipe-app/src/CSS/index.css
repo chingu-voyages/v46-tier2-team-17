@@ -5,11 +5,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  --font-color-light: #3f3e3e;
+
   --card-font-color-light: #ececec;
-  --sidebar-background-color-light: #40a969;
-  --display-background-color-light: #d6d2c3;
+  --primary-black: #000;
+  --primary-gray: #242424;
+  --primary-yellow: #d6d2c3;
+  --secondary-gray: #555555;
+  --accent: #40e0d0;
 
   --page-desktop-aside-width: 23vw;
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
