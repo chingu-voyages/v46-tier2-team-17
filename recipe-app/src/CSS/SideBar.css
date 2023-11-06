@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
+
 .mobile__nav {
   position: fixed;
   top: 0;
@@ -12,8 +14,12 @@
   justify-content: space-between;
 }
 
-.mobile__nav-logo {
-  font-size: 1.7rem;
+.app-logo--mobile {
+  font-family: agbalumo, cursive;
+  font-size: 2.2rem;
+}
+
+.app-logo--mobile a {
   color: var(--primary-white);
 }
 
@@ -73,10 +79,6 @@
   font-size: 1.2rem;
 }
 
-.search-title {
-  text-align: center;
-}
-
 .category-heading {
   text-align: center;
 }
@@ -106,10 +108,6 @@ input.checkbox {
   margin-right: 10px;
   width: 1.2rem;
   height: 1.2rem;
-}
-
-.search-title {
-  font-size: 1.5rem;
 }
 
 .label-title {
@@ -172,6 +170,21 @@ footer a:hover {
     height: 100vh;
     padding: 2em;
     overflow-y: auto;
+  }
+
+  .app-logo--desktop {
+    margin-block: 0.3rem 1.3rem;
+    font-family: agbalumo, cursive;
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .app-logo--desktop a {
+    color: var(--primary-white);
+  }
+
+  .app-logo--desktop a:hover {
+    color: var(--primary-yellow);
   }
 
   .container-category {

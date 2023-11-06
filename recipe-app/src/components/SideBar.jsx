@@ -76,9 +76,9 @@ export default function SideBar({ setAllRecipes }) {
   return (
     <>
       <nav className="mobile__nav">
-        <a className="mobile__nav-logo" href="/">
-          Pantry Picker
-        </a>
+        <div className="app-logo--mobile">
+          <a href="/">Pantry Picker</a>
+        </div>
         <button className="mobile__nav-menu" onClick={toggleButton}>
           Menu
         </button>
@@ -86,7 +86,9 @@ export default function SideBar({ setAllRecipes }) {
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
         <div className="nav-content-container">
           <header>
-            <h1 className="search-title">Pantry Picker</h1>
+            <div className="app-logo--desktop">
+              <a href="/">Pantry Picker</a>
+            </div>
             <div className="container-input">
               <input
                 type="search"
