@@ -62,14 +62,16 @@ function Modal({ recipe, closeRecipeModal }) {
         >
           <AiFillCloseCircle />
         </button>
-        <section className="recipe-page__video">
+        <section className="about-recipe">
+          <h1 className="about-recipe__title">{name}</h1>
           {original_video_url && (
-            <video src={original_video_url} controls></video>
+            <video
+              className="about-recipe__video"
+              src={original_video_url}
+              controls
+            ></video>
           )}
-        </section>
-        <section className="recipe-page__about">
-          <h1 className="recipe-page__title">{name}</h1>
-          <div className="recipe-page__tags">
+          <div className="about-recipe__tags">
             {/* The "?." operator checks if the property exists*/}
             {total_time_tier?.display_tier ? (
               <span>
@@ -78,7 +80,7 @@ function Modal({ recipe, closeRecipeModal }) {
             ) : null}
             <span>{yields.toLowerCase()}</span>
           </div>
-          <p className="recipe-page__description">{description}</p>
+          <p className="about-recipe__description">{description}</p>
         </section>
         <section className="recipe-page__ingredients">
           <h2>Ingredients</h2>

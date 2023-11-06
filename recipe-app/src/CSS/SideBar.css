@@ -1,11 +1,15 @@
 .mobile__nav {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  width: 100vw;
+  height: var(--page-mobile-nav-height);
+  padding: 1.5rem;
   background-color: var(--primary-gray);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem;
-  position: relative;
-  z-index: 1000;
 }
 
 .mobile__nav-logo {

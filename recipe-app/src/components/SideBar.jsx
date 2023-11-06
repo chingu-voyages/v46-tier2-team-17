@@ -83,7 +83,6 @@ export default function SideBar({ setAllRecipes }) {
           Menu
         </button>
       </nav>
-
       <nav className={toggle ? "nav-container" : "nav-mobile"}>
         <h1 className="search-title">Pantry Picker</h1>
         <div className="container-input">

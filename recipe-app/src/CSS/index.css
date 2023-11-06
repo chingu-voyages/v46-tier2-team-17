@@ -8,11 +8,13 @@
 
   --card-font-color-light: #ececec;
   --primary-black: #000;
+  --font-black: #3f3e3e;
   --primary-gray: #242424;
   --primary-yellow: #d6d2c3;
   --secondary-gray: #555555;
   --accent: #40e0d0;
 
+  --page-mobile-nav-height: 87px;
   --page-desktop-aside-width: 23vw;
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
   --page-gallery-block-padding: 7rem;
