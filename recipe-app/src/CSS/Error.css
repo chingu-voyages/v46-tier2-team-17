@@ -4,7 +4,7 @@
   justify-content: center;
   position: fixed;
   top: 0;
-  z-index: 500;
+  z-index: var(--z-index-level-1);
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
   width: 100vw;
   height: 100vh;
@@ -17,27 +17,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 2.7rem;
+  padding: 1.1rem 1.5rem;
   box-sizing: border-box;
   width: 70%;
   min-height: 50%;
-  margin-top: 2.7rem;
-  padding: 1.1rem 1.5rem;
-  border-radius: 10px;
+  text-align: center;
   color: var(--primary-white);
   background-color: var(--primary-black);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  position: relative;
 }
 
 .error-modal__close-btn {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: transparent;
+  border: none;
   margin: 10px 10px 0 0;
   padding: 0;
-  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 

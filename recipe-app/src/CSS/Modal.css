@@ -4,7 +4,6 @@
   justify-content: center;
   position: fixed;
   top: var(--page-mobile-nav-height);
-  z-index: 500;
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
   box-sizing: border-box;
   width: 100vw;
@@ -21,10 +20,10 @@
   width: 83%;
   height: 79%;
   background-color: var(--primary-yellow);
+  font-family: Verdana, sans-serif;
   color: var(--font-black);
   -ms-overflow-style: none;
   scrollbar-width: none;
-  font-family: Verdana, sans-serif;
 }
 
 .recipe-page::-webkit-scrollbar {
@@ -35,10 +34,10 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: transparent;
+  border: none;
   margin: 10px 10px 0 0;
   padding: 0;
-  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -79,16 +78,16 @@
 .about-recipe__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
   margin-block: 0.9rem 3.5rem;
+  gap: 7px;
 }
 
 .about-recipe__tags span {
-  background-color: var(--primary-gray);
-  color: var(--primary-yellow);
   border-radius: 5px;
   padding: 3px 17px;
   font-size: 0.9rem;
+  color: var(--primary-yellow);
+  background-color: var(--primary-gray);
 }
 
 /***********/

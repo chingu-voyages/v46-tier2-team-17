@@ -21,6 +21,9 @@
   --page-gallery-block-padding: 7rem;
   --page-gallery-inline-padding: 2rem;
 
+  --z-index-level-1: 100;
+  --z-index-level-2: 200;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
