@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
-import Modal from "./Modal";
+import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
 import data from "../data/recipes";
 
@@ -76,7 +76,10 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
             />
           ))}
           {recipeModal && (
-            <Modal recipe={chosenRecipe} closeRecipeModal={closeRecipeModal} />
+            <RecipeModal
+              recipe={chosenRecipe}
+              closeRecipeModal={closeRecipeModal}
+            />
           )}
         </main>
       </section>
