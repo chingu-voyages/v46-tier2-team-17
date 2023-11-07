@@ -22,7 +22,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: var(--primary-yellow);
-  font-family: Verdana, sans-serif;
+  font-family: var(--text-font);
   color: var(--font-black);
 }
 
@@ -67,7 +67,7 @@
 }
 
 .heading {
-  font-family: "Tahoma", sans-serif;
+  font-family: var(--heading-font);
 }
 
 .text {

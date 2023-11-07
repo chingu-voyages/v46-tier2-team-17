@@ -19,7 +19,7 @@
   padding: 1.1rem;
   box-sizing: border-box;
   width: 85%;
-  font-family: Verdana, sans-serif;
+  font-family: var(--text-font);
   text-align: center;
   color: var(--primary-white);
   background-color: var(--primary-black);
@@ -55,7 +55,7 @@
 }
 
 .error-modal__heading {
-  font-family: "Tahoma", sans-serif;
+  font-family: var(--heading-font);
   word-wrap: break-word;
 }
 

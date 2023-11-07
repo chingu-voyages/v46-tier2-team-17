@@ -6,6 +6,9 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
 
+  --heading-font: Tahoma, sans-serif;
+  --text-font: Verdana, sans-serif;
+
   --card-font-color-light: #ececec;
   --font-black: #3f3e3e;
   --primary-black: #000;
