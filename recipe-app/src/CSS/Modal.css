@@ -14,16 +14,16 @@
 
 .recipe-page {
   position: relative;
-  overflow-y: auto;
   border-radius: 10px;
   padding: 2rem 0.9rem;
   width: 83%;
   height: 79%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   background-color: var(--primary-yellow);
   font-family: Verdana, sans-serif;
   color: var(--font-black);
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .recipe-page::-webkit-scrollbar {

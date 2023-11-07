@@ -13,17 +13,13 @@
 }
 
 .error-modal__page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
   border-radius: 10px;
-  margin-top: 2.7rem;
-  padding: 1.1rem 1.5rem;
+  margin-top: var(--page-mobile-nav-height);
+  padding: 1.1rem;
   box-sizing: border-box;
-  width: 70%;
-  min-height: 50%;
+  width: 85%;
+  font-family: Verdana, sans-serif;
   text-align: center;
   color: var(--primary-white);
   background-color: var(--primary-black);
@@ -55,12 +51,27 @@
 }
 
 .error-modal__icon {
-  font-size: 3rem;
+  font-size: 3.3rem;
+}
+
+.error-modal__heading {
+  font-family: "Tahoma", sans-serif;
+  word-wrap: break-word;
 }
 
 .error-modal__search-suggestion-list {
   list-style-type: none;
   padding: 0;
+}
+
+/**********************/
+/* Tablet and Desktop */
+/**********************/
+
+@media (min-width: 600px) {
+  .error-modal__page {
+    padding: 2rem 4rem;
+  }
 }
 
 /***********/
@@ -76,6 +87,7 @@
     margin-top: 0;
     margin-left: calc(-1 * (var(--page-gallery-inline-padding) * 2));
     padding: 1.3rem 3rem;
+    width: 70%;
   }
 
   .error-modal__icon {
