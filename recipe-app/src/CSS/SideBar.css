@@ -14,6 +14,10 @@
   background-color: var(--primary-gray);
 }
 
+.aside-desktop {
+  display: none;
+}
+
 .aside-mobile {
   display: block;
   position: relative;
@@ -24,10 +28,6 @@
   width: 100vw;
   background-color: var(--primary-gray);
   color: var(--primary-white);
-}
-
-.aside-desktop {
-  display: none;
 }
 
 .app-logo--desktop {
@@ -172,10 +172,6 @@ footer a:hover {
 
 @media (min-width: 992px) {
   .mobile-nav {
-    display: none;
-  }
-
-  .aside-mobile {
     display: none;
   }
 

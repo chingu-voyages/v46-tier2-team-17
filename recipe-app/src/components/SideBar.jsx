@@ -4,12 +4,14 @@ import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({ setAllRecipes }) {
   const [searchedText, setSearchedText] = useState("");
-  const [toggle, setToggle] = useState(true);
   const [tags, setTags] = useState([]);
+  const asideDesktop = document.querySelector(".aside-desktop");
 
   // Handle user's search query
   function handleUserQuery(searchedText) {
     const errorModal = document.getElementById("error-modal");
+    asideDesktop.classList.remove("aside-mobile");
+
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
       const checkboxes = document.querySelectorAll(".checkbox");
@@ -27,6 +29,7 @@ export default function SideBar({ setAllRecipes }) {
         searchedWordsString,
         tags,
       );
+
       setSearchedText("");
       setTags([]);
       checkboxes.forEach(
@@ -68,21 +71,20 @@ export default function SideBar({ setAllRecipes }) {
     fetchRecipes(setAllRecipes, null, null, [e.target.value], true);
   }
 
-  function toggleButton() {
-    setToggle((prevToggle) => !prevToggle);
-  }
-
   return (
     <>
       <nav className="mobile-nav">
         <div className="app-logo--mobile">
           <a href="/">Pantry Picker</a>
         </div>
-        <button className="mobile-nav__menu-btn" onClick={toggleButton}>
+        <button
+          className="mobile-nav__menu-btn"
+          onClick={() => asideDesktop.classList.toggle("aside-mobile")}
+        >
           <AiOutlineMenu />
         </button>
       </nav>
-      <aside className={toggle ? "aside-desktop" : "aside-mobile"}>
+      <aside className="aside-desktop">
         <div className="aside-content-container">
           <header>
             <div className="app-logo--desktop">
