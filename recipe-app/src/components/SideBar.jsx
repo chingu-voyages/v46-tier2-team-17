@@ -82,8 +82,8 @@ export default function SideBar({ setAllRecipes }) {
           <AiOutlineMenu />
         </button>
       </nav>
-      <nav className={toggle ? "nav-container" : "nav-mobile"}>
-        <div className="nav-content-container">
+      <aside className={toggle ? "aside-desktop" : "aside-mobile"}>
+        <div className="aside-content-container">
           <header>
             <div className="app-logo--desktop">
               <a href="/">Pantry Picker</a>
@@ -106,7 +106,7 @@ export default function SideBar({ setAllRecipes }) {
                 <AiOutlineSearch />
               </button>
             </div>
-            <div className="nav-container-checkbox">
+            <div className="aside-container-checkbox">
               <div className="container-checkbox">
                 <input
                   type="checkbox"
@@ -223,7 +223,7 @@ export default function SideBar({ setAllRecipes }) {
             </a>
           </footer>
         </div>
-      </nav>
+      </aside>
     </>
   );
 }

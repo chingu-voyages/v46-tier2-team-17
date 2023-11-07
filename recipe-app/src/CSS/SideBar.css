@@ -14,6 +14,24 @@
   justify-content: space-between;
 }
 
+.aside-mobile {
+  display: block;
+  margin-top: var(--page-mobile-nav-height);
+  padding: 1em 1.5em 2em;
+  box-sizing: border-box;
+  width: 100vw;
+  background-color: var(--primary-gray);
+  color: var(--primary-white);
+}
+
+.aside-desktop {
+  display: none;
+}
+
+.app-logo--desktop {
+  display: none;
+}
+
 .app-logo--mobile {
   font-family: agbalumo, cursive;
   font-size: 2.2rem;
@@ -39,22 +57,13 @@
   color: var(--primary-white);
 }
 
-.nav-container {
-  box-sizing: border-box;
-  display: none;
-  width: var(--page-desktop-aside-width);
-  flex-shrink: 0;
-  background-color: var(--primary-gray);
-  color: var(--primary-white);
-}
-
 .container-input {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.nav-container-checkbox {
+.aside-container-checkbox {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -130,12 +139,6 @@ input.checkbox {
   font-size: 0.8rem;
 }
 
-.nav-mobile {
-  padding: 1em 1.5em 2em;
-  background-color: var(--primary-gray);
-  color: var(--primary-white);
-}
-
 footer {
   text-align: center;
   font-size: 0.8rem;
@@ -155,7 +158,7 @@ footer a:hover {
 /***********/
 
 @media (min-width: 600px) {
-  .nav-container-checkbox {
+  .aside-container-checkbox {
     flex-direction: row;
     justify-content: space-around;
   }
@@ -170,13 +173,20 @@ footer a:hover {
     display: none;
   }
 
-  .nav-container {
-    display: block;
-    padding-top: 0;
-    width: var(--page-desktop-aside-width);
+  .aside-mobile {
+    display: none;
   }
 
-  .nav-content-container {
+  .aside-desktop {
+    display: block;
+    padding-top: 0;
+    box-sizing: border-box;
+    width: var(--page-desktop-aside-width);
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+  }
+
+  .aside-content-container {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -189,6 +199,7 @@ footer a:hover {
   }
 
   .app-logo--desktop {
+    display: block;
     margin-block: 0.3rem 1.3rem;
     font-family: agbalumo, cursive;
     font-size: 2.4rem;
