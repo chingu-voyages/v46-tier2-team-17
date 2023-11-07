@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
-export default function SideBar({ setAllRecipes }) {
+export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
   const [searchedText, setSearchedText] = useState("");
   const [tags, setTags] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
@@ -25,6 +25,7 @@ export default function SideBar({ setAllRecipes }) {
 
       fetchRecipes(
         setAllRecipes,
+        setSearchedIngredients,
         searchedWordsArray,
         searchedWordsString,
         tags,
@@ -68,7 +69,14 @@ export default function SideBar({ setAllRecipes }) {
   // Get category recipes
   function handleCategoriesBtnClick(e) {
     e.preventDefault();
-    fetchRecipes(setAllRecipes, null, null, [e.target.value], true);
+    fetchRecipes(
+      setAllRecipes,
+      setSearchedIngredients,
+      null,
+      null,
+      [e.target.value],
+      true,
+    );
   }
 
   return (

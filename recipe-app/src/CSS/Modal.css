@@ -85,6 +85,8 @@
 .about-recipe__tags span {
   border-radius: 5px;
   padding: 3px 17px;
+  height: 1.2rem;
+  line-height: 1.2rem;
   font-size: 0.9rem;
   color: var(--primary-yellow);
   background-color: var(--primary-gray);

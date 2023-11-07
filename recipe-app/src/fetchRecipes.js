@@ -3,6 +3,7 @@ import validateIngredientsQuery from "./validateIngredientsQuery";
 // Get recipes for searched ingredient
 async function fetchRecipes(
   setAllRecipes,
+  setSearchedIngredients,
   searchedWordsArray,
   searchedWordsString,
   tags,
@@ -27,7 +28,11 @@ async function fetchRecipes(
     const isValidSearch = categoriesSearch
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
-    isValidSearch && setAllRecipes(recipesArray);
+
+    if (isValidSearch) {
+      setSearchedIngredients(searchedWordsArray);
+      setAllRecipes(recipesArray);
+    }
   } catch (error) {
     console.error(error);
   }

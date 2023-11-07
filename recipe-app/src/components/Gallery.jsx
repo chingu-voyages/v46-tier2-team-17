@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
 import Modal from "./Modal";
 import Welcome from "./Welcome";
 import data from "../data/recipes";
 
-function Gallery({ setAllRecipes, allRecipes }) {
+function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
   const [recipeModal, setRecipeModal] = useState(false);
   const [chosenRecipe, setChosenRecipe] = useState(null);
 
@@ -53,20 +54,32 @@ function Gallery({ setAllRecipes, allRecipes }) {
 
   return (
     <>
-      <main className="gallery">
-        <Welcome />
-        <Error />
-        {allRecipes.map((result) => (
-          <Card
-            key={result.id}
-            result={result}
-            onClick={() => showRecipeModal(result)}
-          />
-        ))}
-        {recipeModal && (
-          <Modal recipe={chosenRecipe} closeRecipeModal={closeRecipeModal} />
-        )}
-      </main>
+      <section className="gallery-section">
+        <div className="searched-ingredients">
+          <strong>Searched Ingredients:</strong>
+          {searchedIngredients.length ? (
+            searchedIngredients.map((ingredient) => (
+              <span key={uniqid()}>{ingredient}</span>
+            ))
+          ) : (
+            <span>random</span>
+          )}
+        </div>
+        <main className="gallery">
+          <Welcome />
+          <Error />
+          {allRecipes.map((result) => (
+            <Card
+              key={result.id}
+              result={result}
+              onClick={() => showRecipeModal(result)}
+            />
+          ))}
+          {recipeModal && (
+            <Modal recipe={chosenRecipe} closeRecipeModal={closeRecipeModal} />
+          )}
+        </main>
+      </section>
     </>
   );
 }
