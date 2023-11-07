@@ -40,6 +40,17 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
   //   fetchData();
   // }, []);
 
+  // Create ingredient <span>s from user's query
+  function createSearchedIngredientsTags(searchedIngredients) {
+    return searchedIngredients.length ? (
+      searchedIngredients.map((ingredient) => (
+        <span key={uniqid()}>{ingredient}</span>
+      ))
+    ) : (
+      <span>random</span>
+    );
+  }
+
   // Show recipe modal/page onclick of recipe card
   function showRecipeModal(recipe) {
     setChosenRecipe(recipe);
@@ -57,13 +68,7 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
       <section className="gallery-section">
         <div className="searched-ingredients">
           <strong>Searched Ingredients:</strong>
-          {searchedIngredients.length ? (
-            searchedIngredients.map((ingredient) => (
-              <span key={uniqid()}>{ingredient}</span>
-            ))
-          ) : (
-            <span>random</span>
-          )}
+          {createSearchedIngredientsTags(searchedIngredients)}
         </div>
         <main className="gallery">
           <Welcome />
