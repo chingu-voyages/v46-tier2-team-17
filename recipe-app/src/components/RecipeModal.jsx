@@ -93,6 +93,7 @@ function Modal({ recipe, closeRecipeModal }) {
           </section>
         ) : null}
         <section className="recipe-page__instructions">
+          <h2>Steps</h2>
           {createInstructionList()}
         </section>
       </div>

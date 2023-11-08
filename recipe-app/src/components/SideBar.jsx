@@ -236,7 +236,7 @@ export default function SideBar({
             </div>
           </section>
           <footer>
-            <img src={github} className="footer-img" />
+            <img src="/github.svg" className="footer-img" />
             <a
               href="https://github.com/chingu-voyages/v46-tier2-team-17"
               target="_blank"
