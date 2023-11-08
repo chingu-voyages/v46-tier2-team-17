@@ -69,6 +69,7 @@ function Gallery({
           <Error
             setAllRecipes={setAllRecipes}
             setSearchedIngredients={setSearchedIngredients}
+            closeRecipeModal={closeRecipeModal}
           />
           {allRecipes.map((result) => (
             <Card

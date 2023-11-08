@@ -1,7 +1,7 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
-function Error({ setAllRecipes, setSearchedIngredients }) {
+function Error({ setAllRecipes, setSearchedIngredients, closeRecipeModal }) {
   // Get recipes for clicked ingredient link
   function suggestionClick(e) {
     const clickedIngredient = e.target.innerText.toLowerCase();
@@ -14,7 +14,7 @@ function Error({ setAllRecipes, setSearchedIngredients }) {
       clickedIngredient,
       "",
       true,
-      null,
+      closeRecipeModal,
     );
   }
   return (
