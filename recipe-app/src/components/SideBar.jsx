@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
@@ -99,7 +100,7 @@ export default function SideBar({
           className="mobile-nav__menu-btn"
           onClick={() => asideDesktop.classList.toggle("aside-mobile")}
         >
-          <AiOutlineMenu />
+          <GiHamburgerMenu />
         </button>
       </nav>
       <aside className="aside-desktop">
@@ -235,11 +236,12 @@ export default function SideBar({
             </div>
           </section>
           <footer>
+            <img src={github} className="footer-img" />
             <a
               href="https://github.com/chingu-voyages/v46-tier2-team-17"
               target="_blank"
             >
-              v46-Tier2-Team17 GitHub Repo
+              designed and created by Chingu v46-Tier2-Team17
             </a>
           </footer>
         </div>
