@@ -1,7 +1,7 @@
 @import url(App.css);
-@import url(SideBar.css);
-@import url(Gallery.css);
 @import url(Card.css);
-@import url(Welcome.css);
-@import url(RecipeModal.css);
 @import url(Error.css);
+@import url(Gallery.css);
+@import url(RecipeModal.css);
+@import url(SideBar.css);
+@import url(Welcome.css);

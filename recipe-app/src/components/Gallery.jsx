@@ -30,8 +30,6 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
   //       const response = await fetch(url, options);
   //       const result = await response.text();
   //       const recipesArray = JSON.parse(result).results;
-
-  //       // console.log(recipesArray);
   //       setAllRecipes(recipesArray);
   //     } catch (error) {
   //       console.error(error);
