@@ -8,6 +8,7 @@ async function fetchRecipes(
   tags,
   categoriesSearch,
 ) {
+  console.log(searchedWordsString);
   // Set fetch url based on the availability of searchedWordsString and tags parameters
   const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20${
     searchedWordsString && `&q=${searchedWordsString}`
@@ -20,14 +21,21 @@ async function fetchRecipes(
       "X-RapidAPI-Host": "tasty.p.rapidapi.com",
     },
   };
+
+  const loaderModal = document.getElementById("loader-modal");
+  loaderModal.style.display = "flex";
+  // setIsLoading(true);
   try {
     const response = await fetch(url, options);
     const result = await response.text();
     const recipesArray = JSON.parse(result).results;
+    console.log(recipesArray);
     const isValidSearch = categoriesSearch
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
     isValidSearch && setAllRecipes(recipesArray);
+    loaderModal.style.display = "none";
+    // setIsLoading(false);
   } catch (error) {
     console.error(error);
   }

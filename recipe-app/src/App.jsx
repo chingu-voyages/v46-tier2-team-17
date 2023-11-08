@@ -5,16 +5,18 @@ import github from "./CSS/github-svg-image/github.svg"
 import Welcome from "./components/Welcome";
 import Card from "./components/Card";
 import Error from "./components/Error";
+import Loader from "./components/Loader";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [gallery, setGallery] = useState(true);
+  // const [gallery, setGallery] = useState(true);
   const [modal, setModal] = useState(false);
   const [chosenRecipe, SetChosenRecipe] = useState(null);
   const [allRecipes, setAllRecipes] = useState([]);
 
   // Pass setAllRecipes state to the Sidebar compponent
   // useEffect(() => {
+
   //   setAllRecipes(data.results);
   // }, []);
 
@@ -28,14 +30,15 @@ function App() {
           "X-RapidAPI-Host": "tasty.p.rapidapi.com",
         },
       };
-
+      const loaderModal = document.getElementById("loader-modal");
+      loaderModal.style.display = "flex";
       try {
         const response = await fetch(url, options);
         const result = await response.text();
         const recipesArray = JSON.parse(result).results;
-
         // console.log(recipesArray);
         setAllRecipes(recipesArray);
+        loaderModal.style.display = "none";
       } catch (error) {
         console.error(error);
       }
@@ -62,25 +65,23 @@ function App() {
         <SideBar
           setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
         />
+        <div className="gallery">
+          <Welcome />
+          <Error
+            setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+          />
 
-        <Welcome />
-        <Error />
-        {gallery === true && (
-          <div className="gallery">
-            {allRecipes.map((result) => (
-              <Card
-                key={result.id}
-                result={result}
-                onClick={() => showModal(result)}
-              />
-            ))}
-          </div>
-        )}
+          <Loader />
+
+          {allRecipes.map((result) => (
+            <Card
+              key={result.id}
+              result={result}
+              onClick={() => showModal(result)}
+            />
+          ))}
+        </div>
         {modal === true && <Modal recipe={chosenRecipe} onClose={hideModal} />}
-
-        {/*
-          
-      */}
       </main>
       <footer>
         <img src={github} className="footer-img"/>

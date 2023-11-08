@@ -1,5 +1,5 @@
 // import data from "../data/recipes";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import fetchRecipes from "../fetchRecipes";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -30,6 +30,7 @@ export default function SideBar({ setAllRecipes }) {
         searchedWordsString,
         tags,
       );
+
       setSearchedText("");
       setTags([]);
       checkboxes.forEach(
