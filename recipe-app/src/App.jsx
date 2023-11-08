@@ -17,6 +17,9 @@ function App() {
         />
         <Gallery
           setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+          setSearchedIngredients={(ingredientsArray) =>
+            setSearchedIngredients(ingredientsArray)
+          }
           allRecipes={allRecipes}
           searchedIngredients={searchedIngredients}
         />

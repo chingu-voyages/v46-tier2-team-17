@@ -7,7 +7,12 @@ import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
 import data from "../data/recipes";
 
-function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
+function Gallery({
+  setAllRecipes,
+  setSearchedIngredients,
+  allRecipes,
+  searchedIngredients,
+}) {
   const [recipeModal, setRecipeModal] = useState(false);
   const [chosenRecipe, setChosenRecipe] = useState(null);
 
@@ -76,7 +81,8 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
           <Welcome />
           <Loader />
           <Error
-            setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+            setAllRecipes={setAllRecipes}
+            setSearchedIngredients={setSearchedIngredients}
           />
           {allRecipes.map((result) => (
             <Card

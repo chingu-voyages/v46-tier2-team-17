@@ -1,10 +1,20 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
-function Error({ setAllRecipes }) {
+function Error({ setAllRecipes, setSearchedIngredients }) {
+  // Get recipes for clicked ingredient link
   function suggestionClick(e) {
+    const clickedIngredient = e.target.innerText.toLowerCase();
     e.preventDefault();
-    fetchRecipes(setAllRecipes, null, "sausage", null, true);
+    e.currentTarget.closest("#error-modal").style.display = "none";
+    fetchRecipes(
+      setAllRecipes,
+      setSearchedIngredients,
+      [clickedIngredient],
+      clickedIngredient,
+      "",
+      true,
+    );
   }
   return (
     <article id="error-modal" className="error-modal">
