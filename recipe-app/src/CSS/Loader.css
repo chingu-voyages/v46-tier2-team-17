@@ -1,15 +1,15 @@
 .loader-modal {
-  flex-grow: 1;
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 500;
-  margin-left: calc(-1 * var(--page-gallery-inline-padding));
-  background-color: rgba(255, 255, 255, 0.77);
-  backdrop-filter: blur(1.3px);
   position: fixed;
-  left: calc(var(--page-desktop-aside-width) + 4em);
-  height: 100%;
+  top: 0;
+  z-index: var(--z-index-level-1);
+  margin-left: calc(-1 * var(--page-gallery-inline-padding));
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(2.3px);
 }
 
 /***********/

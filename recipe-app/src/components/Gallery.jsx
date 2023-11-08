@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
+import Loader from "./Loader";
 import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
 import data from "../data/recipes";
@@ -26,11 +27,14 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
   //       },
   //     };
 
+  //     const loaderModal = document.getElementById("loader-modal");
+  //     loaderModal.style.display = "flex";
   //     try {
   //       const response = await fetch(url, options);
   //       const result = await response.text();
   //       const recipesArray = JSON.parse(result).results;
   //       setAllRecipes(recipesArray);
+  //       loaderModal.style.display = "none";
   //     } catch (error) {
   //       console.error(error);
   //     }
@@ -70,7 +74,10 @@ function Gallery({ setAllRecipes, allRecipes, searchedIngredients }) {
         </div>
         <main className="gallery">
           <Welcome />
-          <Error />
+          <Loader />
+          <Error
+            setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+          />
           {allRecipes.map((result) => (
             <Card
               key={result.id}
