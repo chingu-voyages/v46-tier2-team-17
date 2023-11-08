@@ -1,10 +1,11 @@
+import { useState } from "react";
 import recipes from "../data/recipes";
 
 function Welcome() {
-  const selectedRecipeDataObj =
-    recipes.results[Math.floor(Math.random() * recipes.results.length)];
-  const selectedRecipeImage = selectedRecipeDataObj.thumbnail_url;
-
+  const [selectedRecipeImage] = useState(
+    recipes.results[Math.floor(Math.random() * recipes.results.length)]
+      .thumbnail_url,
+  );
   return (
     <article
       className="welcome-modal"
