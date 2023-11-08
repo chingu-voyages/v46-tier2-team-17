@@ -78,7 +78,7 @@ export default function SideBar({
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      null,
+      [e.target.innerText.toLowerCase()],
       null,
       [e.target.value],
       true,
