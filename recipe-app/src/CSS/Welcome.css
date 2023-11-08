@@ -1,7 +1,7 @@
 .welcome-modal {
   position: fixed;
   top: 0;
-  z-index: var(--z-index-level-1);
+  z-index: var(--z-index-level-2);
   margin-left: calc(-1 * var(--page-gallery-inline-padding));
   width: 100vw;
   height: 100vh;
@@ -11,7 +11,7 @@
   background-position: center;
   background-size: cover;
   animation-name: fade-out-welcome-modal;
-  animation-delay: 3s;
+  animation-delay: 2.7s;
   animation-duration: 1.7s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;

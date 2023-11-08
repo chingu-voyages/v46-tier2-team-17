@@ -5,7 +5,7 @@ import Error from "./Error";
 import Loader from "./Loader";
 import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
-import data from "../data/recipes";
+// import data from "../data/recipes";
 
 function Gallery({
   setAllRecipes,
@@ -17,35 +17,35 @@ function Gallery({
   const [chosenRecipe, setChosenRecipe] = useState(null);
 
   // Pass setAllRecipes state to the Sidebar compponent
-  useEffect(() => {
-    setAllRecipes(data.results);
-  }, []);
-
   // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
-  //     const options = {
-  //       method: "GET",
-  //       headers: {
-  //         "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-  //         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-  //       },
-  //     };
-
-  //     const loaderModal = document.getElementById("loader-modal");
-  //     loaderModal.style.display = "flex";
-  //     try {
-  //       const response = await fetch(url, options);
-  //       const result = await response.text();
-  //       const recipesArray = JSON.parse(result).results;
-  //       setAllRecipes(recipesArray);
-  //       loaderModal.style.display = "none";
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
+  //   setAllRecipes(data.results);
   // }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
+          "X-RapidAPI-Host": "tasty.p.rapidapi.com",
+        },
+      };
+
+      const loaderModal = document.getElementById("loader-modal");
+      loaderModal.style.display = "flex";
+      try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        const recipesArray = JSON.parse(result).results;
+        setAllRecipes(recipesArray);
+        loaderModal.style.display = "none";
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Create ingredient <span>s from user's query
   function createSearchedIngredientsTags(searchedIngredients) {
