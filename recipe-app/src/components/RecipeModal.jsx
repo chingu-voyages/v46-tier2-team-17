@@ -18,7 +18,7 @@ function Modal({ recipe, closeRecipeModal }) {
     return (
       <ul className="text">
         {sections[0].components.map((item) => {
-          return <li key={item.id}>{item.raw_text}</li>;
+          return <li key={uniqid()}>{item.raw_text}</li>;
         })}
       </ul>
     );
@@ -32,7 +32,7 @@ function Modal({ recipe, closeRecipeModal }) {
           .filter((key) => key !== "updated_at")
           .map((key) => {
             return (
-              <li key={key}>
+              <li key={uniqid()}>
                 {key}: {nutrition[key]}
               </li>
             );
