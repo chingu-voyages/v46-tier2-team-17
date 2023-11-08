@@ -75,6 +75,7 @@ export default function SideBar({
   // Get category recipes
   function handleCategoriesBtnClick(e) {
     e.preventDefault();
+    asideDesktop.classList.remove("aside-mobile");
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
