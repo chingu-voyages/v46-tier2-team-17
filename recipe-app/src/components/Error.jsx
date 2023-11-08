@@ -1,6 +1,11 @@
 import { AiFillCloseCircle } from "react-icons/ai";
+import fetchRecipes from "../fetchRecipes";
 
-function Error() {
+function Error({ setAllRecipes }) {
+  function suggestionClick(e) {
+    e.preventDefault();
+    fetchRecipes(setAllRecipes, null, "sausage", null, true);
+  }
   return (
     <article id="error-modal" className="error-modal">
       <div className="error-modal__page">
@@ -23,9 +28,22 @@ function Error() {
           Try these popular ingredients instead:
         </p>
         <ul className="error-modal__search-suggestion-list">
-          <li>Sausage</li>
-          <li>Jalapeño</li>
-          <li>Garlic</li>
+          <li>
+            <a href="#" onClick={suggestionClick}>
+              Sausage
+            </a>
+          </li>
+
+          <li>
+            <a href="#" onClick={suggestionClick}>
+              Jalapeño
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={suggestionClick}>
+              Garlic
+            </a>
+          </li>
         </ul>
       </div>
     </article>
