@@ -1,0 +1,122 @@
+.recipe-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: var(--page-mobile-nav-height);
+  margin-left: calc(-1 * var(--page-gallery-inline-padding));
+  box-sizing: border-box;
+  width: 100vw;
+  height: calc(100vh - var(--page-mobile-nav-height));
+  background-color: rgba(0, 0, 0, 0.77);
+  backdrop-filter: blur(1.3px);
+}
+
+.recipe-page {
+  position: relative;
+  border-radius: 10px;
+  padding: 2rem 0.9rem;
+  width: 83%;
+  height: 79%;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: var(--primary-yellow);
+  font-family: var(--text-font);
+  color: var(--font-black);
+}
+
+.recipe-page::-webkit-scrollbar {
+  display: none;
+}
+
+.recipe-page__close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  margin: 10px 10px 0 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.recipe-page__close-btn:focus {
+  outline: inherit;
+}
+
+.recipe-page__close-btn svg {
+  font-size: 2rem;
+  color: var(--primary-gray);
+}
+
+.recipe-page__close-btn svg:hover {
+  color: var(--secondary-gray);
+}
+
+.about-recipe__video {
+  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: var(--primary-black);
+}
+
+.about-recipe__title {
+  margin-block: 0.9rem 1.2rem;
+  font-size: 2.8rem;
+}
+
+.heading {
+  font-family: var(--heading-font);
+}
+
+.text {
+  font-size: 1.17rem;
+  line-height: 1.9rem;
+}
+
+.about-recipe__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block: 0.9rem 3.5rem;
+  gap: 7px;
+}
+
+.about-recipe__tags span {
+  border-radius: 5px;
+  padding: 3px 17px;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--primary-yellow);
+  background-color: var(--primary-gray);
+}
+
+/***********/
+/* Desktop */
+/***********/
+
+@media (min-width: 992px) {
+  .recipe-modal {
+    top: 0;
+    width: var(--page-desktop-gallery-width);
+    height: 100vh;
+  }
+
+  .recipe-page {
+    margin-top: 0;
+    margin-left: calc(-1 * (var(--page-gallery-inline-padding) * 2));
+    padding: 1.3rem 3rem;
+    width: 63%;
+    height: 83vh;
+  }
+
+  .about-recipe__title {
+    margin-block: 3rem 1.5rem;
+    font-size: 2.9rem;
+  }
+
+  .about-recipe__tags {
+    flex-direction: row;
+  }
+}

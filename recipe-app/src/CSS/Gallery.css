@@ -1,0 +1,29 @@
+.gallery-section {
+  flex-grow: 1;
+  background-color: var(--primary-yellow);
+  padding: var(--page-gallery-block-padding) var(--page-gallery-inline-padding);
+  color: var(--font-black);
+}
+
+.searched-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 1.3rem;
+}
+
+.searched-ingredients span {
+  border-radius: 5px;
+  height: 1rem;
+  line-height: 1rem;
+  padding: 3px 17px;
+  font-size: 0.9rem;
+  color: var(--primary-gray);
+  border: 1px solid var(--primary-gray);
+}
+
+.gallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
