@@ -1,5 +1,6 @@
 import Modal from "./components/Modal";
 import SideBar from "./components/SideBar";
+import github from "./CSS/github-svg-image/github.svg"
 // import data from "./data/recipes";
 import Welcome from "./components/Welcome";
 import Card from "./components/Card";
@@ -82,11 +83,12 @@ function App() {
       */}
       </main>
       <footer>
+        <img src={github} className="footer-img"/>
         <a
           href="https://github.com/chingu-voyages/v46-tier2-team-17"
           target="_blank"
         >
-          v46-Tier2-Team17 GitHub Repo
+          designed and created by Chingu v46-Tier2-Team17
         </a>
       </footer>
     </>

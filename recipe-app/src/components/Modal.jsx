@@ -84,7 +84,11 @@ const Modal = ({ recipe, onClose }) => {
           <h3>Nutrition</h3>
           {nutritionList()}
         </div>
-        <div className="recipe-modal__instructions">{instructionList()}</div>
+        <div className="recipe-modal__instructions">
+          {" "}
+          <strong>Steps:</strong>
+          {instructionList()}
+        </div>
       </div>
     </div>
   );
