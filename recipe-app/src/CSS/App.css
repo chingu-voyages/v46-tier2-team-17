@@ -1,12 +1,10 @@
 #root {
   width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .page {
   min-height: 100vh;
-  flex-grow: 1;
+  position: relative;
 }
 
 /***********/

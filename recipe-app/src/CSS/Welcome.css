@@ -1,40 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap");
-
 .welcome-modal {
-  color: #fff;
-  background-color: black;
+  position: fixed;
+  top: 0;
+  z-index: var(--z-index-level-2);
+  margin-left: calc(-1 * var(--page-gallery-inline-padding));
+  width: 100vw;
+  height: 100vh;
+  color: var(--primary-white);
+  background-color: var(--primary-black);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: 500;
-  margin-left: calc(-1 * var(--page-gallery-inline-padding));
   animation-name: fade-out-welcome-modal;
-  animation-delay: 3s;
-  animation-duration: 4.5s;
+  animation-delay: 2.7s;
+  animation-duration: 1.7s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
-  display: flex;
-  /* Activate display: none to temporarily disable the welcome modal, e.g., while testing the app */
-  /* display: none; */
-  position: fixed;
-  left: calc(var(--page-desktop-aside-width) + 4em);
-  height: 100%;
 }
 
 .welcome-modal__overlay {
-  box-sizing: border-box;
   display: flex;
-  flex-grow: 1;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  width: inherit;
+  height: inherit;
   background-color: rgba(0, 0, 0, 0.33);
+  padding-inline: 1.3rem;
 }
 
 .welcome-modal__heading {
-  font-family: "Outfit", sans-serif;
+  font-family: var(--heading-font);
   font-size: 2.8rem;
   text-align: center;
-  width: calc(var(--page-desktop-gallery-width) * 0.9);
 }
 
 @keyframes fade-out-welcome-modal {
@@ -47,11 +44,15 @@
   }
 }
 
-/*********************/
-/* Tablet and Desktop*/
-/*********************/
+/**********************/
+/* Tablet and Desktop */
+/**********************/
 
 @media (min-width: 600px) {
+  .welcome-modal__overlay {
+    padding-inline: 2.5rem;
+  }
+
   .welcome-modal__heading {
     font-size: 3rem;
   }

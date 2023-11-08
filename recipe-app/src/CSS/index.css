@@ -4,15 +4,29 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  --font-color-light: #3f3e3e;
-  --card-font-color-light: #ECECEC;
-  --sidebar-background-color-light: #40a969;
-  --display-background-color-light: #d6d2c3;
+  color: rgba(255, 255, 255, 0.87);
 
-  --page-desktop-aside-width: 23vw;
+  --heading-font: Tahoma, sans-serif;
+  --text-font: Verdana, sans-serif;
+
+  --card-font-color-light: #ececec;
+  --font-black: #3f3e3e;
+  --primary-black: #000;
+  --primary-gray: #242424;
+  --primary-white: #fff;
+  --primary-yellow: #d6d2c3;
+  --secondary-gray: #555555;
+  --accent: #40e0d0;
+
+  --page-mobile-nav-height: 87px;
+  --page-desktop-aside-width: 28vw;
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
   --page-gallery-block-padding: 7rem;
   --page-gallery-inline-padding: 2rem;
+
+  --z-index-level-1: 100;
+  --z-index-level-2: 200;
+  --z-index-level-3: 300;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,6 +51,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -64,7 +79,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--primary-white) fff;
   }
   a:hover {
     color: #747bff;

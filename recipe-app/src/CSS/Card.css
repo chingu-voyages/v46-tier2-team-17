@@ -1,5 +1,5 @@
 .recipes-card {
-  background-color: #000;
+  background-color: var(--primary-black);
   background-repeat: none;
   background-position: center;
   background-size: cover;
