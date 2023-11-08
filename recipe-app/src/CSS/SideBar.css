@@ -20,7 +20,7 @@
 
 .aside-mobile {
   display: block;
-  position: relative;
+  position: fixed;
   z-index: var(--z-index-level-2);
   margin-top: var(--page-mobile-nav-height);
   padding: 1em 1.5em 2em;
