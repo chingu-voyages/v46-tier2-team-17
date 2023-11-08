@@ -141,17 +141,23 @@ input[type="checkbox"] {
 }
 
 footer {
-  text-align: center;
   font-size: 0.8rem;
   padding-top: 3rem;
 }
 
 footer a {
+  display: flex;
   color: var(--primary-white);
+  gap: 13px;
 }
 
 footer a:hover {
   color: var(--primary-yellow);
+}
+
+.footer-img {
+  width: 10%;
+  color: #fff;
 }
 
 /***********/
