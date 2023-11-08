@@ -8,6 +8,7 @@ async function fetchRecipes(
   searchedWordsString,
   tags,
   categoriesSearch,
+  closeRecipeModal,
 ) {
   // Set fetch url based on the availability of searchedWordsString and tags parameters
   const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20${
@@ -33,6 +34,7 @@ async function fetchRecipes(
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
 
     if (isValidSearch) {
+      closeRecipeModal();
       setSearchedIngredients(searchedWordsArray);
       setAllRecipes(recipesArray);
     }

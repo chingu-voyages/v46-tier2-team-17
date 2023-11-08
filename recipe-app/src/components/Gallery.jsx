@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
@@ -8,15 +8,15 @@ import Welcome from "./Welcome";
 // import data from "../data/recipes";
 
 function Gallery({
-  setAllRecipes,
-  setSearchedIngredients,
+  recipeModal,
+  chosenRecipe,
+  closeRecipeModal,
+  showRecipeModal,
   allRecipes,
+  setAllRecipes,
   searchedIngredients,
+  setSearchedIngredients,
 }) {
-  const [recipeModal, setRecipeModal] = useState(false);
-  const [chosenRecipe, setChosenRecipe] = useState(null);
-
-  // Pass setAllRecipes state to the Sidebar compponent
   // useEffect(() => {
   //   setAllRecipes(data.results);
   // }, []);
@@ -31,7 +31,6 @@ function Gallery({
           "X-RapidAPI-Host": "tasty.p.rapidapi.com",
         },
       };
-
       const loaderModal = document.getElementById("loader-modal");
       loaderModal.style.display = "flex";
       try {
@@ -57,19 +56,6 @@ function Gallery({
       <span>random</span>
     );
   }
-
-  // Show recipe modal/page onclick of recipe card
-  function showRecipeModal(recipe) {
-    setChosenRecipe(recipe);
-    setRecipeModal(true);
-  }
-
-  // Close recipe modal/page onclick of the close button
-  function closeRecipeModal() {
-    setChosenRecipe(null);
-    setRecipeModal(false);
-  }
-
   return (
     <>
       <section className="gallery-section">

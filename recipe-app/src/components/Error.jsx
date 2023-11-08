@@ -14,6 +14,7 @@ function Error({ setAllRecipes, setSearchedIngredients }) {
       clickedIngredient,
       "",
       true,
+      null,
     );
   }
   return (

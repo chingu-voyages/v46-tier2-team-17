@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
-export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
+export default function SideBar({
+  closeRecipeModal,
+  setAllRecipes,
+  setSearchedIngredients,
+}) {
   const [searchedText, setSearchedText] = useState("");
   const [tags, setTags] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
@@ -29,6 +33,8 @@ export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
         searchedWordsArray,
         searchedWordsString,
         tags,
+        false,
+        closeRecipeModal,
       );
 
       setSearchedText("");
@@ -76,6 +82,7 @@ export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
       null,
       [e.target.value],
       true,
+      closeRecipeModal,
     );
   }
 
@@ -86,6 +93,8 @@ export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
           <a href="/">Pantry Picker</a>
         </div>
         <button
+          type="button"
+          title="menu"
           className="mobile-nav__menu-btn"
           onClick={() => asideDesktop.classList.toggle("aside-mobile")}
         >
@@ -101,7 +110,7 @@ export default function SideBar({ setAllRecipes, setSearchedIngredients }) {
             <div className="container-input">
               <input
                 type="search"
-                placeholder="Enter One or more ingredients"
+                placeholder="Enter one or more ingredients"
                 className="search-box"
                 value={searchedText}
                 onKeyDown={(e) => handleKeyDown(e, searchedText)}
