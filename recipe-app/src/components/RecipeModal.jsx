@@ -1,4 +1,5 @@
 import { AiFillCloseCircle } from "react-icons/ai";
+import uniqid from "uniqid";
 
 function Modal({ recipe, closeRecipeModal }) {
   const {
