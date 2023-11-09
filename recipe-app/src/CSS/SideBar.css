@@ -207,6 +207,12 @@ footer a:hover {
     height: 100vh;
     padding: 2em;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .aside-content-container::-webkit-scrollbar {
+    display: none;
   }
 
   .app-logo--desktop {
