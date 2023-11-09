@@ -12,6 +12,20 @@ export default function SideBar({
   const [tags, setTags] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
 
+  function handleAppLogoClick(e) {
+    document.getElementById("error-modal").style.display = "none";
+    e.preventDefault();
+    fetchRecipes(
+      setAllRecipes,
+      setSearchedIngredients,
+      ["random"],
+      "",
+      "",
+      true,
+      closeRecipeModal,
+    );
+  }
+
   // Handle user's search query
   function handleUserQuery(searchedText) {
     const errorModal = document.getElementById("error-modal");
@@ -91,7 +105,7 @@ export default function SideBar({
   return (
     <>
       <nav className="mobile-nav">
-        <div className="app-logo--mobile">
+        <div className="app-logo--mobile" onClick={handleAppLogoClick}>
           <a href="/">Pantry Picker</a>
         </div>
         <button
@@ -106,7 +120,7 @@ export default function SideBar({
       <aside className="aside-desktop">
         <div className="aside-content-container">
           <header>
-            <div className="app-logo--desktop">
+            <div className="app-logo--desktop" onClick={handleAppLogoClick}>
               <a href="/">Pantry Picker</a>
             </div>
             <div className="container-input">
