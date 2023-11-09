@@ -103,8 +103,8 @@ export default function SideBar({
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      [e.target.innerText.toLowerCase()],
-      null,
+      [...searchedIngredients, e.target.innerText.toLowerCase()],
+      searchedIngredients.join(),
       [e.target.value],
       true,
       closeRecipeModal,
