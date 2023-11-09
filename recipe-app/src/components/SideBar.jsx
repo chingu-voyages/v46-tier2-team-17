@@ -52,12 +52,7 @@ export default function SideBar({
         false,
         closeRecipeModal,
       );
-
       setSearchedText("");
-      setTags([]);
-      checkboxes.forEach(
-        (checkbox) => checkbox.checked && (checkbox.checked = false),
-      );
     }
 
     // Show error if inputs begins with invalid character
