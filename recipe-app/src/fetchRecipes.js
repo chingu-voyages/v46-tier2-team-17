@@ -11,7 +11,7 @@ async function fetchRecipes(
   closeRecipeModal,
 ) {
   // Set fetch url based on the availability of searchedWordsString and tags parameters
-  const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20${
+  const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=100${
     searchedWordsString && `&q=${searchedWordsString}`
   }${tags && `&tags=${tags.join()}`}`;
 

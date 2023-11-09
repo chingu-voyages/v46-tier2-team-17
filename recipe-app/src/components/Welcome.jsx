@@ -1,5 +1,5 @@
 import { useState } from "react";
-import recipes from "../data/recipes";
+import recipes from "../recipesListObj";
 
 function Welcome() {
   const [selectedRecipeImage] = useState(

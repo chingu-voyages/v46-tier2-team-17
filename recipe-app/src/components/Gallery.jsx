@@ -5,7 +5,7 @@ import Error from "./Error";
 import Loader from "./Loader";
 import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
-// import data from "../data/recipes";
+// import recipes from "../recipesListObj";
 
 function Gallery({
   recipeModal,
@@ -18,7 +18,7 @@ function Gallery({
   setSearchedIngredients,
 }) {
   // useEffect(() => {
-  //   setAllRecipes(data.results);
+  //   setAllRecipes(recipes.results);
   // }, []);
 
   useEffect(() => {
