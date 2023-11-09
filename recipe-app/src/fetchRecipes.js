@@ -29,7 +29,6 @@ async function fetchRecipes(
     const response = await fetch(url, options);
     const result = await response.text();
     const recipesArray = JSON.parse(result).results;
-    console.log(recipesArray);
     const isValidSearch = categoriesSearch
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
