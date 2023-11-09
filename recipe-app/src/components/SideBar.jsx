@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import fetchRecipes from "../fetchRecipes";
@@ -76,30 +76,23 @@ export default function SideBar({
       const newTags = [...tags];
       newTags.splice(newTags.indexOf(checkedBoxValue), 1);
       setTags(newTags);
-      !searchedText &&
-        fetchRecipes(
-          setAllRecipes,
-          setSearchedIngredients,
-          searchedIngredients,
-          searchedIngredients.join(),
-          tags,
-          true,
-          closeRecipeModal,
-        );
     } else {
       setTags([...tags, checkedBoxValue]);
-      !searchedText &&
-        fetchRecipes(
-          setAllRecipes,
-          setSearchedIngredients,
-          searchedIngredients,
-          searchedIngredients.join(),
-          tags,
-          true,
-          closeRecipeModal,
-        );
     }
   }
+
+  useEffect(() => {
+    !searchedText &&
+      fetchRecipes(
+        setAllRecipes,
+        setSearchedIngredients,
+        searchedIngredients,
+        searchedIngredients.join(),
+        tags,
+        true,
+        closeRecipeModal,
+      );
+  }, [tags]);
 
   function handleKeyDown(e, searchedText) {
     if (e.key === "Enter") {
