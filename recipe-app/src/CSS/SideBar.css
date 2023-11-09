@@ -110,6 +110,12 @@
   text-align: center;
 }
 
+.container-category {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
 .category-btn {
   font-size: 0.8rem;
   border: none;
@@ -118,12 +124,6 @@
   background: #e9ecef;
   color: var(--primary-gray);
   text-align: center;
-}
-
-.container-category {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
 }
 
 .container-checkbox {
@@ -219,5 +219,19 @@ footer a:hover {
 
   .container-category {
     gap: 10px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .container-category {
+    gap: 16px;
+  }
+
+  .category-heading {
+    font-size: 2rem;
+  }
+
+  .category-btn {
+    font-size: 1.2rem;
   }
 }
