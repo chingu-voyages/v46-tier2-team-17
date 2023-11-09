@@ -27,3 +27,9 @@
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
+
+@media (min-width: 1900px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
