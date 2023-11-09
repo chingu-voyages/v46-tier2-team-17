@@ -6,6 +6,7 @@ import fetchRecipes from "../fetchRecipes";
 export default function SideBar({
   closeRecipeModal,
   setAllRecipes,
+  searchedIngredients,
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
@@ -75,8 +76,28 @@ export default function SideBar({
       const newTags = [...tags];
       newTags.splice(newTags.indexOf(checkedBoxValue), 1);
       setTags(newTags);
+      !searchedText &&
+        fetchRecipes(
+          setAllRecipes,
+          setSearchedIngredients,
+          searchedIngredients,
+          searchedIngredients.join(),
+          tags,
+          true,
+          closeRecipeModal,
+        );
     } else {
       setTags([...tags, checkedBoxValue]);
+      !searchedText &&
+        fetchRecipes(
+          setAllRecipes,
+          setSearchedIngredients,
+          searchedIngredients,
+          searchedIngredients.join(),
+          tags,
+          true,
+          closeRecipeModal,
+        );
     }
   }
 
