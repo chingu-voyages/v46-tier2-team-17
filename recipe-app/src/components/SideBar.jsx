@@ -11,8 +11,10 @@ export default function SideBar({
 }) {
   const [searchedText, setSearchedText] = useState("");
   const [tags, setTags] = useState([]);
+  const [categories, setCategories] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
 
+  // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
@@ -34,7 +36,6 @@ export default function SideBar({
 
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
-      const checkboxes = document.querySelectorAll(".checkbox");
       const searchedWordsArray = searchedText
         .toLowerCase()
         .trim()
@@ -48,7 +49,7 @@ export default function SideBar({
         setSearchedIngredients,
         searchedWordsArray,
         searchedWordsString,
-        tags,
+        [...tags, ...categories],
         false,
         closeRecipeModal,
       );
@@ -64,6 +65,13 @@ export default function SideBar({
     }
   }
 
+  function handleKeyDown(e, searchedText) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserQuery(searchedText);
+    }
+  }
+
   function handleCheckboxChange(e) {
     const checkedBoxValue = e.target.value;
     // Remove or add checked box's value from tags state
@@ -76,6 +84,7 @@ export default function SideBar({
     }
   }
 
+  // Fetch recipes whenever the tags state changes and the search box is empty
   useEffect(() => {
     !searchedText &&
       fetchRecipes(
@@ -83,34 +92,41 @@ export default function SideBar({
         setSearchedIngredients,
         searchedIngredients,
         searchedIngredients.join(),
-        tags,
+        [...tags, ...categories],
         true,
         closeRecipeModal,
       );
   }, [tags]);
 
-  function handleKeyDown(e, searchedText) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleUserQuery(searchedText);
-    }
-  }
-
-  // Get category recipes
   function handleCategoriesBtnClick(e) {
+    const clickedCategoryValue = e.target.value;
+
     e.preventDefault();
     e.target.classList.toggle("category-active");
     asideDesktop.classList.remove("aside-mobile");
+
+    // Remove or add category's value from categories state
+    if (categories.includes(clickedCategoryValue)) {
+      const newCategories = [...categories];
+      newCategories.splice(newCategories.indexOf(clickedCategoryValue), 1);
+      setCategories(newCategories);
+    } else {
+      setCategories([...categories, clickedCategoryValue]);
+    }
+  }
+
+  // Fetch recipes whenever categories state changes
+  useEffect(() => {
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      [...searchedIngredients, e.target.innerText.toLowerCase()],
+      searchedIngredients,
       searchedIngredients.join(),
-      [e.target.value],
+      [...tags, ...categories],
       true,
       closeRecipeModal,
     );
-  }
+  }, [categories]);
 
   return (
     <>
