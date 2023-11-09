@@ -7,7 +7,7 @@ async function fetchRecipes(
   searchedWordsArray,
   searchedWordsString,
   tags,
-  categoriesSearch,
+  skipValidationCheck,
   closeRecipeModal,
 ) {
   // Set fetch url based on the availability of searchedWordsString and tags parameters
@@ -29,7 +29,7 @@ async function fetchRecipes(
     const response = await fetch(url, options);
     const result = await response.text();
     const recipesArray = JSON.parse(result).results;
-    const isValidSearch = categoriesSearch
+    const isValidSearch = skipValidationCheck
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
 
