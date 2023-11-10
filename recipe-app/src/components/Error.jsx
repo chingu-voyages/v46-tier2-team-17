@@ -4,6 +4,7 @@ import fetchRecipes from "../fetchRecipes";
 function Error({ setAllRecipes, setSearchedIngredients, closeRecipeModal }) {
   // Get recipes for clicked ingredient link
   function suggestionClick(e) {
+    console.log("suggestionClick");
     const clickedIngredient = e.target.innerText.toLowerCase();
     e.preventDefault();
     e.currentTarget.closest("#error-modal").style.display = "none";

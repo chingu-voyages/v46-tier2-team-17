@@ -10,6 +10,7 @@ async function fetchRecipes(
   skipValidationCheck,
   closeRecipeModal,
 ) {
+  console.log(tags);
   // Set fetch url based on the availability of searchedWordsString and tags parameters
   const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=100${
     searchedWordsString && `&q=${searchedWordsString}`
@@ -28,7 +29,9 @@ async function fetchRecipes(
   try {
     const response = await fetch(url, options);
     const result = await response.text();
-    const recipesArray = JSON.parse(result).results;
+    const resultJSVersion = JSON.parse(result);
+    console.log(resultJSVersion);
+    const recipesArray = resultJSVersion.results;
     const isValidSearch = skipValidationCheck
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);

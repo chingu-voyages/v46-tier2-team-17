@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillGithub } from "react-icons/ai";
@@ -11,12 +11,16 @@ export default function SideBar({
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
-  const [tags, setTags] = useState([]);
-  const [categories, setCategories] = useState([]);
+  // const [tags, setTags] = useState([]);
+  // const [categories, setCategories] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
+
+  const checkboxValues = useRef([]);
+  const categoriesValues = useRef([]);
 
   // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
+    console.log("handleAppLogoClick");
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
     fetchRecipes(
@@ -45,12 +49,14 @@ export default function SideBar({
       const searchedWordsString = searchedWordsArray.join();
       errorModal.style.display = "none";
 
+      console.log("handleUserQuery IF block");
+
       fetchRecipes(
         setAllRecipes,
         setSearchedIngredients,
         searchedWordsArray,
         searchedWordsString,
-        [...tags, ...categories],
+        [...checkboxValues.current, ...categoriesValues.current],
         false,
         closeRecipeModal,
       );
@@ -74,60 +80,112 @@ export default function SideBar({
   }
 
   function handleCheckboxChange(e) {
-    const checkedBoxValue = e.target.value;
-    // Remove or add checked box's value from tags state
-    if (tags.includes(checkedBoxValue)) {
-      const newTags = [...tags];
-      newTags.splice(newTags.indexOf(checkedBoxValue), 1);
-      setTags(newTags);
-    } else {
-      setTags([...tags, checkedBoxValue]);
-    }
-  }
+    console.log("handleCheckboxChange");
+    const changedCheckboxValue = e.target.value;
+    const currentCheckboxValues = checkboxValues.current;
 
-  // Fetch recipes whenever the tags state changes and the search box is empty
-  useEffect(() => {
+    console.log(checkboxValues);
+    console.log(currentCheckboxValues);
+
+    // Remove or add checked box's value from tags state
+    if (currentCheckboxValues.includes(changedCheckboxValue)) {
+      const newCheckboxValues = [...currentCheckboxValues];
+      newCheckboxValues.splice(
+        newCheckboxValues.indexOf(changedCheckboxValue),
+        1,
+      );
+      checkboxValues.current = newCheckboxValues;
+      // setTags(newTags);
+      console.log(checkboxValues);
+    } else {
+      checkboxValues.current = [...currentCheckboxValues, changedCheckboxValue];
+      // setTags([...tags, changedCheckboxValue]);
+      console.log(checkboxValues);
+    }
+
     !searchedText &&
       fetchRecipes(
         setAllRecipes,
         setSearchedIngredients,
         searchedIngredients,
         searchedIngredients.join(),
-        [...tags, ...categories],
+        [...checkboxValues.current, ...categoriesValues.current],
         true,
         closeRecipeModal,
       );
-  }, [tags]);
+  }
+
+  // Fetch recipes whenever the tags state changes and the search box is empty
+  // useEffect(() => {
+  //   console.log("handleCheckboxChange useEffect");
+  //   !searchedText &&
+  //     fetchRecipes(
+  //       setAllRecipes,
+  //       setSearchedIngredients,
+  //       searchedIngredients,
+  //       searchedIngredients.join(),
+  //       [...tags, ...categories],
+  //       true,
+  //       closeRecipeModal,
+  //     );
+  // }, [tags]);
 
   function handleCategoriesBtnClick(e) {
+    console.log("handleCategoriesBtnClick");
     const clickedCategoryValue = e.target.value;
+    const currentCategoriesValues = categoriesValues.current;
+
+    console.log(clickedCategoryValue);
+    console.log(currentCategoriesValues);
 
     e.preventDefault();
     e.target.classList.toggle("category-active");
     asideDesktop.classList.remove("aside-mobile");
 
     // Remove or add category's value from categories state
-    if (categories.includes(clickedCategoryValue)) {
-      const newCategories = [...categories];
-      newCategories.splice(newCategories.indexOf(clickedCategoryValue), 1);
-      setCategories(newCategories);
-    } else {
-      setCategories([...categories, clickedCategoryValue]);
-    }
-  }
+    if (currentCategoriesValues.includes(clickedCategoryValue)) {
+      const newCategories = [...currentCategoriesValues];
+      newCategories.splice(newCategories.indexOf(currentCategoriesValues), 1);
 
-  // Fetch recipes whenever categories state changes
-  useEffect(() => {
+      categoriesValues.current = newCategories;
+
+      // setCategories(newCategories);
+
+      console.log(categoriesValues);
+    } else {
+      categoriesValues.current = [
+        ...currentCategoriesValues,
+        clickedCategoryValue,
+      ];
+      // setCategories([...categories, clickedCategoryValue]);
+      console.log(categoriesValues);
+    }
+
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
       searchedIngredients,
       searchedIngredients.join(),
-      [...tags, ...categories],
+      [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
     );
-  }, [categories]);
+  }
+
+  // Fetch recipes whenever categories state changes
+  // useEffect(() => {
+  //   console.log("handleCategoriesBtnClick useEffect");
+
+  //   fetchRecipes(
+  //     setAllRecipes,
+  //     setSearchedIngredients,
+  //     searchedIngredients,
+  //     searchedIngredients.join(),
+  //     [...tags, ...categories],
+  //     true,
+  //     closeRecipeModal,
+  //   );
+  // }, [categories]);
 
   return (
     <>
