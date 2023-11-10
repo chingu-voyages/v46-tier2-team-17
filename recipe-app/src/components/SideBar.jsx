@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import {AiFillGithub} from "react-icons/ai"
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
@@ -280,7 +281,7 @@ export default function SideBar({
               href="https://github.com/chingu-voyages/v46-tier2-team-17"
               target="_blank"
             >
-              <img src="/github.svg" className="footer-img" />
+              <AiFillGithub />
               <span>Designed and Created by Chingu v46-Tier2-Team-17</span>
             </a>
           </footer>
