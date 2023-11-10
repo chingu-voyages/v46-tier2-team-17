@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillGithub } from "react-icons/ai";
@@ -11,12 +11,9 @@ export default function SideBar({
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
-  // const [tags, setTags] = useState([]);
-  // const [categories, setCategories] = useState([]);
-  const asideDesktop = document.querySelector(".aside-desktop");
-
   const checkboxValues = useRef([]);
   const categoriesValues = useRef([]);
+  const asideDesktop = document.querySelector(".aside-desktop");
 
   // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
@@ -95,14 +92,13 @@ export default function SideBar({
         1,
       );
       checkboxValues.current = newCheckboxValues;
-      // setTags(newTags);
       console.log(checkboxValues);
     } else {
       checkboxValues.current = [...currentCheckboxValues, changedCheckboxValue];
-      // setTags([...tags, changedCheckboxValue]);
       console.log(checkboxValues);
     }
 
+    // Fetch recipes if the search box is empty
     !searchedText &&
       fetchRecipes(
         setAllRecipes,
@@ -114,21 +110,6 @@ export default function SideBar({
         closeRecipeModal,
       );
   }
-
-  // Fetch recipes whenever the tags state changes and the search box is empty
-  // useEffect(() => {
-  //   console.log("handleCheckboxChange useEffect");
-  //   !searchedText &&
-  //     fetchRecipes(
-  //       setAllRecipes,
-  //       setSearchedIngredients,
-  //       searchedIngredients,
-  //       searchedIngredients.join(),
-  //       [...tags, ...categories],
-  //       true,
-  //       closeRecipeModal,
-  //     );
-  // }, [tags]);
 
   function handleCategoriesBtnClick(e) {
     console.log("handleCategoriesBtnClick");
@@ -148,16 +129,12 @@ export default function SideBar({
       newCategories.splice(newCategories.indexOf(currentCategoriesValues), 1);
 
       categoriesValues.current = newCategories;
-
-      // setCategories(newCategories);
-
       console.log(categoriesValues);
     } else {
       categoriesValues.current = [
         ...currentCategoriesValues,
         clickedCategoryValue,
       ];
-      // setCategories([...categories, clickedCategoryValue]);
       console.log(categoriesValues);
     }
 
@@ -171,21 +148,6 @@ export default function SideBar({
       closeRecipeModal,
     );
   }
-
-  // Fetch recipes whenever categories state changes
-  // useEffect(() => {
-  //   console.log("handleCategoriesBtnClick useEffect");
-
-  //   fetchRecipes(
-  //     setAllRecipes,
-  //     setSearchedIngredients,
-  //     searchedIngredients,
-  //     searchedIngredients.join(),
-  //     [...tags, ...categories],
-  //     true,
-  //     closeRecipeModal,
-  //   );
-  // }, [categories]);
 
   return (
     <>
