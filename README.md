@@ -1,31 +1,47 @@
-# voyage-tasks
+# Pantry Picker
 
-Your project's `readme` is as important to success as your code. For
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+## Overview
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point -
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+This project required the development of a React-based front-end application that interfaces with a publicly accessible API. The app includes various components designed to assist individuals interested in experimenting with recipes and flavors, offering novel ways to explore and create dishes.
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Timeframe
 
-> Own it & Make it your Own!
+6 weeks (October 2nd to Nov 12th 2023)
 
-## Team Documents
+## Team Planning
 
-You may find these helpful as you work together to organize your project.
+The aim of the project was discussed during the Voyage kickoff meeting and documented as below:
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+- Meeting - Voyage Kickoff --> https://docs.google.com/document/d/1mBwKALAWLKYF2rXh0FSt9KNW0RJ9qK6wRiRhOZg-uus/edit
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+The tasks were created and assigned using Sprint methodology. Jira Software was used to organise the sprint tasks.
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+- Jira board - https://chingu11.atlassian.net/jira/software/projects/TAS/boards/1
+
+The Pantry Picker application was designed using the Figma tool as below:
+
+- https://www.figma.com/file/nSFnfEfLe8YKcbGnc6G1On/Untitled?type=whiteboard&node-id=0-1&t=OUFaRvyteVALtEC4-0
+
+## Features
+
+- Sliding welcome message on the home page.
+- Search field allowing users to input single or multiple ingredients.
+- Ability to filter recipes by factors such as difficulty level, cooking duration, and number of ingredients.
+- Ability to filter categories such as Dairy Free, Vegan, Pescaterian, Low-carb, Gluten free, Vegetarian, Comfort food, Kid friendly.
+- Default light text in the search field explaining the utility of the application.
+- Scrollable list of recipe cards displayed based on search criteria (max 20 recipes per search).
+- Recipe Page:
+  - Name
+  - Category
+  - Difficulty tag
+  - Servings tag
+  - List of instructions
+  - List of nutrition
+  - List of ingredients
+  - Link to the instruction video
+- Error message displayed when an unlisted item is entered.
+- A footer with a link to our team's GitHub repository.
+- The application is mobile and tablet responsive.
 
 ## Quickstart
 
