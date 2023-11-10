@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {AiFillGithub} from "react-icons/ai"
+import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
@@ -177,7 +177,7 @@ export default function SideBar({
                   value="under_30_minutes"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-30mins">
+                <label className="checkbox-label" htmlFor="checkbox-30mins">
                   Under 30 minutes
                 </label>
               </div>
@@ -189,7 +189,10 @@ export default function SideBar({
                   value="5_ingredients_or_less"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-5ingredients">
+                <label
+                  className="checkbox-label"
+                  htmlFor="checkbox-5ingredients"
+                >
                   Five ingredients or less
                 </label>
               </div>
@@ -201,7 +204,7 @@ export default function SideBar({
                   value="easy"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-easy">
+                <label className="checkbox-label" htmlFor="checkbox-easy">
                   Easy
                 </label>
               </div>
