@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {AiFillGithub} from "react-icons/ai"
+import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
   closeRecipeModal,
   setAllRecipes,
+  searchedIngredients,
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
   const [tags, setTags] = useState([]);
+  const [categories, setCategories] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
 
+  // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
@@ -34,7 +37,6 @@ export default function SideBar({
 
     // Check if input begins with valid character
     if (/^[^_|\W]/.test(searchedText)) {
-      const checkboxes = document.querySelectorAll(".checkbox");
       const searchedWordsArray = searchedText
         .toLowerCase()
         .trim()
@@ -48,16 +50,11 @@ export default function SideBar({
         setSearchedIngredients,
         searchedWordsArray,
         searchedWordsString,
-        tags,
+        [...tags, ...categories],
         false,
         closeRecipeModal,
       );
-
       setSearchedText("");
-      setTags([]);
-      checkboxes.forEach(
-        (checkbox) => checkbox.checked && (checkbox.checked = false),
-      );
     }
 
     // Show error if inputs begins with invalid character
@@ -66,6 +63,13 @@ export default function SideBar({
       ingredient404Element.innerText = searchedText.trim();
       errorModal.style.display = "flex";
       setSearchedText("");
+    }
+  }
+
+  function handleKeyDown(e, searchedText) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserQuery(searchedText);
     }
   }
 
@@ -81,27 +85,49 @@ export default function SideBar({
     }
   }
 
-  function handleKeyDown(e, searchedText) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleUserQuery(searchedText);
+  // Fetch recipes whenever the tags state changes and the search box is empty
+  useEffect(() => {
+    !searchedText &&
+      fetchRecipes(
+        setAllRecipes,
+        setSearchedIngredients,
+        searchedIngredients,
+        searchedIngredients.join(),
+        [...tags, ...categories],
+        true,
+        closeRecipeModal,
+      );
+  }, [tags]);
+
+  function handleCategoriesBtnClick(e) {
+    const clickedCategoryValue = e.target.value;
+
+    e.preventDefault();
+    e.target.classList.toggle("category-active");
+    asideDesktop.classList.remove("aside-mobile");
+
+    // Remove or add category's value from categories state
+    if (categories.includes(clickedCategoryValue)) {
+      const newCategories = [...categories];
+      newCategories.splice(newCategories.indexOf(clickedCategoryValue), 1);
+      setCategories(newCategories);
+    } else {
+      setCategories([...categories, clickedCategoryValue]);
     }
   }
 
-  // Get category recipes
-  function handleCategoriesBtnClick(e) {
-    e.preventDefault();
-    asideDesktop.classList.remove("aside-mobile");
+  // Fetch recipes whenever categories state changes
+  useEffect(() => {
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      [e.target.innerText.toLowerCase()],
-      null,
-      [e.target.value],
+      searchedIngredients,
+      searchedIngredients.join(),
+      [...tags, ...categories],
       true,
       closeRecipeModal,
     );
-  }
+  }, [categories]);
 
   return (
     <>
@@ -151,7 +177,7 @@ export default function SideBar({
                   value="under_30_minutes"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-30mins">
+                <label className="checkbox-label" htmlFor="checkbox-30mins">
                   Under 30 minutes
                 </label>
               </div>
@@ -163,7 +189,10 @@ export default function SideBar({
                   value="5_ingredients_or_less"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-5ingredients">
+                <label
+                  className="checkbox-label"
+                  htmlFor="checkbox-5ingredients"
+                >
                   Five ingredients or less
                 </label>
               </div>
@@ -175,7 +204,7 @@ export default function SideBar({
                   value="easy"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-easy">
+                <label className="checkbox-label" htmlFor="checkbox-easy">
                   Easy
                 </label>
               </div>

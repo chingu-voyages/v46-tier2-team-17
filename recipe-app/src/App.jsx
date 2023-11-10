@@ -26,6 +26,7 @@ function App() {
         <SideBar
           closeRecipeModal={closeRecipeModal}
           setAllRecipes={(recipesArray) => setAllRecipes(recipesArray)}
+          searchedIngredients={searchedIngredients}
           setSearchedIngredients={(ingredientsArray) =>
             setSearchedIngredients(ingredientsArray)
           }
