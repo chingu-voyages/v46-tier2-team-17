@@ -165,7 +165,7 @@ footer a:hover {
 
 .footer-img {
   width: 10%;
-  color: #fff;
+  color: var(--primary-white);
 }
 
 /***********/
