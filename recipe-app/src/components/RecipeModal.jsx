@@ -53,7 +53,12 @@ function Modal({ recipe, closeRecipeModal }) {
   }
 
   return (
-    <article className="recipe-modal">
+    <article
+      className="recipe-modal"
+      onClick={(e) =>
+        e.target.className === "recipe-modal" && closeRecipeModal()
+      }
+    >
       <div className="recipe-page">
         <button
           title="Close"

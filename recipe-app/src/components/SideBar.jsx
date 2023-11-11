@@ -1,68 +1,78 @@
 import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
+  checkboxValues,
+  categoriesValues,
+  totalRecipes,
+  setTotalRecipes,
   closeRecipeModal,
   setAllRecipes,
+  searchedIngredients,
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
-  const [tags, setTags] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
+
+  // Fetch random recipes onclick of the app's logo
+  function handleAppLogoClick(e) {
+    document.getElementById("error-modal").style.display = "none";
+    e.preventDefault();
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
+      setAllRecipes,
+      setSearchedIngredients,
+      ["random"],
+      "",
+      "",
+      true,
+      closeRecipeModal,
+      0,
+    );
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+  }
 
   // Handle user's search query
   function handleUserQuery(searchedText) {
-    const errorModal = document.getElementById("error-modal");
-    asideDesktop.classList.remove("aside-mobile");
+    if (searchedText) {
+      const errorModal = document.getElementById("error-modal");
+      asideDesktop.classList.remove("aside-mobile");
 
-    // Check if input begins with valid character
-    if (/^[^_|\W]/.test(searchedText)) {
-      const checkboxes = document.querySelectorAll(".checkbox");
-      const searchedWordsArray = searchedText
-        .toLowerCase()
-        .trim()
-        .split(/[\W|_]/g)
-        .filter((item) => item);
-      const searchedWordsString = searchedWordsArray.join();
-      errorModal.style.display = "none";
+      // Check if input begins with valid character
+      if (/^[^_|\W]/.test(searchedText)) {
+        const searchedWordsArray = searchedText
+          .toLowerCase()
+          .trim()
+          .split(/[\W|_]/g)
+          .filter((item) => item);
+        const searchedWordsString = searchedWordsArray.join();
+        errorModal.style.display = "none";
 
-      fetchRecipes(
-        setAllRecipes,
-        setSearchedIngredients,
-        searchedWordsArray,
-        searchedWordsString,
-        tags,
-        false,
-        closeRecipeModal,
-      );
+        let totalRecipesAvailable = null;
+        totalRecipesAvailable = fetchRecipes(
+          setAllRecipes,
+          setSearchedIngredients,
+          searchedWordsArray,
+          searchedWordsString,
+          [...checkboxValues.current, ...categoriesValues.current],
+          false,
+          closeRecipeModal,
+          0,
+        );
+        totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+        setSearchedText("");
+      }
 
-      setSearchedText("");
-      setTags([]);
-      checkboxes.forEach(
-        (checkbox) => checkbox.checked && (checkbox.checked = false),
-      );
-    }
-
-    // Show error if inputs begins with invalid character
-    if (/^[_|\W]/.test(searchedText)) {
-      const ingredient404Element = document.getElementById("ingredient-404");
-      ingredient404Element.innerText = searchedText.trim();
-      errorModal.style.display = "flex";
-      setSearchedText("");
-    }
-  }
-
-  function handleCheckboxChange(e) {
-    const checkedBoxValue = e.target.value;
-    // Remove or add checked box's value from tags state
-    if (tags.includes(checkedBoxValue)) {
-      const newTags = [...tags];
-      newTags.splice(newTags.indexOf(checkedBoxValue), 1);
-      setTags(newTags);
-    } else {
-      setTags([...tags, checkedBoxValue]);
+      // Show error if inputs begins with invalid character
+      if (/^[_|\W]/.test(searchedText)) {
+        const ingredient404Element = document.getElementById("ingredient-404");
+        ingredient404Element.innerText = searchedText.trim();
+        errorModal.style.display = "flex";
+        setSearchedText("");
+      }
     }
   }
 
@@ -73,25 +83,79 @@ export default function SideBar({
     }
   }
 
-  // Get category recipes
-  function handleCategoriesBtnClick(e) {
+  function handleCheckboxChange(e) {
+    const changedCheckboxValue = e.target.value;
+    const currentCheckboxValues = checkboxValues.current;
+
+    // Remove or add checked box's value from tags state
+    if (currentCheckboxValues.includes(changedCheckboxValue)) {
+      const newCheckboxValues = [...currentCheckboxValues];
+      newCheckboxValues.splice(
+        newCheckboxValues.indexOf(changedCheckboxValue),
+        1,
+      );
+      checkboxValues.current = newCheckboxValues;
+    } else {
+      checkboxValues.current = [...currentCheckboxValues, changedCheckboxValue];
+    }
+
+    // Fetch recipes if the search box is empty
+    if (!searchedText) {
+      let totalRecipesAvailable = null;
+      totalRecipesAvailable = fetchRecipes(
+        setAllRecipes,
+        setSearchedIngredients,
+        searchedIngredients,
+        "",
+        [...checkboxValues.current, ...categoriesValues.current],
+        true,
+        closeRecipeModal,
+        0,
+      );
+      totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+    }
+  }
+
+  async function handleCategoriesBtnClick(e) {
+    const clickedCategoryValue = e.target.value;
+    const currentCategoriesValues = categoriesValues.current;
+
     e.preventDefault();
+    e.target.classList.toggle("category-active");
     asideDesktop.classList.remove("aside-mobile");
-    fetchRecipes(
+
+    // Remove or add category's value from categories state
+    if (currentCategoriesValues.includes(clickedCategoryValue)) {
+      const newCategories = [...currentCategoriesValues];
+      newCategories.splice(newCategories.indexOf(currentCategoriesValues), 1);
+
+      categoriesValues.current = newCategories;
+    } else {
+      categoriesValues.current = [
+        ...currentCategoriesValues,
+        clickedCategoryValue,
+      ];
+    }
+
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      [e.target.innerText.toLowerCase()],
-      null,
-      [e.target.value],
+      searchedIngredients,
+      "",
+      [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
+      0,
     );
+
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
 
   return (
     <>
       <nav className="mobile-nav">
-        <div className="app-logo--mobile">
+        <div className="app-logo--mobile" onClick={handleAppLogoClick}>
           <a href="/">Pantry Picker</a>
         </div>
         <button
@@ -106,7 +170,7 @@ export default function SideBar({
       <aside className="aside-desktop">
         <div className="aside-content-container">
           <header>
-            <div className="app-logo--desktop">
+            <div className="app-logo--desktop" onClick={handleAppLogoClick}>
               <a href="/">Pantry Picker</a>
             </div>
             <div className="container-input">
@@ -136,7 +200,7 @@ export default function SideBar({
                   value="under_30_minutes"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-30mins">
+                <label className="checkbox-label" htmlFor="checkbox-30mins">
                   Under 30 minutes
                 </label>
               </div>
@@ -148,7 +212,10 @@ export default function SideBar({
                   value="5_ingredients_or_less"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-5ingredients">
+                <label
+                  className="checkbox-label"
+                  htmlFor="checkbox-5ingredients"
+                >
                   Five ingredients or less
                 </label>
               </div>
@@ -160,7 +227,7 @@ export default function SideBar({
                   value="easy"
                   onChange={handleCheckboxChange}
                 />
-                <label className="label-title" htmlFor="checkbox-easy">
+                <label className="checkbox-label" htmlFor="checkbox-easy">
                   Easy
                 </label>
               </div>
@@ -240,7 +307,7 @@ export default function SideBar({
               href="https://github.com/chingu-voyages/v46-tier2-team-17"
               target="_blank"
             >
-              <img src="/github.svg" className="footer-img" />
+              <AiFillGithub />
               <span>Designed and Created by Chingu v46-Tier2-Team-17</span>
             </a>
           </footer>

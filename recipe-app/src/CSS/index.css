@@ -23,6 +23,8 @@
   --page-desktop-gallery-width: calc(100vw - var(--page-desktop-aside-width));
   --page-gallery-block-padding: 7rem;
   --page-gallery-inline-padding: 2rem;
+  --search-box-height-standard: 35px;
+  --search-box-height-large: 47px;
 
   --z-index-level-1: 100;
   --z-index-level-2: 200;
