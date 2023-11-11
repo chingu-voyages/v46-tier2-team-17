@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
@@ -6,8 +6,8 @@ import Loader from "./Loader";
 import Pagination from "./Pagination";
 import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
-// import fetchRecipes from "../fetchRecipes";
-import exampleRecipes from "../exampleRecipes";
+import fetchRecipes from "../fetchRecipes";
+// import exampleRecipes from "../exampleRecipes";
 
 function Gallery({
   totalRecipes,
@@ -21,25 +21,25 @@ function Gallery({
   searchedIngredients,
   setSearchedIngredients,
 }) {
-  useEffect(() => {
-    setAllRecipes(exampleRecipes.results);
-    setTotalRecipes(exampleRecipes.results.length);
-  }, []);
-
   // useEffect(() => {
-  //   let totalRecipesAvailable = null;
-  //   totalRecipesAvailable = fetchRecipes(
-  //     setAllRecipes,
-  //     setSearchedIngredients,
-  //     ["random"],
-  //     "",
-  //     "",
-  //     true,
-  //     closeRecipeModal,
-  //     0,
-  //   );
-  //   totalRecipesAvailable.then((total) => setTotalRecipes(total));
+  //   setAllRecipes(exampleRecipes.results);
+  //   setTotalRecipes(exampleRecipes.results.length);
   // }, []);
+
+  useEffect(() => {
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
+      setAllRecipes,
+      setSearchedIngredients,
+      ["random"],
+      "",
+      "",
+      true,
+      closeRecipeModal,
+      0,
+    );
+    totalRecipesAvailable.then((total) => setTotalRecipes(total));
+  }, []);
 
   // Create ingredient <span>s from user's query
   function createSearchedIngredientsTags(searchedIngredients) {

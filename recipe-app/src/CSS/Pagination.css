@@ -2,9 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   list-style: none;
   gap: 7px;
   margin-top: 70px;
+  padding: 0;
   width: inherit;
 }
 
@@ -26,8 +28,9 @@
   align-items: center;
   border: 1px solid var(--secondary-gray);
   border-radius: 5px;
-  min-width: 33px;
-  height: 33px;
+  padding: 5px;
+  min-width: 30px;
+  height: 30px;
   color: var(--primary-gray);
   cursor: pointer;
 }
