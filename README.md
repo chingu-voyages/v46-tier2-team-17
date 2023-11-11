@@ -51,8 +51,6 @@ The Pantry Picker application was designed using the Figma tool as below:
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/bbcab104-6261-467d-a208-d9bdc8864f4b" width="300">
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/70977785-4e37-4fea-8522-40b3f7d9cf16" width="300">
 
-
-
 ## Responsive Design
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/71c72881-2caa-4468-a7a8-83c210f27600" width="150">
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/9af8a3dd-6387-433b-95b1-7db464ad4673" width="150">
@@ -61,9 +59,23 @@ The Pantry Picker application was designed using the Figma tool as below:
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/354d59ec-df53-4e02-8009-7d7ccd6b7f14" width="150">
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/e764ae1f-f455-46e7-b2f9-bfa0c3709fcb" width="150">
 
-## Quickstart
+## Dependencies
+- React
+- React-Dom
+- React Icons
+- React-Loader-Spinner
+- React-Paginate
+- Uniqid
 
-Below are the steps to get started locally.
+## Dev Dependencies
+- ESLint
+- Playwright
+- Prettier
+- Vite
+
+## Contribution Guide
+
+Below are the steps to contribute to the project.
 
 ### 1. Clone only the `development` branch
 
@@ -162,3 +174,14 @@ git push origin HEAD
 ### 15. Create your PR on GitHub
 
 Go to the project’s GitHub repository (this repo) and create a Pull Request **to the development branch**.
+
+## Contributors
+
+
+- [Oluwatobi Sofela](https://github.com/oluwatobiss) - Developer
+- [Ovie Oddiri](https://github.com/Oviep) - Developer
+- [Kara Guarraci](https://github.com/karaguarraci) - Developer
+- [Archana Dharaneedharan](https://github.com/arch1510) - Product Owner
+- [Warren Hawker](https://github.com/WarrenHawker) - Voyage Guide
+
+
