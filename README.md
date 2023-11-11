@@ -43,6 +43,24 @@ The Pantry Picker application was designed using the Figma tool as below:
 - A footer with a link to our team's GitHub repository.
 - The application is mobile and tablet responsive.
 
+## Application Visuals
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/20922b8a-cc4d-4aed-a93f-3da98b7c04ea" width="300">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/6df0d71a-46d3-4e3c-b196-12a634409bec" width="300">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/4062b497-a651-4424-9a31-368a0170fb97" width="300">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/d0cb588a-5ace-401b-a65a-5bd9d8e03318" width="300">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/bbcab104-6261-467d-a208-d9bdc8864f4b" width="300">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/70977785-4e37-4fea-8522-40b3f7d9cf16" width="300">
+
+
+
+## Responsive Design
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/71c72881-2caa-4468-a7a8-83c210f27600" width="150">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/9af8a3dd-6387-433b-95b1-7db464ad4673" width="150">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/b8a0cc59-e918-48a7-b6b3-86b1ee75f518" width="150">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/3baee1a6-3e53-4607-a5ef-53bb02cf99d2" width="150">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/354d59ec-df53-4e02-8009-7d7ccd6b7f14" width="150">
+<img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/e764ae1f-f455-46e7-b2f9-bfa0c3709fcb" width="150">
+
 ## Quickstart
 
 Below are the steps to get started locally.
