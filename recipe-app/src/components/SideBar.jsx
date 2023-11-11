@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
+  checkboxValues,
+  categoriesValues,
+  totalRecipes,
+  setTotalRecipes,
   closeRecipeModal,
   setAllRecipes,
   searchedIngredients,
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
-  const [tags, setTags] = useState([]);
-  const [categories, setCategories] = useState([]);
   const asideDesktop = document.querySelector(".aside-desktop");
 
   // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
-    fetchRecipes(
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
       ["random"],
@@ -27,42 +30,49 @@ export default function SideBar({
       "",
       true,
       closeRecipeModal,
+      0,
     );
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
 
   // Handle user's search query
   function handleUserQuery(searchedText) {
-    const errorModal = document.getElementById("error-modal");
-    asideDesktop.classList.remove("aside-mobile");
+    if (searchedText) {
+      const errorModal = document.getElementById("error-modal");
+      asideDesktop.classList.remove("aside-mobile");
 
-    // Check if input begins with valid character
-    if (/^[^_|\W]/.test(searchedText)) {
-      const searchedWordsArray = searchedText
-        .toLowerCase()
-        .trim()
-        .split(/[\W|_]/g)
-        .filter((item) => item);
-      const searchedWordsString = searchedWordsArray.join();
-      errorModal.style.display = "none";
+      // Check if input begins with valid character
+      if (/^[^_|\W]/.test(searchedText)) {
+        const searchedWordsArray = searchedText
+          .toLowerCase()
+          .trim()
+          .split(/[\W|_]/g)
+          .filter((item) => item);
+        const searchedWordsString = searchedWordsArray.join();
+        errorModal.style.display = "none";
 
-      fetchRecipes(
-        setAllRecipes,
-        setSearchedIngredients,
-        searchedWordsArray,
-        searchedWordsString,
-        [...tags, ...categories],
-        false,
-        closeRecipeModal,
-      );
-      setSearchedText("");
-    }
+        let totalRecipesAvailable = null;
+        totalRecipesAvailable = fetchRecipes(
+          setAllRecipes,
+          setSearchedIngredients,
+          searchedWordsArray,
+          searchedWordsString,
+          [...checkboxValues.current, ...categoriesValues.current],
+          false,
+          closeRecipeModal,
+          0,
+        );
+        totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+        setSearchedText("");
+      }
 
-    // Show error if inputs begins with invalid character
-    if (/^[_|\W]/.test(searchedText)) {
-      const ingredient404Element = document.getElementById("ingredient-404");
-      ingredient404Element.innerText = searchedText.trim();
-      errorModal.style.display = "flex";
-      setSearchedText("");
+      // Show error if inputs begins with invalid character
+      if (/^[_|\W]/.test(searchedText)) {
+        const ingredient404Element = document.getElementById("ingredient-404");
+        ingredient404Element.innerText = searchedText.trim();
+        errorModal.style.display = "flex";
+        setSearchedText("");
+      }
     }
   }
 
@@ -74,60 +84,73 @@ export default function SideBar({
   }
 
   function handleCheckboxChange(e) {
-    const checkedBoxValue = e.target.value;
-    // Remove or add checked box's value from tags state
-    if (tags.includes(checkedBoxValue)) {
-      const newTags = [...tags];
-      newTags.splice(newTags.indexOf(checkedBoxValue), 1);
-      setTags(newTags);
-    } else {
-      setTags([...tags, checkedBoxValue]);
-    }
-  }
+    const changedCheckboxValue = e.target.value;
+    const currentCheckboxValues = checkboxValues.current;
 
-  // Fetch recipes whenever the tags state changes and the search box is empty
-  useEffect(() => {
-    !searchedText &&
-      fetchRecipes(
+    // Remove or add checked box's value from tags state
+    if (currentCheckboxValues.includes(changedCheckboxValue)) {
+      const newCheckboxValues = [...currentCheckboxValues];
+      newCheckboxValues.splice(
+        newCheckboxValues.indexOf(changedCheckboxValue),
+        1,
+      );
+      checkboxValues.current = newCheckboxValues;
+    } else {
+      checkboxValues.current = [...currentCheckboxValues, changedCheckboxValue];
+    }
+
+    // Fetch recipes if the search box is empty
+    if (!searchedText) {
+      let totalRecipesAvailable = null;
+      totalRecipesAvailable = fetchRecipes(
         setAllRecipes,
         setSearchedIngredients,
         searchedIngredients,
-        searchedIngredients.join(),
-        [...tags, ...categories],
+        "",
+        [...checkboxValues.current, ...categoriesValues.current],
         true,
         closeRecipeModal,
+        0,
       );
-  }, [tags]);
+      totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+    }
+  }
 
-  function handleCategoriesBtnClick(e) {
+  async function handleCategoriesBtnClick(e) {
     const clickedCategoryValue = e.target.value;
+    const currentCategoriesValues = categoriesValues.current;
 
     e.preventDefault();
     e.target.classList.toggle("category-active");
     asideDesktop.classList.remove("aside-mobile");
 
     // Remove or add category's value from categories state
-    if (categories.includes(clickedCategoryValue)) {
-      const newCategories = [...categories];
-      newCategories.splice(newCategories.indexOf(clickedCategoryValue), 1);
-      setCategories(newCategories);
-    } else {
-      setCategories([...categories, clickedCategoryValue]);
-    }
-  }
+    if (currentCategoriesValues.includes(clickedCategoryValue)) {
+      const newCategories = [...currentCategoriesValues];
+      newCategories.splice(newCategories.indexOf(currentCategoriesValues), 1);
 
-  // Fetch recipes whenever categories state changes
-  useEffect(() => {
-    fetchRecipes(
+      categoriesValues.current = newCategories;
+    } else {
+      categoriesValues.current = [
+        ...currentCategoriesValues,
+        clickedCategoryValue,
+      ];
+    }
+
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
       searchedIngredients,
-      searchedIngredients.join(),
-      [...tags, ...categories],
+      "",
+      [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
+      0,
     );
-  }, [categories]);
+
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+  }
 
   return (
     <>

@@ -237,6 +237,10 @@ footer svg {
   }
 }
 
+/*****************/
+/* Large Desktop */
+/*****************/
+
 @media (min-width: 1900px) {
   .app-logo--desktop {
     font-size: 2.9rem;

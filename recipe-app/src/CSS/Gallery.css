@@ -1,11 +1,11 @@
-.gallery-section {
+.main-section {
   flex-grow: 1;
   background-color: var(--primary-yellow);
   padding: var(--page-gallery-block-padding) var(--page-gallery-inline-padding);
   color: var(--font-black);
 }
 
-.searched-ingredients {
+.searched-ingredients-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -13,7 +13,7 @@
   margin-bottom: 1.3rem;
 }
 
-.searched-ingredients span {
+.searched-ingredients-section span {
   border-radius: 5px;
   height: 1rem;
   line-height: 1rem;
@@ -23,23 +23,23 @@
   border: 1px solid var(--primary-gray);
 }
 
-.gallery {
+.gallery-cards-section {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 @media (min-width: 1900px) {
-  .searched-ingredients {
+  .searched-ingredients-section {
     font-size: 1.5rem;
   }
 
-  .searched-ingredients span {
+  .searched-ingredients-section span {
     padding: 7px 17px;
     font-size: 1.5rem;
   }
 
-  .gallery {
+  .gallery-cards-section {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
