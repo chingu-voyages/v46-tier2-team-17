@@ -42,13 +42,22 @@ function Pagination({
     <>
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={totalPages}
-        previousLabel="< previous"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         containerClassName="pagination"
+        previousClassName="page-item"
+        pageClassName="page-item"
+        breakClassName="page-item"
+        nextClassName="page-item"
+        previousLinkClassName="page-link"
+        pageLinkClassName="page-link"
+        breakLinkClassName="page-link"
+        nextLinkClassName="page-link"
+        activeClassName="active"
       />
     </>
   );
