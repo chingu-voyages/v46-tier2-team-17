@@ -104,7 +104,7 @@ export default function SideBar({
         setAllRecipes,
         setSearchedIngredients,
         searchedIngredients,
-        searchedIngredients.join(),
+        "",
         [...checkboxValues.current, ...categoriesValues.current],
         true,
         closeRecipeModal,
@@ -114,7 +114,7 @@ export default function SideBar({
     }
   }
 
-  function handleCategoriesBtnClick(e) {
+  async function handleCategoriesBtnClick(e) {
     const clickedCategoryValue = e.target.value;
     const currentCategoriesValues = categoriesValues.current;
 
@@ -140,12 +140,13 @@ export default function SideBar({
       setAllRecipes,
       setSearchedIngredients,
       searchedIngredients,
-      searchedIngredients.join(),
+      "",
       [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
       0,
     );
+
     totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
 
