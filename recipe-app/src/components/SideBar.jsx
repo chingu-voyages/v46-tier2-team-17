@@ -37,40 +37,42 @@ export default function SideBar({
 
   // Handle user's search query
   function handleUserQuery(searchedText) {
-    const errorModal = document.getElementById("error-modal");
-    asideDesktop.classList.remove("aside-mobile");
+    if (searchedText) {
+      const errorModal = document.getElementById("error-modal");
+      asideDesktop.classList.remove("aside-mobile");
 
-    // Check if input begins with valid character
-    if (/^[^_|\W]/.test(searchedText)) {
-      const searchedWordsArray = searchedText
-        .toLowerCase()
-        .trim()
-        .split(/[\W|_]/g)
-        .filter((item) => item);
-      const searchedWordsString = searchedWordsArray.join();
-      errorModal.style.display = "none";
+      // Check if input begins with valid character
+      if (/^[^_|\W]/.test(searchedText)) {
+        const searchedWordsArray = searchedText
+          .toLowerCase()
+          .trim()
+          .split(/[\W|_]/g)
+          .filter((item) => item);
+        const searchedWordsString = searchedWordsArray.join();
+        errorModal.style.display = "none";
 
-      let totalRecipesAvailable = null;
-      totalRecipesAvailable = fetchRecipes(
-        setAllRecipes,
-        setSearchedIngredients,
-        searchedWordsArray,
-        searchedWordsString,
-        [...checkboxValues.current, ...categoriesValues.current],
-        false,
-        closeRecipeModal,
-        0,
-      );
-      totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
-      setSearchedText("");
-    }
+        let totalRecipesAvailable = null;
+        totalRecipesAvailable = fetchRecipes(
+          setAllRecipes,
+          setSearchedIngredients,
+          searchedWordsArray,
+          searchedWordsString,
+          [...checkboxValues.current, ...categoriesValues.current],
+          false,
+          closeRecipeModal,
+          0,
+        );
+        totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
+        setSearchedText("");
+      }
 
-    // Show error if inputs begins with invalid character
-    if (/^[_|\W]/.test(searchedText)) {
-      const ingredient404Element = document.getElementById("ingredient-404");
-      ingredient404Element.innerText = searchedText.trim();
-      errorModal.style.display = "flex";
-      setSearchedText("");
+      // Show error if inputs begins with invalid character
+      if (/^[_|\W]/.test(searchedText)) {
+        const ingredient404Element = document.getElementById("ingredient-404");
+        ingredient404Element.innerText = searchedText.trim();
+        errorModal.style.display = "flex";
+        setSearchedText("");
+      }
     }
   }
 
