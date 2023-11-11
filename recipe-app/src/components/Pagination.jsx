@@ -1,6 +1,6 @@
 import ReactPaginate from "react-paginate";
 import fetchRecipes from "../fetchRecipes";
-import { useState } from "react";
+// import { useState } from "react";
 
 function Pagination({
   checkboxValues,
@@ -14,8 +14,8 @@ function Pagination({
   closeRecipeModal,
 }) {
   const totalPages = Math.ceil(totalRecipes / itemsPerPage);
-  const [startIndex, setStartIndex] = useState(1);
-  const [endIndex, setEndIndex] = useState(40);
+  // const [startIndex, setStartIndex] = useState(1);
+  // const [endIndex, setEndIndex] = useState(40);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -31,8 +31,8 @@ function Pagination({
       }, which is offset ${startIndex}`,
     );
 
-    setStartIndex(startIndex + 1);
-    setEndIndex(endIndex);
+    // setStartIndex(startIndex + 1);
+    // setEndIndex(endIndex);
 
     console.log(`Loading items from ${startIndex + 1} to ${endIndex}`);
 
@@ -51,8 +51,8 @@ function Pagination({
   return (
     <>
       <section className="pagination-section">
-        {console.log(endIndex)}
-        <span className="pagination-info">{`${startIndex}-${endIndex} of ${totalRecipes} recipes`}</span>
+        {/* {console.log(endIndex)} */}
+        {/* <span className="pagination-info">{`${startIndex}-${endIndex} of ${totalRecipes} recipes`}</span> */}
         <ReactPaginate
           breakLabel="..."
           nextLabel=">"
