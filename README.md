@@ -59,7 +59,7 @@ The Pantry Picker application was designed using the Figma tool as below:
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/354d59ec-df53-4e02-8009-7d7ccd6b7f14" width="150">
 <img src="https://github.com/chingu-voyages/v46-tier2-team-17/assets/115991254/e764ae1f-f455-46e7-b2f9-bfa0c3709fcb" width="150">
 
-## Live Demo
+## Live Site
 
 https://chingu-voyages.github.io/v46-tier2-team-17
 
