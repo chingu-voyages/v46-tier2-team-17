@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SideBar from "./components/SideBar";
 import Gallery from "./components/Gallery";
 
@@ -8,6 +8,8 @@ function App() {
   const [recipeModal, setRecipeModal] = useState(false);
   const [searchedIngredients, setSearchedIngredients] = useState([]);
   const [totalRecipes, setTotalRecipes] = useState(0);
+  const checkboxValues = useRef([]);
+  const categoriesValues = useRef([]);
 
   // Show recipe modal/page onclick of recipe card
   function showRecipeModal(recipe) {
@@ -25,6 +27,8 @@ function App() {
     <>
       <div className="page">
         <SideBar
+          checkboxValues={checkboxValues}
+          categoriesValues={categoriesValues}
           totalRecipes={totalRecipes}
           setTotalRecipes={setTotalRecipes}
           closeRecipeModal={closeRecipeModal}
@@ -35,6 +39,8 @@ function App() {
           }
         />
         <Gallery
+          checkboxValues={checkboxValues}
+          categoriesValues={categoriesValues}
           totalRecipes={totalRecipes}
           setTotalRecipes={setTotalRecipes}
           recipeModal={recipeModal}

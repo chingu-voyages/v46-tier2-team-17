@@ -17,6 +17,7 @@ async function fetchRecipes(
     searchedWordsString && `&q=${searchedWordsString}`
   }${tags && `&tags=${tags.join()}`}`;
 
+  console.log(url);
   const options = {
     method: "GET",
     headers: {

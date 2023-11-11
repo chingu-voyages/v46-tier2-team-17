@@ -10,6 +10,8 @@ import fetchRecipes from "../fetchRecipes";
 // import exampleRecipes from "../exampleRecipes";
 
 function Gallery({
+  checkboxValues,
+  categoriesValues,
   totalRecipes,
   setTotalRecipes,
   recipeModal,
@@ -63,6 +65,7 @@ function Gallery({
           <Loader />
           <Error
             setAllRecipes={setAllRecipes}
+            setTotalRecipes={setTotalRecipes}
             setSearchedIngredients={setSearchedIngredients}
             closeRecipeModal={closeRecipeModal}
           />
@@ -82,9 +85,13 @@ function Gallery({
         </section>
         {console.log(totalRecipes)}
         <Pagination
+          checkboxValues={checkboxValues}
+          categoriesValues={categoriesValues}
           itemsPerPage={40}
           totalRecipes={totalRecipes}
+          setTotalRecipes={setTotalRecipes}
           setAllRecipes={setAllRecipes}
+          searchedIngredients={searchedIngredients}
           setSearchedIngredients={setSearchedIngredients}
           closeRecipeModal={closeRecipeModal}
         />

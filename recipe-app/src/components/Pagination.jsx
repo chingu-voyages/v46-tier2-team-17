@@ -3,9 +3,13 @@ import fetchRecipes from "../fetchRecipes";
 import { useState } from "react";
 
 function Pagination({
+  checkboxValues,
+  categoriesValues,
   itemsPerPage,
   totalRecipes,
+  setTotalRecipes,
   setAllRecipes,
+  searchedIngredients,
   setSearchedIngredients,
   closeRecipeModal,
 }) {
@@ -35,9 +39,9 @@ function Pagination({
     fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
-      ["random"],
-      "",
-      "",
+      searchedIngredients,
+      searchedIngredients.join() === "random" ? "" : searchedIngredients.join(),
+      [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
       startIndex,

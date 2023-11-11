@@ -5,6 +5,8 @@ import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
+  checkboxValues,
+  categoriesValues,
   totalRecipes,
   setTotalRecipes,
   closeRecipeModal,
@@ -13,8 +15,6 @@ export default function SideBar({
   setSearchedIngredients,
 }) {
   const [searchedText, setSearchedText] = useState("");
-  const checkboxValues = useRef([]);
-  const categoriesValues = useRef([]);
   const asideDesktop = document.querySelector(".aside-desktop");
 
   // Fetch random recipes onclick of the app's logo
@@ -22,7 +22,8 @@ export default function SideBar({
     console.log("handleAppLogoClick");
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
-    fetchRecipes(
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
       ["random"],
@@ -32,6 +33,7 @@ export default function SideBar({
       closeRecipeModal,
       0,
     );
+    totalRecipesAvailable.then((total) => setTotalRecipes(total));
   }
 
   // Handle user's search query
@@ -51,7 +53,8 @@ export default function SideBar({
 
       console.log("handleUserQuery IF block");
 
-      fetchRecipes(
+      let totalRecipesAvailable = null;
+      totalRecipesAvailable = fetchRecipes(
         setAllRecipes,
         setSearchedIngredients,
         searchedWordsArray,
@@ -61,6 +64,7 @@ export default function SideBar({
         closeRecipeModal,
         0,
       );
+      totalRecipesAvailable.then((total) => setTotalRecipes(total));
       setSearchedText("");
     }
 
@@ -103,8 +107,9 @@ export default function SideBar({
     }
 
     // Fetch recipes if the search box is empty
-    !searchedText &&
-      fetchRecipes(
+    if (!searchedText) {
+      let totalRecipesAvailable = null;
+      totalRecipesAvailable = fetchRecipes(
         setAllRecipes,
         setSearchedIngredients,
         searchedIngredients,
@@ -114,6 +119,8 @@ export default function SideBar({
         closeRecipeModal,
         0,
       );
+      totalRecipesAvailable.then((total) => setTotalRecipes(total));
+    }
   }
 
   function handleCategoriesBtnClick(e) {
@@ -143,7 +150,8 @@ export default function SideBar({
       console.log(categoriesValues);
     }
 
-    fetchRecipes(
+    let totalRecipesAvailable = null;
+    totalRecipesAvailable = fetchRecipes(
       setAllRecipes,
       setSearchedIngredients,
       searchedIngredients,
@@ -153,6 +161,7 @@ export default function SideBar({
       closeRecipeModal,
       0,
     );
+    totalRecipesAvailable.then((total) => setTotalRecipes(total));
   }
 
   return (
