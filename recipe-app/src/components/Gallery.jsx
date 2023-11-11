@@ -53,12 +53,12 @@ function Gallery({
   }
   return (
     <>
-      <section className="gallery-section">
-        <div className="searched-ingredients">
+      <main className="main-section">
+        <section className="searched-ingredients-section">
           <strong>Searched Ingredients:</strong>
           {createSearchedIngredientsTags(searchedIngredients)}
-        </div>
-        <main className="gallery">
+        </section>
+        <section className="gallery-cards-section">
           <Welcome />
           <Loader />
           <Error
@@ -79,7 +79,8 @@ function Gallery({
               closeRecipeModal={closeRecipeModal}
             />
           )}
-        </main>
+        </section>
+        {console.log(totalRecipes)}
         <Pagination
           itemsPerPage={40}
           totalRecipes={totalRecipes}
@@ -87,7 +88,7 @@ function Gallery({
           setSearchedIngredients={setSearchedIngredients}
           closeRecipeModal={closeRecipeModal}
         />
-      </section>
+      </main>
     </>
   );
 }
