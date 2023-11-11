@@ -1,13 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import Card from "./Card";
 import Error from "./Error";
 import Loader from "./Loader";
+import Pagination from "./Pagination";
 import RecipeModal from "./RecipeModal";
 import Welcome from "./Welcome";
-import recipes from "../recipesListObj";
+// import fetchRecipes from "../fetchRecipes";
+import exampleRecipes from "../exampleRecipes";
 
 function Gallery({
+  totalRecipes,
+  setTotalRecipes,
   recipeModal,
   chosenRecipe,
   closeRecipeModal,
@@ -18,32 +22,23 @@ function Gallery({
   setSearchedIngredients,
 }) {
   useEffect(() => {
-    setAllRecipes(recipes.results);
+    setAllRecipes(exampleRecipes.results);
+    setTotalRecipes(exampleRecipes.results.length);
   }, []);
 
   // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const url = "https://tasty.p.rapidapi.com/recipes/list?from=0&size=20";
-  //     const options = {
-  //       method: "GET",
-  //       headers: {
-  //         "X-RapidAPI-Key": import.meta.env.VITE_X_RAPIDAPI_KEY,
-  //         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
-  //       },
-  //     };
-  //     const loaderModal = document.getElementById("loader-modal");
-  //     loaderModal.style.display = "flex";
-  //     try {
-  //       const response = await fetch(url, options);
-  //       const result = await response.text();
-  //       const recipesArray = JSON.parse(result).results;
-  //       setAllRecipes(recipesArray);
-  //       loaderModal.style.display = "none";
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
+  //   let totalRecipesAvailable = null;
+  //   totalRecipesAvailable = fetchRecipes(
+  //     setAllRecipes,
+  //     setSearchedIngredients,
+  //     ["random"],
+  //     "",
+  //     "",
+  //     true,
+  //     closeRecipeModal,
+  //     0,
+  //   );
+  //   totalRecipesAvailable.then((total) => setTotalRecipes(total));
   // }, []);
 
   // Create ingredient <span>s from user's query
@@ -85,6 +80,13 @@ function Gallery({
             />
           )}
         </main>
+        <Pagination
+          itemsPerPage={40}
+          totalRecipes={totalRecipes}
+          setAllRecipes={setAllRecipes}
+          setSearchedIngredients={setSearchedIngredients}
+          closeRecipeModal={closeRecipeModal}
+        />
       </section>
     </>
   );

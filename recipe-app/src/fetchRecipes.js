@@ -9,10 +9,11 @@ async function fetchRecipes(
   tags,
   skipValidationCheck,
   closeRecipeModal,
+  startIndex,
 ) {
   console.log(tags);
   // Set fetch url based on the availability of searchedWordsString and tags parameters
-  const url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=100${
+  const url = `https://tasty.p.rapidapi.com/recipes/list?from=${startIndex}&size=40${
     searchedWordsString && `&q=${searchedWordsString}`
   }${tags && `&tags=${tags.join()}`}`;
 
@@ -32,6 +33,7 @@ async function fetchRecipes(
     const resultJSVersion = JSON.parse(result);
     console.log(resultJSVersion);
     const recipesArray = resultJSVersion.results;
+    console.log(recipesArray.length);
     const isValidSearch = skipValidationCheck
       ? true
       : validateIngredientsQuery(searchedWordsArray, recipesArray);
@@ -42,6 +44,8 @@ async function fetchRecipes(
       setAllRecipes(recipesArray);
     }
     loaderModal.style.display = "none";
+    console.log(resultJSVersion.count);
+    return resultJSVersion.count;
   } catch (error) {
     console.error(error);
   }

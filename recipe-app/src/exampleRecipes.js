@@ -1,5 +1,8 @@
-const recipesListObj = {
-  count: 9763,
+const exampleRecipes = {
+  // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get
+  get count() {
+    return this.results.length;
+  },
   results: [
     {
       id: 4704,
@@ -23356,4 +23359,4 @@ const recipesListObj = {
   ],
 };
 
-export default recipesListObj;
+export default exampleRecipes;

@@ -16,6 +16,7 @@ function Error({ setAllRecipes, setSearchedIngredients, closeRecipeModal }) {
       "",
       true,
       closeRecipeModal,
+      0,
     );
   }
   return (

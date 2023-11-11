@@ -1,10 +1,11 @@
 import { useState } from "react";
-import recipes from "../recipesListObj";
+import exampleRecipes from "../exampleRecipes";
 
 function Welcome() {
   const [selectedRecipeImage] = useState(
-    recipes.results[Math.floor(Math.random() * recipes.results.length)]
-      .thumbnail_url,
+    exampleRecipes.results[
+      Math.floor(Math.random() * exampleRecipes.results.length)
+    ].thumbnail_url,
   );
   return (
     <article

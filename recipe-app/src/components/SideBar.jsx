@@ -5,6 +5,8 @@ import { AiFillGithub } from "react-icons/ai";
 import fetchRecipes from "../fetchRecipes";
 
 export default function SideBar({
+  totalRecipes,
+  setTotalRecipes,
   closeRecipeModal,
   setAllRecipes,
   searchedIngredients,
@@ -28,6 +30,7 @@ export default function SideBar({
       "",
       true,
       closeRecipeModal,
+      0,
     );
   }
 
@@ -56,6 +59,7 @@ export default function SideBar({
         [...checkboxValues.current, ...categoriesValues.current],
         false,
         closeRecipeModal,
+        0,
       );
       setSearchedText("");
     }
@@ -108,6 +112,7 @@ export default function SideBar({
         [...checkboxValues.current, ...categoriesValues.current],
         true,
         closeRecipeModal,
+        0,
       );
   }
 
@@ -146,6 +151,7 @@ export default function SideBar({
       [...checkboxValues.current, ...categoriesValues.current],
       true,
       closeRecipeModal,
+      0,
     );
   }
 
