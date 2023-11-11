@@ -9,7 +9,6 @@ function Error({
 }) {
   // Get recipes for clicked ingredient link
   function suggestionClick(e) {
-    console.log("suggestionClick");
     const clickedIngredient = e.target.innerText.toLowerCase();
     let totalRecipesAvailable = null;
 

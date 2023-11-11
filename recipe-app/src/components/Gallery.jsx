@@ -83,7 +83,6 @@ function Gallery({
             />
           )}
         </section>
-        {console.log(totalRecipes)}
         <Pagination
           checkboxValues={checkboxValues}
           categoriesValues={categoriesValues}

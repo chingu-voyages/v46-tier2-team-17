@@ -22,19 +22,19 @@ function Pagination({
     const startIndex = (event.selected * itemsPerPage) % totalRecipes;
     const endIndex = startIndex + itemsPerPage;
 
-    console.log(event.selected);
-    console.log(startIndex);
-    console.log(endIndex);
-    console.log(
-      `User requested page number ${
-        event.selected + 1
-      }, which is offset ${startIndex}`,
-    );
+    // console.log(event.selected);
+    // console.log(startIndex);
+    // console.log(endIndex);
+    // console.log(
+    //   `User requested page number ${
+    //     event.selected + 1
+    //   }, which is offset ${startIndex}`,
+    // );
 
     // setStartIndex(startIndex + 1);
     // setEndIndex(endIndex);
 
-    console.log(`Loading items from ${startIndex + 1} to ${endIndex}`);
+    // console.log(`Loading items from ${startIndex + 1} to ${endIndex}`);
 
     fetchRecipes(
       setAllRecipes,
@@ -51,7 +51,6 @@ function Pagination({
   return (
     <>
       <section className="pagination-section">
-        {/* {console.log(endIndex)} */}
         {/* <span className="pagination-info">{`${startIndex}-${endIndex} of ${totalRecipes} recipes`}</span> */}
         <ReactPaginate
           breakLabel="..."

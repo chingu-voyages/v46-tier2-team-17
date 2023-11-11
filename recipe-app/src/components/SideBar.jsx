@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillGithub } from "react-icons/ai";
@@ -19,7 +19,6 @@ export default function SideBar({
 
   // Fetch random recipes onclick of the app's logo
   function handleAppLogoClick(e) {
-    console.log("handleAppLogoClick");
     document.getElementById("error-modal").style.display = "none";
     e.preventDefault();
     let totalRecipesAvailable = null;
@@ -50,8 +49,6 @@ export default function SideBar({
         .filter((item) => item);
       const searchedWordsString = searchedWordsArray.join();
       errorModal.style.display = "none";
-
-      console.log("handleUserQuery IF block");
 
       let totalRecipesAvailable = null;
       totalRecipesAvailable = fetchRecipes(
@@ -85,12 +82,8 @@ export default function SideBar({
   }
 
   function handleCheckboxChange(e) {
-    console.log("handleCheckboxChange");
     const changedCheckboxValue = e.target.value;
     const currentCheckboxValues = checkboxValues.current;
-
-    console.log(checkboxValues);
-    console.log(currentCheckboxValues);
 
     // Remove or add checked box's value from tags state
     if (currentCheckboxValues.includes(changedCheckboxValue)) {
@@ -100,10 +93,8 @@ export default function SideBar({
         1,
       );
       checkboxValues.current = newCheckboxValues;
-      console.log(checkboxValues);
     } else {
       checkboxValues.current = [...currentCheckboxValues, changedCheckboxValue];
-      console.log(checkboxValues);
     }
 
     // Fetch recipes if the search box is empty
@@ -124,12 +115,8 @@ export default function SideBar({
   }
 
   function handleCategoriesBtnClick(e) {
-    console.log("handleCategoriesBtnClick");
     const clickedCategoryValue = e.target.value;
     const currentCategoriesValues = categoriesValues.current;
-
-    console.log(clickedCategoryValue);
-    console.log(currentCategoriesValues);
 
     e.preventDefault();
     e.target.classList.toggle("category-active");
@@ -141,13 +128,11 @@ export default function SideBar({
       newCategories.splice(newCategories.indexOf(currentCategoriesValues), 1);
 
       categoriesValues.current = newCategories;
-      console.log(categoriesValues);
     } else {
       categoriesValues.current = [
         ...currentCategoriesValues,
         clickedCategoryValue,
       ];
-      console.log(categoriesValues);
     }
 
     let totalRecipesAvailable = null;
