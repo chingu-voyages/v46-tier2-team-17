@@ -40,7 +40,7 @@ function Gallery({
       closeRecipeModal,
       0,
     );
-    totalRecipesAvailable.then((total) => setTotalRecipes(total));
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }, []);
 
   // Create ingredient <span>s from user's query

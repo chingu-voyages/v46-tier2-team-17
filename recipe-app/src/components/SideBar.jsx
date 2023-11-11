@@ -32,7 +32,7 @@ export default function SideBar({
       closeRecipeModal,
       0,
     );
-    totalRecipesAvailable.then((total) => setTotalRecipes(total));
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
 
   // Handle user's search query
@@ -61,7 +61,7 @@ export default function SideBar({
         closeRecipeModal,
         0,
       );
-      totalRecipesAvailable.then((total) => setTotalRecipes(total));
+      totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
       setSearchedText("");
     }
 
@@ -110,7 +110,7 @@ export default function SideBar({
         closeRecipeModal,
         0,
       );
-      totalRecipesAvailable.then((total) => setTotalRecipes(total));
+      totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
     }
   }
 
@@ -146,7 +146,7 @@ export default function SideBar({
       closeRecipeModal,
       0,
     );
-    totalRecipesAvailable.then((total) => setTotalRecipes(total));
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
 
   return (

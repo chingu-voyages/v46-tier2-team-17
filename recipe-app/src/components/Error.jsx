@@ -25,7 +25,7 @@ function Error({
       closeRecipeModal,
       0,
     );
-    totalRecipesAvailable.then((total) => setTotalRecipes(total));
+    totalRecipesAvailable.then((total) => total && setTotalRecipes(total));
   }
   return (
     <article id="error-modal" className="error-modal">
